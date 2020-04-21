@@ -10,6 +10,7 @@ import amendment from './init/amendment-init';
 import relatedBill from './init/related-bill-init';
 import person from './init/person-init';
 import action from './init/action-init';
+import cosponsor from './init/cosponsor-init';
 
 import ora from 'ora';
 
@@ -33,6 +34,7 @@ ora.promise(
         amendment(),
         relatedBill(),
         action(),
+        cosponsor(),
       ]);
     } catch (error) {
       console.error(error);
