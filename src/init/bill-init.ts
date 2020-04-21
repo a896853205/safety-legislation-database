@@ -36,7 +36,7 @@ export default async () => {
       congress?: number;
       name?: string;
       dateSponsored?: Date;
-      sponsor?: string;
+      sponsorUuid?: string;
       originChamber?: string;
       status?: string;
       policyArea?: string;
@@ -81,7 +81,8 @@ export default async () => {
       )?.uuid;
 
       if (!sponsor) {
-        console.log(item.number);
+        console.error(item.number);
+        throw new Error(`sponsor有非法字段为${item.number}`);
       }
 
       billArray.push({
@@ -93,7 +94,7 @@ export default async () => {
         congress,
         name: item.name,
         dateSponsored: moment(item.dateSponsored, 'MM/DD/YYYY', false).toDate(),
-        sponsor,
+        sponsorUuid: sponsor,
         originChamber: item.originChamber?.trim(),
         status: item.status,
         policyArea: item.policyArea,

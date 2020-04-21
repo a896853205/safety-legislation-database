@@ -14,7 +14,7 @@ import { ENVIRONMENT } from '../constants/app-constants';
 //     host: 'localhost',
 //     user: DEV_DATA_BASE_USER,
 //     password: DEV_DATA_BASE_KEY,
-//     database: 'softwareTest',
+//     database: 'safety_legislation',
 //     port: 3306,
 //     connectionLimit: 10
 //   },
@@ -23,7 +23,7 @@ import { ENVIRONMENT } from '../constants/app-constants';
 //     host: 'localhost',
 //     user: 'root',
 //     password: DEV_DATA_BASE_KEY,
-//     database: 'softwareTest',
+//     database: 'safety_legislation',
 //     port: 3306,
 //     connectionLimit: 10
 //   },
@@ -32,7 +32,7 @@ import { ENVIRONMENT } from '../constants/app-constants';
 //     host: 'localhost',
 //     user: PRO_DATA_BASE_USER,
 //     password: PRO_DATA_BASE_KEY,
-//     database: 'softwareTest',
+//     database: 'safety_legislation',
 //     port: 3306,
 //     connectionLimit: 10
 //   }
