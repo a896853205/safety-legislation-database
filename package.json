@@ -1,0 +1,40 @@
+{
+  "name": "safety-legislation-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:w": "tsc -w",
+    "init": "ts-node ./src/index.ts",
+    "personInit": "ts-node ./src/init/person-init.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bluebird": "^3.5.30",
+    "@types/uuid": "^7.0.2",
+    "@types/validator": "^12.0.1",
+    "cz-conventional-changelog": "^3.1.0",
+    "cz-customizable": "^6.2.0",
+    "moment": "^2.24.0",
+    "mysql2": "^2.1.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.21.5",
+    "sequelize-typescript": "^1.1.0",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3",
+    "uuid": "^7.0.2",
+    "xlsx": "^0.15.6"
+  },
+  "devDependencies": {
+    "@types/node": "^13.9.5",
+    "nodemon": "^2.0.2",
+    "ora": "^4.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  }
+}
