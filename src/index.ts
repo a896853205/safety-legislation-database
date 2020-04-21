@@ -13,6 +13,7 @@ import action from './init/action-init';
 import cosponsor from './init/cosponsor-init';
 import committee from './init/committee-init';
 import committeeActivity from './init/committee-activity-init';
+import committeeSub from './init/committee-sub-init';
 
 import ora from 'ora';
 
@@ -39,7 +40,7 @@ ora.promise(
         cosponsor(),
         committee(),
       ]);
-      await committeeActivity();
+      await Promise.all([committeeSub(), committeeActivity()]);
     } catch (error) {
       console.error(error);
     }
