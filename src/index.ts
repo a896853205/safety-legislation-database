@@ -11,6 +11,7 @@ import relatedBill from './init/related-bill-init';
 import person from './init/person-init';
 import action from './init/action-init';
 import cosponsor from './init/cosponsor-init';
+import committee from './init/committee-init';
 
 import ora from 'ora';
 
@@ -35,6 +36,7 @@ ora.promise(
         relatedBill(),
         action(),
         cosponsor(),
+        committee(),
       ]);
     } catch (error) {
       console.error(error);
