@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:w": "tsc -w",
     "init": "ts-node ./src/index.ts",
-    "personInit": "ts-node ./src/init/person-init.ts"
+    "committeeCsvInit": "ts-node ./src/script/committee-csv-init.ts"
   },
   "author": "",
   "license": "ISC",
