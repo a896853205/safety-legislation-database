@@ -31,7 +31,7 @@ module.exports = {
       path: '/safety-legislation/safety-legislation-server',
       'post-deploy':
         'npm install && tsc && pm2 reload ecosystem.config.js --env production',
-      'post-setup': 'npm install'
+      'post-setup': 'npm install && tsc'
     }
   }
 };
