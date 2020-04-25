@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'API',
+      name: 'safetyAPI',
       script: './dist/www',
 
       // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
