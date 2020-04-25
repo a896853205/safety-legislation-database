@@ -23,7 +23,7 @@ dbInit();
   for (let bill of billArr) {
     if (bill.committees) {
       for (let i = 0; i < bill.committees.length; i++) {
-        for (let j = i; j < bill.committees.length; j++) {
+        for (let j = i + 1; j < bill.committees.length; j++) {
           ws_data.push([
             bill.committees[i].committeeName,
             bill.committees[j].committeeName,
@@ -36,6 +36,6 @@ dbInit();
   const ws = utils.aoa_to_sheet(ws_data);
   const wbStream = stream.to_csv(ws);
   wbStream.pipe(
-    fs.createWriteStream(path.resolve(__dirname, '../../dist-csv/out.csv'))
+    fs.createWriteStream(path.resolve(__dirname, '../../dist-csv/committee.csv'))
   );
 })();
