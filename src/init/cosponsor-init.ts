@@ -9,7 +9,6 @@ import ora from 'ora';
 import Person from '../models/person';
 import Bill from '../models/bill';
 import Cosponsor from '../models/cosponsor';
-import { stringify } from 'querystring';
 
 interface IExcelRow {
   number?: string;
@@ -66,14 +65,16 @@ export default async () => {
         }
       }
 
-      cosponsorArr.push({
-        uuid: uuidv1(),
-        billUuid: lastNumberUuid,
-        cosponsorUuid,
-        cosponsorDate: item.cosponsorDate
-          ? moment(item.cosponsorDate, 'MM/DD/YYYY', false).toDate()
-          : undefined,
-      });
+      if (cosponsorUuid) {
+        cosponsorArr.push({
+          uuid: uuidv1(),
+          billUuid: lastNumberUuid,
+          cosponsorUuid,
+          cosponsorDate: item.cosponsorDate
+            ? moment(item.cosponsorDate, 'MM/DD/YYYY', false).toDate()
+            : undefined,
+        });
+      }
     }
 
     await Cosponsor.bulkCreate(cosponsorArr);

@@ -8,8 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:w": "tsc -w",
     "init": "ts-node ./src/index.ts",
-    "committeeCsvInit": "ts-node ./src/script/committee-csv-init.ts",
-    "proCCsvInit": "node ./dist/script/committee-csv-init.js",
     "initDeploy": "pm2 deploy production setup",
     "deploy": "pm2 deploy production update",
     "proInitDb": "cross-env NODE_ENV=production&&node dist/index"
