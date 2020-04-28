@@ -10,7 +10,7 @@ import Committee from '../models/committee';
 const ws_data: (string | undefined)[][] = [['committee1', 'committee2']];
 dbInit();
 
-(async () => {
+export default async () => {
   const billArr = await Bill.findAll({
     attributes: [],
     include: [
@@ -36,6 +36,8 @@ dbInit();
   const ws = utils.aoa_to_sheet(ws_data);
   const wbStream = stream.to_csv(ws);
   wbStream.pipe(
-    fs.createWriteStream(path.resolve(__dirname, '../../dist-csv/committee.csv'))
+    fs.createWriteStream(
+      path.resolve(__dirname, '../../dist-csv/committee.csv')
+    )
   );
-})();
+};
