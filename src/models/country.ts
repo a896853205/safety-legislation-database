@@ -12,7 +12,7 @@ import {
 import PoliticalOrganization from './political-organization';
 import PoliticalOrganizationDivision from './political-organization-division';
 
-@Table
+@Table({ tableName: 'countries' })
 export default class Country extends Model<Country> {
   @PrimaryKey
   @Unique

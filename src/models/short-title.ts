@@ -11,7 +11,7 @@ import {
 } from 'sequelize-typescript';
 import Bill from './bill';
 
-@Table({ tableName: 'short_title' })
+@Table({ tableName: 'short_titles' })
 export default class ShortTitle extends Model<ShortTitle> {
   @PrimaryKey
   @Unique

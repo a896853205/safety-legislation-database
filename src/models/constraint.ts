@@ -11,7 +11,7 @@ import {
 } from 'sequelize-typescript';
 import Bill from './bill';
 
-@Table
+@Table({ tableName: 'constraints' })
 export default class Constraint extends Model<Constraint> {
   @PrimaryKey
   @Unique

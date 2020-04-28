@@ -11,7 +11,7 @@ import {
 } from 'sequelize-typescript';
 import Bill from './bill';
 
-@Table
+@Table({ tableName: 'executors' })
 export default class Executor extends Model<Executor> {
   @PrimaryKey
   @Unique

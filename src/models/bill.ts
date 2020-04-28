@@ -32,7 +32,7 @@ import RelatedObject from './related-object';
 import ShortTitle from './short-title';
 import OfficialTitle from './official-title';
 
-@Table
+@Table({ tableName: 'bills' })
 export default class Bill extends Model<Bill> {
   @PrimaryKey
   @Unique

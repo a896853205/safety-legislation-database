@@ -13,7 +13,7 @@ import {
 import Bill from './bill';
 import Person from './person';
 
-@Table
+@Table({ tableName: 'cosponsors' })
 export default class Cosponsor extends Model<Cosponsor> {
   @PrimaryKey
   @Unique

@@ -12,7 +12,7 @@ import {
 } from 'sequelize-typescript';
 import Bill from './bill';
 
-@Table({ tableName: 'related_object' })
+@Table({ tableName: 'related_objects' })
 export default class RelatedObject extends Model<RelatedObject> {
   @PrimaryKey
   @Unique

@@ -14,7 +14,7 @@ import Bill from './bill';
 import CommitteeActivity from './committee-activity';
 import CommitteeSub from './committee-sub';
 
-@Table
+@Table({ tableName: 'committees' })
 export default class Committee extends Model<Committee> {
   @PrimaryKey
   @Unique
