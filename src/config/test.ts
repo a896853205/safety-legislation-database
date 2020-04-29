@@ -1,5 +1,5 @@
 import { ConfigScheme } from './config-scheme.type';
-
+import { TEST_DATA_BASE_USER, TEST_DATA_BASE_KEY } from '../keys/keys';
 interface TestConfig extends ConfigScheme {}
 
 export const TEST_CONFIG: TestConfig = {
@@ -7,6 +7,8 @@ export const TEST_CONFIG: TestConfig = {
   db: {
     port: '3306',
     host: 'localhost',
-    name: 'wolf_gallery'
-  }
+    name: 'safety_legislation',
+    user: TEST_DATA_BASE_USER,
+    password: TEST_DATA_BASE_KEY,
+  },
 };
