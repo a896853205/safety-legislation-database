@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:w": "tsc -w",
     "init": "cross-env NODE_ENV=development ts-node ./src/index.ts",
+    "proInitDb": "cross-env NODE_ENV=production&&ts-node ./src/index.ts",
     "initDeploy": "pm2 deploy production setup",
-    "deploy": "pm2 deploy production update",
-    "proInitDb": "cross-env NODE_ENV=production&&node dist/index"
+    "deploy": "pm2 deploy production update"
   },
   "author": "",
   "license": "ISC",
