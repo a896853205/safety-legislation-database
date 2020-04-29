@@ -9,7 +9,7 @@ import Person from '../models/person';
 import PersonIdentity from '../models/person-identity';
 
 export default async () => {
-  const spinner = ora('Person&PersonIdentity').start();
+  const spinner = ora('Person, PersonIdentity').start();
 
   try {
     const buf: Buffer = fs.readFileSync(

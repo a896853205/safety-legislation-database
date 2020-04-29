@@ -11,7 +11,7 @@ import {
 } from 'sequelize-typescript';
 import Bill from './bill';
 
-@Table({ tableName: 'amends' })
+@Table({ tableName: 'actions' })
 export default class Action extends Model<Action> {
   @PrimaryKey
   @Unique
