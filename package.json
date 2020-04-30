@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon -e ts,tsx --exec ts-node ./src/www",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "build:w": "tsc -w",
     "init": "cross-env NODE_ENV=development ts-node ./src/index.ts",
     "proInitDb": "cross-env NODE_ENV=production&&ts-node ./src/index.ts",
@@ -48,7 +48,9 @@
     "xlsx": "^0.15.6"
   },
   "devDependencies": {
+    "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.2",
+    "mocha": "^7.1.2",
     "nodemon": "^2.0.2",
     "ora": "^4.0.3"
   },
@@ -56,5 +58,14 @@
     "commitizen": {
       "path": "node_modules/cz-customizable"
     }
+  },
+  "mocha": {
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ],
+    "recursive": true,
+    "full-trace": true,
+    "spec": "src/**/*.test.ts"
   }
 }
