@@ -25,6 +25,7 @@
     "@types/koa-send": "^4.1.2",
     "@types/koa2-cors": "^2.0.1",
     "@types/moment": "^2.13.0",
+    "@types/power-assert": "^1.5.3",
     "@types/uuid": "^7.0.2",
     "@types/validator": "^12.0.1",
     "cross-env": "^7.0.2",
@@ -43,16 +44,18 @@
     "sequelize": "^5.21.5",
     "sequelize-typescript": "^1.1.0",
     "ts-node": "^8.8.1",
-    "typescript": "^3.8.3",
     "uuid": "^7.0.2",
     "xlsx": "^0.15.6"
   },
   "devDependencies": {
     "@types/mocha": "^7.0.2",
-    "@types/node": "^13.13.2",
+    "@types/node": "^13.13.4",
+    "espower-typescript": "^9.0.2",
     "mocha": "^7.1.2",
     "nodemon": "^2.0.2",
-    "ora": "^4.0.3"
+    "ora": "^4.0.3",
+    "power-assert": "^1.6.1",
+    "typescript": "^3.8.3"
   },
   "config": {
     "commitizen": {
@@ -61,11 +64,11 @@
   },
   "mocha": {
     "require": [
-      "ts-node/register",
-      "source-map-support/register"
+      "espower-typescript/guess"
     ],
-    "recursive": true,
-    "full-trace": true,
     "spec": "src/**/*.test.ts"
+  },
+  "directories": {
+    "test": "src/"
   }
 }

@@ -1,13 +1,12 @@
-import assert from 'assert';
 import havePropNumber from './have-prop-number';
-
+import assert = require('assert');
 describe('have-prop-number', () => {
   it('Array is empty', () => {
-    assert.equal(havePropNumber([], ''), 0);
+    assert(havePropNumber([], '') === 0);
   });
 
   it('prop name in object', () => {
-    assert.equal(
+    assert(
       havePropNumber(
         [
           {
@@ -19,8 +18,7 @@ describe('have-prop-number', () => {
           },
         ],
         'b'
-      ),
-      2
+      ) === 2
     );
   });
 });
