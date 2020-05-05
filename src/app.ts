@@ -33,7 +33,7 @@ for (let route of routes) {
 }
 
 app.on('error', async err => {
-  // console.error(err);
+  // console.error(err.stack);
 });
 
 export default app;

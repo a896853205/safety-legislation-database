@@ -8,7 +8,8 @@ import {
   ForeignKey,
   Comment,
   Default,
-  BelongsTo
+  BelongsTo,
+  HasOne
 } from 'sequelize-typescript';
 import Bill from './bill';
 import Person from './person';

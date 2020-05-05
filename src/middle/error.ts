@@ -21,7 +21,8 @@ export default errorCatch = async (ctx, next) => {
     //   const msg = '请重新登录';
     //   ctx.throw(RESPONSE_CODE.unauthorized, msg);
     // }
-
+    // 错误日志位置
+    console.error(err);
     ctx.throw(RESPONSE_CODE.serviceError, '网络错误,请稍后再试');
   }
 };
