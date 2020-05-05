@@ -15,10 +15,12 @@ export default {
       },
       limit: pageSize,
       offset: (page - 1) * pageSize,
-      attributes: ['uuid'],
+      attributes: ['uuid', 'number', 'name'],
+      distinct: true,
       include: [
         {
           model: Cosponsor,
+          attributes: ['uuid'],
           include: [
             {
               model: Person,
