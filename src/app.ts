@@ -23,7 +23,10 @@ app.use(
 app.use(json());
 
 // log
-app.use(logger(str => console.log(`${moment().format()} ${str}`)));
+
+if (process.env.NODE_ENV !== 'test') {
+  app.use(logger(str => console.log(`${moment().format()} ${str}`)));
+}
 
 for (let route of routes) {
   app.use(route.routes());

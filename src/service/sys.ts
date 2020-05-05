@@ -4,7 +4,7 @@ import Person from '../models/person';
 
 export default {
   // 模糊搜索person的name列表
-  getPersonList: (name: string) =>
+  getPersonList: (name: string, max: number) =>
     Person.findAll({
       where: {
         name: {
@@ -12,5 +12,6 @@ export default {
         },
       },
       attributes: ['uuid', 'name'],
+      limit: max,
     }),
 };

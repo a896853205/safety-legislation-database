@@ -7,16 +7,18 @@ const router = new Router({
 });
 
 const personListSchema = Joi.object({
-  name: Joi.string().max(255),
+  name: Joi.string().max(255).empty(''),
+  max: Joi.number().min(1),
 });
 router.get('/personList', async ctx => {
   try {
-    const value = await personListSchema.validateAsync(ctx.query);
+    const { name, max } = await personListSchema.validateAsync(ctx.query);
 
-    let res = await service.getPersonList(value.name);
+    let res = await service.getPersonList(name, max);
 
     ctx.body = res;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 });
