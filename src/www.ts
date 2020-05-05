@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Module dependencies.
  */
@@ -84,7 +83,8 @@ let server = http.createServer(app.callback());
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+export default server;

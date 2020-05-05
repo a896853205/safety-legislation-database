@@ -5,8 +5,8 @@ export default <T>(bill: T[], prop: keyof T): number => {
     propSet.add(item[prop]);
   }
 
-  console.table(propSet.values());
-  console.log(`共有${propSet.size}种`);
+  // console.table(propSet.values());
+  // console.log(`共有${propSet.size}种`);
 
   return propSet.size;
 };
