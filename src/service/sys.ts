@@ -8,7 +8,7 @@ export default {
     Person.findAll({
       where: {
         name: {
-          [Op.like]: name,
+          [Op.like]: `%${name}%`,
         },
       },
       attributes: ['uuid', 'name'],

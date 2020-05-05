@@ -9,10 +9,10 @@ import errorCatch from './middle/error';
 
 const app = new Koa();
 
-app.use(errorCatch);
-
 // cors
 app.use(cors());
+
+app.use(errorCatch);
 
 // param
 app.use(
@@ -22,12 +22,12 @@ app.use(
 );
 app.use(json());
 
+// log
+app.use(logger(str => console.log(`${moment().format()} ${str}`)));
+
 for (let route of routes) {
   app.use(route.routes());
 }
-
-// log
-app.use(logger(str => console.log(`${moment().format()} ${str}`)));
 
 app.on('error', async err => {
   // console.error(err);

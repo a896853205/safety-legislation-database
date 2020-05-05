@@ -1,5 +1,4 @@
 import Router from 'koa-router';
-import Res from '../util/response';
 import service from '../service';
 import Joi from '@hapi/joi';
 
@@ -16,11 +15,9 @@ router.get('/personList', async ctx => {
 
     let res = await service.getPersonList(value.name);
 
-    ctx.body = new Res({
-      data: res,
-    });
+    ctx.body = res;
   } catch (error) {
-    throw(error);
+    throw error;
   }
 });
 
