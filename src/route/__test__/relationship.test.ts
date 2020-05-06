@@ -36,11 +36,8 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body.tableData.data));
-          assert(res.body.tableData.data.length >= 0);
-          assert(res.body.tableData.page >= 0);
-          assert(res.body.tableData.totalNum >= 0);
-          assert(res.body.relativeBillNum >= 0);
+          assert(Array.isArray(res.body));
+          assert(res.body.length >= 0);
         })
         .end(done);
     });
@@ -55,11 +52,8 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body.tableData.data));
-          assert(res.body.tableData.data.length === 0);
-          assert(res.body.tableData.page === 999999);
-          assert(res.body.tableData.totalNum === 0);
-          assert(res.body.relativeBillNum === 0);
+          assert(Array.isArray(res.body));
+          assert(res.body.length >= 0);
         })
         .end(done);
     });
@@ -86,11 +80,8 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body.tableData.data));
-          assert(res.body.tableData.data.length === 0);
-          assert(res.body.tableData.page === 1);
-          assert(res.body.tableData.totalNum === 0);
-          assert(res.body.relativeBillNum === 0);
+          assert(Array.isArray(res.body));
+          assert(res.body.length === 0);
         })
         .end(done);
     });
@@ -116,11 +107,8 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body.tableData.data));
-          assert(res.body.tableData.data.length >= 0);
-          assert(res.body.tableData.page >= 0);
-          assert(res.body.tableData.totalNum >= 0);
-          assert(res.body.relativeBillNum >= 0);
+          assert(Array.isArray(res.body));
+          assert(res.body.length >= 0);
         })
         .end(done);
     });
