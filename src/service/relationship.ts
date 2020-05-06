@@ -17,14 +17,68 @@ export default {
   ) => {
     let sponsorTableRows: ISponsorAndCosponsorTable[] = [];
     let cosponsorTableRows: ISponsorAndCosponsorTable[] = [];
-    let cosponsorRows: Bill[] = [];
-    let { rows: sponsorRows, count } = await Bill.findAndCountAll({
-      where: {
-        sponsorUuid: personUuid,
-      },
-      limit: pageSize,
-      offset: (page - 1) * pageSize,
+    let { rows: sponsorRows, count: sponsorCount } = await Bill.findAndCountAll(
+      {
+        where: {
+          sponsorUuid: personUuid,
+        },
+        limit: pageSize,
+        offset: (page - 1) * pageSize,
+        attributes: ['uuid', 'number', 'name'],
+        distinct: true,
+        include: [
+          {
+            model: Cosponsor,
+            attributes: ['uuid'],
+            include: [
+              {
+                model: Person,
+                attributes: ['uuid', 'name'],
+              },
+            ],
+          },
+        ],
+      }
+    );
+
+    sponsorTableRows = sponsorRows.map(item => {
+      let typeItem: any = item.get();
+      typeItem.personType = 'sponsor';
+      return typeItem;
+    });
+
+    let billUuidArr: { uuid: string }[] = [];
+    // 计算分页第二部分的limit, offset
+    let { offset, limit } = culSecondTableOption(sponsorCount, pageSize, page);
+
+    // 先查询有哪些bill的cosponsors包含personUuid
+    let billRows = await Bill.findAll({
+      attributes: ['uuid'],
+      include: [
+        {
+          model: Cosponsor,
+          attributes: [],
+          where: {
+            cosponsorUuid: personUuid,
+          },
+        },
+      ],
+    });
+
+    for (let item of billRows) {
+      if (item.uuid) billUuidArr.push({ uuid: item.uuid });
+    }
+
+    let {
+      rows: cosponsorRows,
+      count: cosponsorCount,
+    } = await Bill.findAndCountAll({
+      limit,
+      offset,
       attributes: ['uuid', 'number', 'name'],
+      where: {
+        [Op.or]: billUuidArr,
+      },
       distinct: true,
       include: [
         {
@@ -40,64 +94,15 @@ export default {
       ],
     });
 
-    sponsorTableRows = sponsorRows.map(item => {
-      let typeItem = item as ISponsorAndCosponsorTable;
-      typeItem.personType = 'sponsor';
+    cosponsorTableRows = cosponsorRows.map(item => {
+      let typeItem: any = item.get();
+      typeItem.personType = 'cosponsor';
       return typeItem;
     });
 
-    if (sponsorRows.length < pageSize) {
-      let billUuidArr: { uuid: string }[] = [];
-      // 计算分页第二部分的limit, offset
-      let { offset, limit } = culSecondTableOption(count, pageSize, page);
-
-      // 先查询有哪些bill的cosponsors包含personUuid
-      let billRows = await Bill.findAll({
-        limit,
-        attributes: ['uuid'],
-        include: [
-          {
-            model: Cosponsor,
-            attributes: [],
-            where: {
-              cosponsorUuid: personUuid,
-            },
-          },
-        ],
-      });
-
-      for (let item of billRows) {
-        if (item.uuid) billUuidArr.push({ uuid: item.uuid });
-      }
-
-      cosponsorRows = await Bill.findAll({
-        limit,
-        offset,
-        attributes: ['uuid', 'number', 'name'],
-        where: {
-          [Op.or]: billUuidArr,
-        },
-        include: [
-          {
-            model: Cosponsor,
-            attributes: ['uuid'],
-            include: [
-              {
-                model: Person,
-                attributes: ['uuid', 'name'],
-              },
-            ],
-          },
-        ],
-      });
-
-      cosponsorTableRows = cosponsorRows.map(item => {
-        let typeItem = item as ISponsorAndCosponsorTable;
-        typeItem.personType = 'cosponsor';
-        return typeItem;
-      });
-    }
-
-    return [...sponsorTableRows, ...cosponsorTableRows]
+    return {
+      totalNum: sponsorCount + cosponsorCount,
+      data: [...sponsorTableRows, ...cosponsorTableRows],
+    };
   },
 };

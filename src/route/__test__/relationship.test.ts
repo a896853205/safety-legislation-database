@@ -36,8 +36,9 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body));
-          assert(res.body.length >= 0);
+          assert(Array.isArray(res.body.data));
+          assert(res.body.data.length >= 0);
+          assert(res.body.totalNum >= 0);
         })
         .end(done);
     });
@@ -52,8 +53,9 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body));
-          assert(res.body.length >= 0);
+          assert(Array.isArray(res.body.data));
+          assert(res.body.data.length === 0);
+          assert(res.body.totalNum === 0);
         })
         .end(done);
     });
@@ -80,8 +82,9 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body));
-          assert(res.body.length === 0);
+          assert(Array.isArray(res.body.data));
+          assert(res.body.data.length === 0);
+          assert(res.body.totalNum === 0);
         })
         .end(done);
     });
@@ -107,8 +110,9 @@ describe('sys', () => {
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body));
-          assert(res.body.length >= 0);
+          assert(Array.isArray(res.body.data));
+          assert(res.body.data.length >= 0);
+          assert(res.body.totalNum >= 0);
         })
         .end(done);
     });

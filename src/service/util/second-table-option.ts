@@ -4,7 +4,7 @@ export default (
   page: number
 ): { offset: number; limit: number } => {
   let rowLength = 0;
-  if (firstTableCount > pageSize) {
+  if (firstTableCount >= pageSize) {
     rowLength = firstTableCount - (page - 1) * pageSize;
 
     return {
