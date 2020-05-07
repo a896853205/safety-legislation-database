@@ -24,7 +24,7 @@ export default {
         },
         limit: pageSize,
         offset: (page - 1) * pageSize,
-        attributes: ['uuid', 'number', 'name'],
+        attributes: ['uuid', 'number', 'congress'],
         distinct: true,
         include: [
           {
@@ -36,6 +36,10 @@ export default {
                 attributes: ['uuid', 'name'],
               },
             ],
+          },
+          {
+            model: Person,
+            attributes: ['uuid', 'name'],
           },
         ],
       }
@@ -75,7 +79,7 @@ export default {
     } = await Bill.findAndCountAll({
       limit,
       offset,
-      attributes: ['uuid', 'number', 'name'],
+      attributes: ['uuid', 'number', 'name', 'congress'],
       where: {
         [Op.or]: billUuidArr,
       },
@@ -90,6 +94,10 @@ export default {
               attributes: ['uuid', 'name'],
             },
           ],
+        },
+        {
+          model: Person,
+          attributes: ['uuid', 'name'],
         },
       ],
     });

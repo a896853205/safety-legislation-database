@@ -9,7 +9,8 @@ import {
   Comment,
   Default,
   ForeignKey,
-  BelongsTo
+  BelongsTo,
+  HasOne,
 } from 'sequelize-typescript';
 import Cosponsor from './cosponsor';
 import LegislativeSubject from './legislative-subject';
@@ -38,7 +39,7 @@ export default class Bill extends Model<Bill> {
   @Unique
   @Default(DataType.UUIDV1)
   @Column({
-    type: DataType.UUID
+    type: DataType.UUID,
   })
   uuid: string | undefined;
 
