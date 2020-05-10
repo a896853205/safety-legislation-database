@@ -6,10 +6,12 @@ import {
   Unique,
   PrimaryKey,
   ForeignKey,
-  Comment,
-  Default
+  Default,
+  BelongsTo,
+  Comment
 } from 'sequelize-typescript';
 import Bill from './bill';
+import Organization from './organization';
 
 @Table({ tableName: 'executors' })
 export default class Executor extends Model<Executor> {
@@ -25,7 +27,11 @@ export default class Executor extends Model<Executor> {
   @Column(DataType.UUID)
   billUuid: string | undefined;
 
-  @Comment('执行者')
-  @Column(DataType.TEXT)
-  executor: string | undefined;
+  @Comment('组织')
+  @ForeignKey(() => Organization)
+  @Column(DataType.UUID)
+  organizationUuid: string | undefined;
+
+  @BelongsTo(() => Organization)
+  organization: Organization | undefined;
 }

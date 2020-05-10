@@ -13,6 +13,9 @@ router.get('/:name', async ctx => {
     case 'committee.csv':
       await service.committeeCsvInit();
       break;
+    case 'person.csv':
+      // await service.committeeCsvInit();
+      break;
     default:
       console.error('没有相关csv文件');
   }

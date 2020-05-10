@@ -2,15 +2,16 @@ import {
   Table,
   Column,
   Model,
-  HasMany,
   DataType,
   Unique,
   PrimaryKey,
-  Comment,
   Default,
-  ForeignKey
+  ForeignKey,
+  BelongsTo,
+  Comment,
 } from 'sequelize-typescript';
 import Bill from './bill';
+import Organization from './organization';
 
 @Table({ tableName: 'related_objects' })
 export default class RelatedObject extends Model<RelatedObject> {
@@ -18,7 +19,7 @@ export default class RelatedObject extends Model<RelatedObject> {
   @Unique
   @Default(DataType.UUIDV1)
   @Column({
-    type: DataType.UUID
+    type: DataType.UUID,
   })
   uuid: string | undefined;
 
@@ -26,7 +27,11 @@ export default class RelatedObject extends Model<RelatedObject> {
   @Column(DataType.UUID)
   billUuid: string | undefined;
 
-  @Comment('相关对象')
-  @Column(DataType.TEXT)
-  relatedObject: string | undefined;
+  @Comment('组织')
+  @ForeignKey(() => Organization)
+  @Column(DataType.UUID)
+  organizationUuid: string | undefined;
+
+  @BelongsTo(() => Organization)
+  organization: Organization | undefined;
 }

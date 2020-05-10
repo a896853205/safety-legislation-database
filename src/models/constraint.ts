@@ -6,10 +6,12 @@ import {
   Unique,
   PrimaryKey,
   ForeignKey,
-  Comment,
-  Default
+  Default,
+  BelongsTo,
+  Comment
 } from 'sequelize-typescript';
 import Bill from './bill';
+import Organization from './organization';
 
 @Table({ tableName: 'constraints' })
 export default class Constraint extends Model<Constraint> {
@@ -25,7 +27,11 @@ export default class Constraint extends Model<Constraint> {
   @Column(DataType.UUID)
   billUuid: string | undefined;
 
-  @Comment('法案约束对象')
-  @Column(DataType.TEXT)
-  constraint: string | undefined;
+  @Comment('组织')
+  @ForeignKey(() => Organization)
+  @Column(DataType.UUID)
+  organizationUuid: string | undefined;
+
+  @BelongsTo(() => Organization)
+  organization: Organization | undefined;
 }
