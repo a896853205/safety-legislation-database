@@ -15,6 +15,7 @@ import committee from './init/committee-init';
 import committeeActivity from './init/committee-activity-init';
 import committeeSub from './init/committee-sub-init';
 import committeeSubActivity from './init/committee-sub-activity';
+import organization from './init/organization-init';
 
 import ora from 'ora';
 
@@ -29,6 +30,7 @@ ora.promise(
       await countryInit();
       await person();
       await billInit();
+      await organization();
       await Promise.all([
         subjectInit(),
         wordInit(),

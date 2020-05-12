@@ -7,6 +7,7 @@ import ora from 'ora';
 import Bill from '../models/bill';
 import Committee from '../models/committee';
 import CommitteeSub from '../models/committee-sub';
+import Organization from '../models/organization';
 
 interface IExcelRow {
   number: string;
@@ -27,7 +28,12 @@ export default async () => {
       attributes: ['uuid', 'number'],
     });
     const committeeArr = await Committee.findAll({
-      attributes: ['uuid', 'billUuid', 'committeeName'],
+      attributes: ['uuid', 'billUuid'],
+      include: [
+        {
+          model: Organization,
+        },
+      ],
     });
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/committee-sub.xlsx')
@@ -56,7 +62,7 @@ export default async () => {
         committeeUuid = committeeArr.find(
           committeeItem =>
             committeeItem.billUuid === lastNumberUuid &&
-            committeeItem.committeeName === item.committee
+            committeeItem.organization?.name === item.committee
         )?.uuid;
       }
 

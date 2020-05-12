@@ -3,11 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import { v1 as uuidv1 } from 'uuid';
 import ora from 'ora';
+import moment from 'moment';
 
 import Bill from '../models/bill';
 import Committee from '../models/committee';
-import moment from 'moment';
 import CommitteeActivity from '../models/committee-activity';
+import Organization from '../models/organization';
 
 interface IExcelRow {
   number: string;
@@ -30,7 +31,12 @@ export default async () => {
       attributes: ['uuid', 'number'],
     });
     const committeeArr = await Committee.findAll({
-      attributes: ['uuid', 'billUuid', 'committeeName'],
+      attributes: ['uuid', 'billUuid'],
+      include: [
+        {
+          model: Organization,
+        },
+      ],
     });
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/committee-activity.xlsx')
@@ -59,7 +65,7 @@ export default async () => {
         committeeUuid = committeeArr.find(
           committeeItem =>
             committeeItem.billUuid === lastNumberUuid &&
-            committeeItem.committeeName === item.committee
+            committeeItem.organization?.name === item.committee
         )?.uuid;
       }
 

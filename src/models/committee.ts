@@ -8,11 +8,13 @@ import {
   ForeignKey,
   Comment,
   Default,
-  HasMany
+  HasMany,
+  BelongsTo
 } from 'sequelize-typescript';
 import Bill from './bill';
 import CommitteeActivity from './committee-activity';
 import CommitteeSub from './committee-sub';
+import Organization from './organization';
 
 @Table({ tableName: 'committees' })
 export default class Committee extends Model<Committee> {
@@ -28,9 +30,10 @@ export default class Committee extends Model<Committee> {
   @Column(DataType.UUID)
   billUuid: string | undefined;
 
-  @Comment('委员会名')
-  @Column(DataType.TEXT)
-  committeeName: string | undefined;
+  @Comment('组织')
+  @ForeignKey(() => Organization)
+  @Column(DataType.UUID)
+  organizationUuid: string | undefined;
 
   @Comment('委员会报告时间')
   @Column(DataType.DATE)
@@ -45,4 +48,7 @@ export default class Committee extends Model<Committee> {
 
   @HasMany(() => CommitteeSub)
   subCommittee: CommitteeSub[] | undefined;
+
+  @BelongsTo(() => Organization)
+  organization: Organization | undefined;
 }

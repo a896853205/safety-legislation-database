@@ -21,5 +21,5 @@ export default class Organization extends Model<Organization> {
 
   @Comment('组织名')
   @Column(DataType.TEXT)
-  name: string | undefined;
+  name?: string;
 }

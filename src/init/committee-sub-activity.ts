@@ -9,6 +9,7 @@ import Bill from '../models/bill';
 import Committee from '../models/committee';
 import CommitteeSub from '../models/committee-sub';
 import CommitteeSubActivity from '../models/committee-sub-activity';
+import Organization from '../models/organization';
 
 interface IExcelRow {
   number: string;
@@ -32,7 +33,12 @@ export default async () => {
       attributes: ['uuid', 'number'],
     });
     const committeeArr = await Committee.findAll({
-      attributes: ['uuid', 'billUuid', 'committeeName'],
+      attributes: ['uuid', 'billUuid'],
+      include: [
+        {
+          model: Organization,
+        },
+      ],
     });
     const committeeSubArr = await CommitteeSub.findAll({
       attributes: ['uuid', 'committeeUuid', 'subCommitteeName'],
@@ -64,7 +70,7 @@ export default async () => {
         committeeUuid = committeeArr.find(
           committeeItem =>
             committeeItem.billUuid === lastNumberUuid &&
-            committeeItem.committeeName === item.committee
+            committeeItem.organization?.name === item.committee
         )?.uuid;
       }
 
