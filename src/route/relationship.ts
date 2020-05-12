@@ -27,4 +27,19 @@ router.get('/sponsorAndCosponsor', async ctx => {
   }
 });
 
+const SCStatisticsSchema = Joi.object({
+  personUuid: Joi.string().required(),
+});
+router.get('/SCStatistics', async ctx => {
+  try {
+    const { personUuid } = await SCStatisticsSchema.validateAsync(ctx.query);
+
+    let res = await service.getSCStatistics(personUuid);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
 export default router;

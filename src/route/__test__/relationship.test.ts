@@ -1,11 +1,13 @@
-import server from '../../www';
 import request = require('supertest');
 import assert = require('assert');
 import { afterEach } from 'mocha';
+import Joi from '@hapi/joi';
+
+import server from '../../www';
 
 describe('sys', () => {
   let agent: request.SuperTest<request.Test>;
-  let sponsorUuid = '';
+  let personUuid = '';
 
   beforeEach(done => {
     agent = request.agent(server);
@@ -15,7 +17,7 @@ describe('sys', () => {
         name: 'Brock Adams',
       })
       .then(res => {
-        sponsorUuid = res.body[0].uuid;
+        personUuid = res.body[0].uuid;
         done();
       });
   });
@@ -31,7 +33,7 @@ describe('sys', () => {
       agent
         .get('/relationship/sponsorAndCosponsor')
         .query({
-          personUuid: sponsorUuid,
+          personUuid,
           pageSize: 20,
         })
         .expect(200)
@@ -47,7 +49,7 @@ describe('sys', () => {
       agent
         .get('/relationship/sponsorAndCosponsor')
         .query({
-          personUuid: sponsorUuid,
+          personUuid,
           page: 999999,
           pageSize: 20,
         })
@@ -64,7 +66,7 @@ describe('sys', () => {
       agent
         .get('/relationship/sponsorAndCosponsor')
         .query({
-          personUuid: sponsorUuid,
+          personUuid,
           page: -1,
           pageSize: 20,
         })
@@ -93,26 +95,46 @@ describe('sys', () => {
       agent
         .get('/relationship/sponsorAndCosponsor')
         .query({
-          personUuid: sponsorUuid,
+          personUuid,
           pageSize: -1,
         })
         .expect(400, err => {
           done(err);
         });
     });
+  });
 
-    it('"pageSize" is too large', done => {
+  describe('GET /SCStatistics', () => {
+    const resSchema = Joi.object({
+      relativeBillTotal: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/SCStatistics').expect(400, err => done(err));
+    });
+
+    it('normal', done => {
       agent
-        .get('/relationship/sponsorAndCosponsor')
+        .get('/relationship/SCStatistics')
         .query({
-          personUuid: sponsorUuid,
-          pageSize: 9999999,
+          personUuid,
         })
         .expect(200)
         .expect(res => {
-          assert(Array.isArray(res.body.data));
-          assert(res.body.data.length >= 0);
-          assert(res.body.totalNum >= 0);
+          resSchema.validate(res);
+        })
+        .end(done);
+    });
+
+    it('"personUuid" not in person', done => {
+      agent
+        .get('/relationship/SCStatistics')
+        .query({
+          personUuid: 'abcdefghijklmn',
+        })
+        .expect(200)
+        .expect(res => {
+          resSchema.validate(res);
         })
         .end(done);
     });

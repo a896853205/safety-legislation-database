@@ -113,4 +113,40 @@ export default {
       data: [...sponsorTableRows, ...cosponsorTableRows],
     };
   },
+
+  getSCStatistics: async (personUuid: string) => {
+    let billUuidSet = new Set<string>();
+    let [sponsorRows, cosSponsorRows] = await Promise.all([
+      Bill.findAll({
+        where: {
+          sponsorUuid: personUuid,
+        },
+        attributes: ['uuid'],
+      }),
+      Bill.findAll({
+        attributes: ['uuid'],
+        include: [
+          {
+            model: Cosponsor,
+            attributes: [],
+            where: {
+              cosponsorUuid: personUuid,
+            },
+          },
+        ],
+      }),
+    ]);
+
+    sponsorRows.forEach((item: Bill) => {
+      item.uuid ? billUuidSet.add(item.uuid) : undefined;
+    });
+
+    cosSponsorRows.forEach((item: Bill) => {
+      item.uuid ? billUuidSet.add(item.uuid) : undefined;
+    });
+
+    return {
+      relativeBillTotal: billUuidSet.size,
+    };
+  },
 };
