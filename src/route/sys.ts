@@ -23,4 +23,21 @@ router.get('/personList', async ctx => {
   }
 });
 
+const organizationListSchema = Joi.object({
+  name: Joi.string().max(255).empty(''),
+  max: Joi.number().min(1),
+});
+router.get('/organizationList', async ctx => {
+  try {
+    const { name, max } = await organizationListSchema.validateAsync(ctx.query);
+
+    let res = await service.getOrganizationList(name, max);
+
+    ctx.body = res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+});
+
 export default router;

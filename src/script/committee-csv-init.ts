@@ -5,6 +5,7 @@ import dbInit from '../db-connect';
 
 import Bill from '../models/bill';
 import Committee from '../models/committee';
+import Organization from '../models/organization';
 
 /* make worksheet */
 const ws_data: (string | undefined)[][] = [['committee1', 'committee2']];
@@ -16,6 +17,11 @@ export default async () => {
     include: [
       {
         model: Committee,
+        include: [
+          {
+            model: Organization,
+          },
+        ],
       },
     ],
   });
@@ -25,8 +31,8 @@ export default async () => {
       for (let i = 0; i < bill.committees.length; i++) {
         for (let j = i + 1; j < bill.committees.length; j++) {
           ws_data.push([
-            bill.committees[i].committeeName,
-            bill.committees[j].committeeName,
+            bill.committees[i].organization?.name,
+            bill.committees[j].organization?.name,
           ]);
         }
       }

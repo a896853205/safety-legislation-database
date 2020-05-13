@@ -11,7 +11,8 @@
     "proInitDb": "cross-env NODE_ENV=production ts-node ./src/index.ts",
     "initDeploy": "pm2 deploy production setup",
     "deploy": "pm2 deploy production update",
-    "neo4j": "ts-node ./src/neo4j/index.ts"
+    "neo4j": "ts-node ./src/neo4j/index.ts",
+    "debug": "nodemon  --ext js,ts   --exec node -r ts-node/register --inspect src/www.ts"
   },
   "author": "",
   "license": "ISC",

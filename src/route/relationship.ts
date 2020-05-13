@@ -42,4 +42,92 @@ router.get('/SCStatistics', async ctx => {
   }
 });
 
+const OBCommitteeSchema = Joi.object({
+  organizationUuid: Joi.string().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/OBCommittee', async ctx => {
+  try {
+    const {
+      organizationUuid,
+      page,
+      pageSize,
+    } = await OBCommitteeSchema.validateAsync(ctx.query);
+
+    let res = await service.getOBCommittee(organizationUuid, page, pageSize);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
+const OBConstraintSchema = Joi.object({
+  organizationUuid: Joi.string().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/OBConstraint', async ctx => {
+  try {
+    const {
+      organizationUuid,
+      page,
+      pageSize,
+    } = await OBConstraintSchema.validateAsync(ctx.query);
+
+    let res = await service.getOBConstraint(organizationUuid, page, pageSize);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
+const OBRelatedObjectSchema = Joi.object({
+  organizationUuid: Joi.string().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/OBRelatedObject', async ctx => {
+  try {
+    const {
+      organizationUuid,
+      page,
+      pageSize,
+    } = await OBRelatedObjectSchema.validateAsync(ctx.query);
+
+    let res = await service.getOBRelatedObject(
+      organizationUuid,
+      page,
+      pageSize
+    );
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
+const OBExecutorSchema = Joi.object({
+  organizationUuid: Joi.string().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/OBExecutor', async ctx => {
+  try {
+    const {
+      organizationUuid,
+      page,
+      pageSize,
+    } = await OBExecutorSchema.validateAsync(ctx.query);
+
+    let res = await service.getOBExecutor(organizationUuid, page, pageSize);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
 export default router;

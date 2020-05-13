@@ -1,8 +1,14 @@
-import Bill from '../models/bill';
-import Cosponsor from '../models/cosponsor';
-import Person from '../models/person';
-import culSecondTableOption from './util/second-table-option';
 import { Op } from 'sequelize';
+
+import Bill from '../models/bill';
+import Committee from '../models/committee';
+import Constraint from '../models/constraint';
+import Cosponsor from '../models/cosponsor';
+import culSecondTableOption from './util/second-table-option';
+import Executor from '../models/executor';
+import Organization from '../models/organization';
+import Person from '../models/person';
+import RelatedObject from '../models/related-object';
 
 interface ISponsorAndCosponsorTable extends Bill {
   personType: string;
@@ -147,6 +153,142 @@ export default {
 
     return {
       relativeBillTotal: billUuidSet.size,
+    };
+  },
+
+  getOBCommittee: async (
+    organizationUuid: string,
+    page: number,
+    pageSize: number
+  ) => {
+    let { rows, count } = await Bill.findAndCountAll({
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      attributes: ['uuid', 'number', 'congress'],
+      distinct: true,
+      include: [
+        {
+          model: Committee,
+          attributes: ['uuid'],
+          where: {
+            organizationUuid,
+          },
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
+    };
+  },
+
+  getOBConstraint: async (
+    organizationUuid: string,
+    page: number,
+    pageSize: number
+  ) => {
+    let { rows, count } = await Bill.findAndCountAll({
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      attributes: ['uuid', 'number', 'congress'],
+      distinct: true,
+      include: [
+        {
+          model: Constraint,
+          attributes: ['uuid'],
+          where: {
+            organizationUuid,
+          },
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
+          model: Person,
+          attributes: ['uuid', 'name'],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
+    };
+  },
+
+  getOBRelatedObject: async (
+    organizationUuid: string,
+    page: number,
+    pageSize: number
+  ) => {
+    let { rows, count } = await Bill.findAndCountAll({
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      attributes: ['uuid', 'number', 'congress'],
+      distinct: true,
+      include: [
+        {
+          model: RelatedObject,
+          attributes: ['uuid'],
+          where: {
+            organizationUuid,
+          },
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
+    };
+  },
+
+  getOBExecutor: async (
+    organizationUuid: string,
+    page: number,
+    pageSize: number
+  ) => {
+    let { rows, count } = await Bill.findAndCountAll({
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      attributes: ['uuid', 'number', 'congress'],
+      distinct: true,
+      include: [
+        {
+          model: Executor,
+          attributes: ['uuid'],
+          where: {
+            organizationUuid,
+          },
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
     };
   },
 };

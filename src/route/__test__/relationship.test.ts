@@ -5,27 +5,32 @@ import Joi from '@hapi/joi';
 
 import server from '../../www';
 
-describe('sys', () => {
+describe('relationship', () => {
   let agent: request.SuperTest<request.Test>;
   let personUuid = '';
+  let organizationUuid = '';
 
   beforeEach(done => {
     agent = request.agent(server);
-    agent
-      .get('/sys/personList')
-      .query({
-        name: 'Brock Adams',
-      })
-      .then(res => {
-        personUuid = res.body[0].uuid;
-        done();
-      });
+    (async () => {
+      let [personRes, organizationRes] = await Promise.all([
+        agent.get('/sys/personList').query({
+          name: 'Brock Adams',
+        }),
+        agent.get('/sys/organizationList').query({
+          name: 'House Foreign Affairs',
+        }),
+      ]);
+      personUuid = personRes.body[0].uuid;
+      organizationUuid = organizationRes.body[0].uuid;
+      done();
+    })();
   });
 
   describe('GET /sponsorAndCosponsor', () => {
     it('empty params', done => {
       agent.get('/relationship/sponsorAndCosponsor').expect(400, err => {
-        done(err);
+        done();
       });
     });
 
@@ -71,7 +76,7 @@ describe('sys', () => {
           pageSize: 20,
         })
         .expect(400, err => {
-          done(err);
+          done();
         });
     });
 
@@ -99,7 +104,7 @@ describe('sys', () => {
           pageSize: -1,
         })
         .expect(400, err => {
-          done(err);
+          done();
         });
     });
   });
@@ -110,7 +115,7 @@ describe('sys', () => {
     });
 
     it('empty params', done => {
-      agent.get('/relationship/SCStatistics').expect(400, err => done(err));
+      agent.get('/relationship/SCStatistics').expect(400, err => done());
     });
 
     it('normal', done => {
@@ -137,6 +142,332 @@ describe('sys', () => {
           resSchema.validate(res);
         })
         .end(done);
+    });
+  });
+
+  describe('GET /OBCommittee', () => {
+    // 需要拆成4个路由
+    const resSchema = Joi.object({
+      data: Joi.array().required(),
+      totalNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/OBCommittee').expect(400, err => {
+        done();
+      });
+    });
+
+    it('one "organizationUuid" and no "page" (default is 1)', done => {
+      agent
+        .get('/relationship/OBCommittee')
+        .query({
+          organizationUuid,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too large', done => {
+      agent
+        .get('/relationship/OBCommittee')
+        .query({
+          organizationUuid,
+          page: 999999,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too small', done => {
+      agent
+        .get('/relationship/OBCommittee')
+        .query({
+          organizationUuid,
+          page: -1,
+          pageSize: 20,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+
+    it('"organizationUuid" is not in organization', done => {
+      agent
+        .get('/relationship/OBCommittee')
+        .query({
+          organizationUuid: 'asdajskajfhaksdad65123asd89cascxczaf',
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"pageSize" is too small', done => {
+      agent
+        .get('/relationship/OBCommittee')
+        .query({
+          organizationUuid,
+          pageSize: -1,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+  });
+
+  describe('GET /OBConstraint', () => {
+    // 需要拆成4个路由
+    const resSchema = Joi.object({
+      data: Joi.array().required(),
+      totalNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/OBConstraint').expect(400, err => {
+        done();
+      });
+    });
+
+    it('one "organizationUuid" and no "page" (default is 1)', done => {
+      agent
+        .get('/relationship/OBConstraint')
+        .query({
+          organizationUuid,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too large', done => {
+      agent
+        .get('/relationship/OBConstraint')
+        .query({
+          organizationUuid,
+          page: 999999,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too small', done => {
+      agent
+        .get('/relationship/OBConstraint')
+        .query({
+          organizationUuid,
+          page: -1,
+          pageSize: 20,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+
+    it('"organizationUuid" is not in organization', done => {
+      agent
+        .get('/relationship/OBConstraint')
+        .query({
+          organizationUuid: 'asdajskajfhaksdad65123asd89cascxczaf',
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"pageSize" is too small', done => {
+      agent
+        .get('/relationship/OBConstraint')
+        .query({
+          organizationUuid,
+          pageSize: -1,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+  });
+
+  describe('GET /OBExecutor', () => {
+    const resSchema = Joi.object({
+      data: Joi.array().required(),
+      totalNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/OBExecutor').expect(400, err => {
+        done();
+      });
+    });
+
+    it('one "organizationUuid" and no "page" (default is 1)', done => {
+      agent
+        .get('/relationship/OBExecutor')
+        .query({
+          organizationUuid,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too large', done => {
+      agent
+        .get('/relationship/OBExecutor')
+        .query({
+          organizationUuid,
+          page: 999999,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too small', done => {
+      agent
+        .get('/relationship/OBExecutor')
+        .query({
+          organizationUuid,
+          page: -1,
+          pageSize: 20,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+
+    it('"organizationUuid" is not in organization', done => {
+      agent
+        .get('/relationship/OBExecutor')
+        .query({
+          organizationUuid: 'asdajskajfhaksdad65123asd89cascxczaf',
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"pageSize" is too small', done => {
+      agent
+        .get('/relationship/OBExecutor')
+        .query({
+          organizationUuid,
+          pageSize: -1,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+  });
+  describe('GET /OBRelatedObject', () => {
+    // 需要拆成4个路由
+    const resSchema = Joi.object({
+      data: Joi.array().required(),
+      totalNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/OBRelatedObject').expect(400, err => {
+        done();
+      });
+    });
+
+    it('one "organizationUuid" and no "page" (default is 1)', done => {
+      agent
+        .get('/relationship/OBRelatedObject')
+        .query({
+          organizationUuid,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too large', done => {
+      agent
+        .get('/relationship/OBRelatedObject')
+        .query({
+          organizationUuid,
+          page: 999999,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too small', done => {
+      agent
+        .get('/relationship/OBRelatedObject')
+        .query({
+          organizationUuid,
+          page: -1,
+          pageSize: 20,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+
+    it('"organizationUuid" is not in organization', done => {
+      agent
+        .get('/relationship/OBRelatedObject')
+        .query({
+          organizationUuid: 'asdajskajfhaksdad65123asd89cascxczaf',
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"pageSize" is too small', done => {
+      agent
+        .get('/relationship/OBRelatedObject')
+        .query({
+          organizationUuid,
+          pageSize: -1,
+        })
+        .expect(400, err => {
+          done();
+        });
     });
   });
 
