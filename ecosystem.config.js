@@ -1,10 +1,10 @@
+const path = require('path');
+
 module.exports = {
   apps: [
     {
-      interpreter: './node_modules/.bin/ts-node',
-      interpreter_args: '-P ./tsconfig.json',
       name: 'safetyAPI',
-      script: './src/www.ts',
+      script: path.resolve(__dirname, './dist/www.js'),
       autorestart: true,
       watch: true,
       max_memory_restart: '1G',
@@ -28,7 +28,7 @@ module.exports = {
       repo: 'git@github.com:a896853205/safety-legislation-database.git',
       path: '/safety-legislation/safety-legislation-server',
       'post-deploy':
-        'npm install && pm2 reload ecosystem.config.js --env production',
+        'npm install && tsc && pm2 reload ecosystem.config.js --env production',
       'post-setup': 'npm install',
     },
   },
