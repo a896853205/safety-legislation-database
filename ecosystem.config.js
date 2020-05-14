@@ -3,7 +3,7 @@ module.exports = {
     {
       interpreter: 'ts-node',
       name: 'safetyAPI',
-      script: 'dist/www.js',
+      script: 'src/www.ts',
 
       instances: 1,
       autorestart: true,
@@ -24,7 +24,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'root',
-      host: '47.94.133.12',
+      host: '39.97.175.30',
       ref: 'origin/master',
       repo: 'git@github.com:a896853205/safety-legislation-database.git',
       path: '/safety-legislation/safety-legislation-server',
