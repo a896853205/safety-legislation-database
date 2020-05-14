@@ -147,4 +147,31 @@ router.get('/OBStatistics', async ctx => {
   }
 });
 
+const OBBillAndOrganizationSchema = Joi.object({
+  billNumber: Joi.string().required(),
+  billCongress: Joi.number().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/billAndOrganization', async ctx => {
+  try {
+    const {
+      billNumber,
+      billCongress,
+      page,
+      pageSize,
+    } = await OBBillAndOrganizationSchema.validateAsync(ctx.query);
+
+    let res = await service.getBillAndOrganization(
+      billNumber,
+      billCongress,
+      page,
+      pageSize
+    );
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
 export default router;

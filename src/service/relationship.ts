@@ -359,4 +359,69 @@ export default {
       relatedObjectNum,
     };
   },
+
+  getBillAndOrganization: async (
+    billNumber: string,
+    billCongress: number,
+    page: number,
+    pageSize: number
+  ) => {
+    let { rows, count } = await Bill.findAndCountAll({
+      where: {
+        number: billNumber,
+        congress: billCongress,
+      },
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      attributes: ['uuid', 'number', 'congress'],
+      distinct: true,
+      include: [
+        {
+          model: Committee,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
+          model: Constraint,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
+          model: Executor,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
+          model: RelatedObject,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
+    };
+  },
 };

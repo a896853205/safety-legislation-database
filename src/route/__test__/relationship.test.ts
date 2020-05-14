@@ -511,6 +511,92 @@ describe('relationship', () => {
     });
   });
 
+  describe('GET /billAndOrganization', () => {
+    const resSchema = Joi.object({
+      data: Joi.array().required(),
+      totalNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/billAndOrganization').expect(400, err => {
+        done();
+      });
+    });
+
+    it('one "organizationUuid" and no "page" (default is 1)', done => {
+      agent
+        .get('/relationship/billAndOrganization')
+        .query({
+          billNumber: 'H.Con.Res.78',
+          billCongress: 114,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too large', done => {
+      agent
+        .get('/relationship/billAndOrganization')
+        .query({
+          billNumber: 'H.Con.Res.78',
+          billCongress: 114,
+          page: 999999,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"page" number is too small', done => {
+      agent
+        .get('/relationship/billAndOrganization')
+        .query({
+          billNumber: 'H.Con.Res.78',
+          billCongress: 114,
+          page: -1,
+          pageSize: 20,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+
+    it('"organizationUuid" is not in organization', done => {
+      agent
+        .get('/relationship/billAndOrganization')
+        .query({
+          billNumber: 'H.Con.Res.ASDAKJLSDLK',
+          billCongress: 114,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"pageSize" is too small', done => {
+      agent
+        .get('/relationship/billAndOrganization')
+        .query({
+          billNumber: 'H.Con.Res.78',
+          billCongress: 114,
+          pageSize: -1,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+  });
+
   afterEach(() => {
     server.close();
   });
