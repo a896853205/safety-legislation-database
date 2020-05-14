@@ -424,4 +424,64 @@ export default {
       totalNum: count,
     };
   },
+
+  getBOStatistics: async (billNumber: string, billCongress: number) => {
+    let rows = await Bill.findOne({
+      where: {
+        number: billNumber,
+        congress: billCongress,
+      },
+      attributes: ['uuid'],
+      include: [
+        {
+          model: Committee,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid'],
+            },
+          ],
+        },
+        {
+          model: Constraint,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid'],
+            },
+          ],
+        },
+        {
+          model: Executor,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid'],
+            },
+          ],
+        },
+        {
+          model: RelatedObject,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Organization,
+              attributes: ['uuid'],
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      committeeNum: rows && rows.committees ? rows.committees.length : 0,
+      constraintNum: rows && rows.constraint ? rows.constraint.length : 0,
+      executorNum: rows && rows.executor ? rows.executor.length : 0,
+      relatedObjectNum:
+        rows && rows.relatedObject ? rows.relatedObject.length : 0,
+    };
+  },
 };

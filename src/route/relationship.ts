@@ -147,7 +147,7 @@ router.get('/OBStatistics', async ctx => {
   }
 });
 
-const OBBillAndOrganizationSchema = Joi.object({
+const BillAndOrganizationSchema = Joi.object({
   billNumber: Joi.string().required(),
   billCongress: Joi.number().required(),
   page: Joi.number().min(1).default(1),
@@ -160,7 +160,7 @@ router.get('/billAndOrganization', async ctx => {
       billCongress,
       page,
       pageSize,
-    } = await OBBillAndOrganizationSchema.validateAsync(ctx.query);
+    } = await BillAndOrganizationSchema.validateAsync(ctx.query);
 
     let res = await service.getBillAndOrganization(
       billNumber,
@@ -174,4 +174,23 @@ router.get('/billAndOrganization', async ctx => {
     throw error;
   }
 });
+
+const BOStatisticsSchema = Joi.object({
+  billNumber: Joi.string().required(),
+  billCongress: Joi.number().required(),
+});
+router.get('/BOStatistics', async ctx => {
+  try {
+    const { billNumber, billCongress } = await BOStatisticsSchema.validateAsync(
+      ctx.query
+    );
+
+    let res = await service.getBOStatistics(billNumber, billCongress);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
 export default router;

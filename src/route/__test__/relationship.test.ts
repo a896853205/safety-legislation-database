@@ -523,7 +523,7 @@ describe('relationship', () => {
       });
     });
 
-    it('one "organizationUuid" and no "page" (default is 1)', done => {
+    it('one "billNumber" and no "page" (default is 1)', done => {
       agent
         .get('/relationship/billAndOrganization')
         .query({
@@ -568,7 +568,7 @@ describe('relationship', () => {
         });
     });
 
-    it('"organizationUuid" is not in organization', done => {
+    it('"billNumber" is not in bills', done => {
       agent
         .get('/relationship/billAndOrganization')
         .query({
@@ -594,6 +594,47 @@ describe('relationship', () => {
         .expect(400, err => {
           done();
         });
+    });
+  });
+
+  describe('GET /BOStatistics', () => {
+    const resSchema = Joi.object({
+      committeeNum: Joi.number().min(0).required(),
+      constraintNum: Joi.number().min(0).required(),
+      executorNum: Joi.number().min(0).required(),
+      relatedObjectNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/BOStatistics').expect(400, err => done());
+    });
+
+    it('normal', done => {
+      agent
+        .get('/relationship/BOStatistics')
+        .query({
+          billNumber: 'H.Con.Res.78',
+          billCongress: 114,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"billNumber" not in bill', done => {
+      agent
+        .get('/relationship/BOStatistics')
+        .query({
+          billNumber: 'asdasfasfwqeqwd',
+          billCongress: 114,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
     });
   });
 
