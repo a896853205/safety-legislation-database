@@ -2,10 +2,9 @@ module.exports = {
   apps: [
     {
       interpreter: './node_modules/.bin/ts-node',
+      interpreter_args: '-P ./tsconfig.json',
       name: 'safetyAPI',
-      script: 'src/www.ts',
-
-      instances: 1,
+      script: './src/www.ts',
       autorestart: true,
       watch: true,
       max_memory_restart: '1G',
