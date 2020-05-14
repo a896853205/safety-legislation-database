@@ -213,10 +213,6 @@ export default {
             },
           ],
         },
-        {
-          model: Person,
-          attributes: ['uuid', 'name'],
-        },
       ],
     });
 
@@ -289,6 +285,78 @@ export default {
     return {
       data: rows,
       totalNum: count,
+    };
+  },
+
+  getOBStatistics: async (organizationUuid: string) => {
+    let billUuidSet = new Set<string | undefined>();
+    let [
+      { rows: committeeRows, count: committeeNum },
+      { rows: constraintRows, count: constraintNum },
+      { rows: relatedObjectRows, count: relatedObjectNum },
+      { rows: executorRows, count: executorNum },
+    ] = await Promise.all([
+      Bill.findAndCountAll({
+        attributes: ['uuid'],
+        include: [
+          {
+            model: Committee,
+            attributes: [],
+            where: {
+              organizationUuid,
+            },
+          },
+        ],
+      }),
+      Bill.findAndCountAll({
+        attributes: ['uuid'],
+        include: [
+          {
+            model: Constraint,
+            attributes: [],
+            where: {
+              organizationUuid,
+            },
+          },
+        ],
+      }),
+      Bill.findAndCountAll({
+        attributes: ['uuid'],
+        include: [
+          {
+            model: RelatedObject,
+            attributes: [],
+            where: {
+              organizationUuid,
+            },
+          },
+        ],
+      }),
+      Bill.findAndCountAll({
+        attributes: ['uuid'],
+        include: [
+          {
+            model: Executor,
+            attributes: [],
+            where: {
+              organizationUuid,
+            },
+          },
+        ],
+      }),
+    ]);
+
+    committeeRows.forEach(item => billUuidSet.add(item?.uuid));
+    constraintRows.forEach(item => billUuidSet.add(item?.uuid));
+    relatedObjectRows.forEach(item => billUuidSet.add(item?.uuid));
+    executorRows.forEach(item => billUuidSet.add(item?.uuid));
+
+    return {
+      relativeBillNum: billUuidSet.size,
+      committeeNum,
+      constraintNum,
+      executorNum,
+      relatedObjectNum,
     };
   },
 };

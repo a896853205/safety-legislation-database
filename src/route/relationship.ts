@@ -130,4 +130,21 @@ router.get('/OBExecutor', async ctx => {
   }
 });
 
+const OBStatisticsSchema = Joi.object({
+  organizationUuid: Joi.string().required(),
+});
+router.get('/OBStatistics', async ctx => {
+  try {
+    const { organizationUuid } = await OBStatisticsSchema.validateAsync(
+      ctx.query
+    );
+
+    let res = await service.getOBStatistics(organizationUuid);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
 export default router;

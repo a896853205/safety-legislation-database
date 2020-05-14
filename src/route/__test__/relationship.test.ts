@@ -126,7 +126,7 @@ describe('relationship', () => {
         })
         .expect(200)
         .expect(res => {
-          resSchema.validate(res);
+          Joi.assert(res.body, resSchema);
         })
         .end(done);
     });
@@ -139,7 +139,7 @@ describe('relationship', () => {
         })
         .expect(200)
         .expect(res => {
-          resSchema.validate(res);
+          Joi.assert(res.body, resSchema);
         })
         .end(done);
     });
@@ -468,6 +468,46 @@ describe('relationship', () => {
         .expect(400, err => {
           done();
         });
+    });
+  });
+
+  describe('GET /OBStatistics', () => {
+    const resSchema = Joi.object({
+      relativeBillNum: Joi.number().min(0).required(),
+      committeeNum: Joi.number().min(0).required(),
+      constraintNum: Joi.number().min(0).required(),
+      executorNum: Joi.number().min(0).required(),
+      relatedObjectNum: Joi.number().min(0).required(),
+    });
+
+    it('empty params', done => {
+      agent.get('/relationship/OBStatistics').expect(400, err => done());
+    });
+
+    it('normal', done => {
+      agent
+        .get('/relationship/OBStatistics')
+        .query({
+          organizationUuid,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
+
+    it('"organizationUuid" not in organization', done => {
+      agent
+        .get('/relationship/OBStatistics')
+        .query({
+          organizationUuid: 'abcdefghijklmn',
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
     });
   });
 
