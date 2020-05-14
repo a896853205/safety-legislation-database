@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      interpreter: 'ts-node',
+      interpreter: './node_modules/.bin/ts-node',
       name: 'safetyAPI',
       script: 'src/www.ts',
 
