@@ -40,4 +40,58 @@ router.get('/organizationList', async ctx => {
   }
 });
 
+const policyAreaListSchema = Joi.object({
+  name: Joi.string().max(255).empty(''),
+  max: Joi.number().min(1),
+});
+router.get('/policyAreaList', async ctx => {
+  try {
+    const { name, max } = await policyAreaListSchema.validateAsync(ctx.query);
+
+    let res = await service.getPolicyAreaList(name, max);
+
+    ctx.body = res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+});
+
+const legislativeSubjectsListSchema = Joi.object({
+  name: Joi.string().max(255).empty(''),
+  max: Joi.number().min(1),
+});
+router.get('/legislativeSubjectsList', async ctx => {
+  try {
+    const { name, max } = await legislativeSubjectsListSchema.validateAsync(
+      ctx.query
+    );
+
+    let res = await service.getLegislativeSubjectsList(name, max);
+
+    ctx.body = res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+});
+
+const countryListSchema = Joi.object({
+  countryType: Joi.string().required().empty(),
+  name: Joi.string().max(255).empty(''),
+  max: Joi.number().min(1),
+});
+router.get('/countryList', async ctx => {
+  try {
+    const { name, max, countryType } = await countryListSchema.validateAsync(ctx.query);
+
+    let res = await service.getCountryList(name, max, countryType);
+
+    ctx.body = res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+});
+
 export default router;
