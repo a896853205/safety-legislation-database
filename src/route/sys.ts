@@ -83,9 +83,30 @@ const countryListSchema = Joi.object({
 });
 router.get('/countryList', async ctx => {
   try {
-    const { name, max, countryType } = await countryListSchema.validateAsync(ctx.query);
+    const { name, max, countryType } = await countryListSchema.validateAsync(
+      ctx.query
+    );
 
     let res = await service.getCountryList(name, max, countryType);
+
+    ctx.body = res;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+});
+
+const policyOrganizationListSchema = Joi.object({
+  name: Joi.string().max(255).empty(''),
+  max: Joi.number().min(1),
+});
+router.get('/policyOrganizationList', async ctx => {
+  try {
+    const { name, max } = await policyOrganizationListSchema.validateAsync(
+      ctx.query
+    );
+
+    let res = await service.getPolicyOrganizationList(name, max);
 
     ctx.body = res;
   } catch (error) {

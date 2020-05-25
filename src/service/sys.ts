@@ -5,6 +5,7 @@ import Country from '../models/country';
 import Person from '../models/person';
 import LegislativeSubject from '../models/legislative-subject';
 import Organization from '../models/organization';
+import politicalOrganization from '../models/political-organization';
 
 interface countryListType {
   [key: string]: (name: string, max: number) => Promise<Country[]>;
@@ -112,4 +113,15 @@ export default {
       return [];
     }
   },
+
+  getPolicyOrganizationList: (name: string, max: number) =>
+    politicalOrganization.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${name}%`,
+        },
+      },
+      attributes: ['uuid', 'name'],
+      limit: max,
+    }),
 };
