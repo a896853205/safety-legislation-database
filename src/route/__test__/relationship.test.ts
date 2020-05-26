@@ -390,7 +390,6 @@ describe('relationship', () => {
     });
   });
   describe('GET /OBRelatedObject', () => {
-    // 需要拆成4个路由
     const resSchema = Joi.object({
       data: Joi.array().required(),
       totalNum: Joi.number().min(0).required(),
