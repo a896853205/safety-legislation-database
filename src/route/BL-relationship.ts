@@ -34,42 +34,47 @@ router.get('/billAndLegislativeSubjects', async ctx => {
   }
 });
 
-// const policyAreaAndBillSchema = Joi.object({
-//   policyArea: Joi.string().required(),
-//   page: Joi.number().min(1).default(1),
-//   pageSize: Joi.number().min(1).required(),
-// });
-// router.get('/policyAreaAndBill', async ctx => {
-//   try {
-//     const {
-//       policyArea,
-//       page,
-//       pageSize,
-//     } = await policyAreaAndBillSchema.validateAsync(ctx.query);
+const legislativeSubjectsAndBillSchema = Joi.object({
+  legislativeSubjects: Joi.string().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/legislativeSubjectsAndBill', async ctx => {
+  try {
+    const {
+      legislativeSubjects,
+      page,
+      pageSize,
+    } = await legislativeSubjectsAndBillSchema.validateAsync(ctx.query);
 
-//     let res = await service.getPolicyAreaAndBill(policyArea, page, pageSize);
+    let res = await service.getLegislativeSubjectsAndBill(
+      legislativeSubjects,
+      page,
+      pageSize
+    );
 
-//     ctx.body = res;
-//   } catch (error) {
-//     throw error;
-//   }
-// });
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
 
-// const PBStatisticsSchema = Joi.object({
-//   policyArea: Joi.string().required(),
-// });
-// router.get('/PBStatistics', async ctx => {
-//   try {
-//     const {
-//       policyArea
-//     } = await PBStatisticsSchema.validateAsync(ctx.query);
+const BLStatisticsSchema = Joi.object({
+  billNumber: Joi.string().required(),
+  billCongress: Joi.number().required(),
+});
+router.get('/BLStatistics', async ctx => {
+  try {
+    const { billNumber, billCongress } = await BLStatisticsSchema.validateAsync(
+      ctx.query
+    );
 
-//     let res = await service.getPBStatistics(policyArea);
+    let res = await service.getBLStatistics(billNumber, billCongress);
 
-//     ctx.body = res;
-//   } catch (error) {
-//     throw error;
-//   }
-// });
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
 
 export default router;

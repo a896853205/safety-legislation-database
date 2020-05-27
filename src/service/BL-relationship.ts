@@ -1,3 +1,5 @@
+import { Op } from 'sequelize';
+
 import Bill from '../models/bill';
 import LegislativeSubject from '../models/legislative-subject';
 
@@ -30,35 +32,69 @@ export default {
     };
   },
 
-  // getPolicyAreaAndBill: async (
-  //   policyArea: string,
-  //   page: number,
-  //   pageSize: number
-  // ) => {
-  //   let { rows, count } = await Bill.findAndCountAll({
-  //     where: {
-  //       policyArea,
-  //     },
-  //     limit: pageSize,
-  //     offset: (page - 1) * pageSize,
-  //     attributes: ['uuid', 'number', 'congress'],
-  //   });
+  getLegislativeSubjectsAndBill: async (
+    legislativeSubjects: string,
+    page: number,
+    pageSize: number
+  ) => {
+    let billUuidArr: { uuid: string }[] = [];
 
-  //   return {
-  //     data: rows,
-  //     totalNum: count,
-  //   };
-  // },
+    let billRows = await Bill.findAll({
+      attributes: ['uuid'],
+      include: [
+        {
+          model: LegislativeSubject,
+          where: {
+            subject: legislativeSubjects,
+          },
+        },
+      ],
+    });
 
-  // getPBStatistics: async (policyArea: string) => {
-  //   let relativeBillTotal = await Bill.count({
-  //     where: {
-  //       policyArea,
-  //     },
-  //   });
+    for (let item of billRows) {
+      if (item.uuid) billUuidArr.push({ uuid: item.uuid });
+    }
 
-  //   return {
-  //     relativeBillTotal,
-  //   };
-  // },
+    let { rows, count } = await Bill.findAndCountAll({
+      attributes: ['uuid', 'number', 'congress'],
+      where: {
+        [Op.or]: billUuidArr,
+      },
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      include: [
+        {
+          model: LegislativeSubject,
+          attributes: ['uuid', 'subject'],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
+    };
+  },
+
+  getBLStatistics: async (billNumber: string, billCongress: number) => {
+    let billRows = await Bill.findOne({
+      where: {
+        number: billNumber,
+        congress: billCongress,
+      },
+      attributes: ['uuid'],
+      include: [
+        {
+          model: LegislativeSubject,
+          attributes: ['uuid'],
+        },
+      ],
+    });
+
+    return {
+      totalNum: billRows?.legislativeSubjects
+        ? billRows?.legislativeSubjects?.length
+        : 0,
+    };
+  },
 };
