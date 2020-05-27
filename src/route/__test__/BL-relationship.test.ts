@@ -220,4 +220,42 @@ describe('BL-relationship', () => {
       });
     });
   });
+
+  describe('GET /LBStatistics', () => {
+    describe('GET /LBStatistics', () => {
+      const resSchema = Joi.object({
+        relativeBillTotal: Joi.number().min(0).required(),
+      });
+
+      it('empty params', done => {
+        agent.get('/relationship/LBStatistics').expect(400, err => done());
+      });
+
+      it('normal', done => {
+        agent
+          .get('/relationship/LBStatistics')
+          .query({
+            subject: 'Computer security and identity theft',
+          })
+          .expect(200)
+          .expect(res => {
+            Joi.assert(res.body, resSchema);
+          })
+          .end(done);
+      });
+
+      it('"subject" not in subjects', done => {
+        agent
+          .get('/relationship/LBStatistics')
+          .query({
+            subject: 'asdczxcasdqweasd',
+          })
+          .expect(200)
+          .expect(res => {
+            Joi.assert(res.body, resSchema);
+          })
+          .end(done);
+      });
+    });
+  });
 });

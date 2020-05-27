@@ -77,4 +77,19 @@ router.get('/BLStatistics', async ctx => {
   }
 });
 
+const LBStatisticsSchema = Joi.object({
+  subject: Joi.string().required(),
+});
+router.get('/LBStatistics', async ctx => {
+  try {
+    const { subject } = await LBStatisticsSchema.validateAsync(ctx.query);
+
+    let res = await service.getLBStatistics(subject);
+
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
+
 export default router;

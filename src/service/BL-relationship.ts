@@ -11,6 +11,7 @@ export default {
     pageSize: number
   ) => {
     let { rows, count } = await Bill.findAndCountAll({
+      distinct: true,
       where: {
         number: billNumber,
         congress: billCongress,
@@ -57,6 +58,7 @@ export default {
 
     let { rows, count } = await Bill.findAndCountAll({
       attributes: ['uuid', 'number', 'congress'],
+      distinct: true,
       where: {
         [Op.or]: billUuidArr,
       },
@@ -95,6 +97,24 @@ export default {
       totalNum: billRows?.legislativeSubjects
         ? billRows?.legislativeSubjects?.length
         : 0,
+    };
+  },
+
+  getLBStatistics: async (subject: string) => {
+    let relativeBillTotal = await Bill.count({
+      distinct: true,
+      include: [
+        {
+          model: LegislativeSubject,
+          where: {
+            subject,
+          },
+        },
+      ],
+    });
+
+    return {
+      relativeBillTotal,
     };
   },
 };
