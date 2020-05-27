@@ -20,7 +20,7 @@ const countryListType: countryListType = {
           [Op.like]: `%${name}%`,
         },
       },
-      attributes: ['name'],
+      attributes: ['uuid', 'name'],
       limit: max,
     }),
   countryFullName: (name: string, max: number) =>
@@ -31,7 +31,7 @@ const countryListType: countryListType = {
           [Op.like]: `%${name}%`,
         },
       },
-      attributes: ['fullName'],
+      attributes: ['uuid', 'fullName'],
       limit: max,
     }),
   territory: (name: string, max: number) =>
@@ -42,7 +42,7 @@ const countryListType: countryListType = {
           [Op.like]: `%${name}%`,
         },
       },
-      attributes: ['territory'],
+      attributes: ['uuid', 'territory'],
       limit: max,
     }),
   territoryDetail: (name: string, max: number) =>
@@ -53,7 +53,7 @@ const countryListType: countryListType = {
           [Op.like]: `%${name}%`,
         },
       },
-      attributes: ['territoryDetail'],
+      attributes: ['uuid', 'territoryDetail'],
       limit: max,
     }),
 };

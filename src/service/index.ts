@@ -1,3 +1,4 @@
+import BCRelationship from './BC-relationship';
 import BLRelationship from './BL-relationship';
 import BPARelationship from './BPA-relationship';
 import csvService from './csv';
@@ -10,4 +11,5 @@ export default {
   ...relationship,
   ...BPARelationship,
   ...BLRelationship,
+  ...BCRelationship,
 };
