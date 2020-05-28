@@ -102,86 +102,86 @@ describe('BC-relationship', () => {
     });
   });
 
-  // describe('GET /countryAndBill', () => {
-  //   const resSchema = Joi.object({
-  //     data: Joi.array().required(),
-  //     totalNum: Joi.number().min(0).required(),
-  //   });
+  describe('GET /policyOrganizationAndBill', () => {
+    const resSchema = Joi.object({
+      data: Joi.array().required(),
+      totalNum: Joi.number().min(0).required(),
+    });
 
-  //   it('empty params', done => {
-  //     agent.get('/relationship/countryAndBill').expect(400, err => {
-  //       done();
-  //     });
-  //   });
+    it('empty params', done => {
+      agent.get('/relationship/policyOrganizationAndBill').expect(400, err => {
+        done();
+      });
+    });
 
-  //   it('one "countryUuid" and no "page" (default is 1)', done => {
-  //     agent
-  //       .get('/relationship/countryAndBill')
-  //       .query({
-  //         countryUuid: 'd78281b4-96b6-11ea-bcbc-b3fdec34ea84',
-  //         pageSize: 20,
-  //       })
-  //       .expect(200)
-  //       .expect(res => {
-  //         Joi.assert(res.body, resSchema);
-  //       })
-  //       .end(done);
-  //   });
+    it('one "policyOrganizationUuid" and no "page" (default is 1)', done => {
+      agent
+        .get('/relationship/policyOrganizationAndBill')
+        .query({
+          policyOrganizationUuid: 'd782819c-96b6-11ea-bcbc-b3fdec34ea84',
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
 
-  //   it('"page" number is too large', done => {
-  //     agent
-  //       .get('/relationship/countryAndBill')
-  //       .query({
-  //         countryUuid: 'd78281b4-96b6-11ea-bcbc-b3fdec34ea84',
-  //         page: 999999,
-  //         pageSize: 20,
-  //       })
-  //       .expect(200)
-  //       .expect(res => {
-  //         Joi.assert(res.body, resSchema);
-  //       })
-  //       .end(done);
-  //   });
+    it('"page" number is too large', done => {
+      agent
+        .get('/relationship/policyOrganizationAndBill')
+        .query({
+          policyOrganizationUuid: 'd782819c-96b6-11ea-bcbc-b3fdec34ea84',
+          page: 999999,
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
 
-  //   it('"page" number is too small', done => {
-  //     agent
-  //       .get('/relationship/countryAndBill')
-  //       .query({
-  //         countryUuid: 'd78281b4-96b6-11ea-bcbc-b3fdec34ea84',
-  //         page: -1,
-  //         pageSize: 20,
-  //       })
-  //       .expect(400, err => {
-  //         done();
-  //       });
-  //   });
+    it('"page" number is too small', done => {
+      agent
+        .get('/relationship/policyOrganizationAndBill')
+        .query({
+          policyOrganizationUuid: 'd782819c-96b6-11ea-bcbc-b3fdec34ea84',
+          page: -1,
+          pageSize: 20,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
 
-  //   it('"countryUuid" is not in countries', done => {
-  //     agent
-  //       .get('/relationship/countryAndBill')
-  //       .query({
-  //         countryUuid: 'asdasdasdafasd',
-  //         pageSize: 20,
-  //       })
-  //       .expect(200)
-  //       .expect(res => {
-  //         Joi.assert(res.body, resSchema);
-  //       })
-  //       .end(done);
-  //   });
+    it('"policyOrganizationUuid" is not in policyOrganization', done => {
+      agent
+        .get('/relationship/policyOrganizationAndBill')
+        .query({
+          policyOrganizationUuid: 'asd阿斯达所大色调棕熊嗲强dsasdasd',
+          pageSize: 20,
+        })
+        .expect(200)
+        .expect(res => {
+          Joi.assert(res.body, resSchema);
+        })
+        .end(done);
+    });
 
-  //   it('"pageSize" is too small', done => {
-  //     agent
-  //       .get('/relationship/countryAndBill')
-  //       .query({
-  //         countryUuid: 'd78281b4-96b6-11ea-bcbc-b3fdec34ea84',
-  //         pageSize: -1,
-  //       })
-  //       .expect(400, err => {
-  //         done();
-  //       });
-  //   });
-  // });
+    it('"pageSize" is too small', done => {
+      agent
+        .get('/relationship/policyOrganizationAndBill')
+        .query({
+          policyOrganizationUuid: 'd782819c-96b6-11ea-bcbc-b3fdec34ea84',
+          pageSize: -1,
+        })
+        .expect(400, err => {
+          done();
+        });
+    });
+  });
 
   describe('GET /BPOStatistics', () => {
     describe('GET /BPOStatistics', () => {
@@ -223,41 +223,41 @@ describe('BC-relationship', () => {
     });
   });
 
-  // describe('GET /CBStatistics', () => {
-  //   describe('GET /CBStatistics', () => {
-  //     const resSchema = Joi.object({
-  //       relativeBillTotal: Joi.number().min(0).required(),
-  //     });
+  describe('GET /POBStatistics', () => {
+    describe('GET /POBStatistics', () => {
+      const resSchema = Joi.object({
+        relativeBillTotal: Joi.number().min(0).required(),
+      });
 
-  //     it('empty params', done => {
-  //       agent.get('/relationship/CBStatistics').expect(400, err => done());
-  //     });
+      it('empty params', done => {
+        agent.get('/relationship/POBStatistics').expect(400, err => done());
+      });
 
-  //     it('normal', done => {
-  //       agent
-  //         .get('/relationship/CBStatistics')
-  //         .query({
-  //           countryUuid: 'd78281b4-96b6-11ea-bcbc-b3fdec34ea84',
-  //         })
-  //         .expect(200)
-  //         .expect(res => {
-  //           Joi.assert(res.body, resSchema);
-  //         })
-  //         .end(done);
-  //     });
+      it('normal', done => {
+        agent
+          .get('/relationship/POBStatistics')
+          .query({
+            policyOrganizationUuid: 'd782819c-96b6-11ea-bcbc-b3fdec34ea84',
+          })
+          .expect(200)
+          .expect(res => {
+            Joi.assert(res.body, resSchema);
+          })
+          .end(done);
+      });
 
-  //     it('"countryUuid" not in countries', done => {
-  //       agent
-  //         .get('/relationship/CBStatistics')
-  //         .query({
-  //           countryUuid: 'asdczxcasdqweasd',
-  //         })
-  //         .expect(200)
-  //         .expect(res => {
-  //           Joi.assert(res.body, resSchema);
-  //         })
-  //         .end(done);
-  //     });
-  //   });
-  // });
+      it('"policyOrganizationUuid" not in policyOrganization', done => {
+        agent
+          .get('/relationship/POBStatistics')
+          .query({
+            policyOrganizationUuid: 'asdczxcasdqweasd',
+          })
+          .expect(200)
+          .expect(res => {
+            Joi.assert(res.body, resSchema);
+          })
+          .end(done);
+      });
+    });
+  });
 });

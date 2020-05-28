@@ -34,41 +34,47 @@ router.get('/billAndLegislativeOrganization', async ctx => {
   }
 });
 
-// const countryAndBillSchema = Joi.object({
-//   countryUuid: Joi.string().required(),
-//   page: Joi.number().min(1).default(1),
-//   pageSize: Joi.number().min(1).required(),
-// });
-// router.get('/countryAndBill', async ctx => {
-//   try {
-//     const {
-//       countryUuid,
-//       page,
-//       pageSize,
-//     } = await countryAndBillSchema.validateAsync(ctx.query);
+const policyOrganizationAndBillSchema = Joi.object({
+  policyOrganizationUuid: Joi.string().required(),
+  page: Joi.number().min(1).default(1),
+  pageSize: Joi.number().min(1).required(),
+});
+router.get('/policyOrganizationAndBill', async ctx => {
+  try {
+    const {
+      policyOrganizationUuid,
+      page,
+      pageSize,
+    } = await policyOrganizationAndBillSchema.validateAsync(ctx.query);
 
-//     let res = await service.getCountryAndBill(countryUuid, page, pageSize);
+    let res = await service.getPolicyOrganizationAndBill(
+      policyOrganizationUuid,
+      page,
+      pageSize
+    );
 
-//     ctx.body = res;
-//   } catch (error) {
-//     throw error;
-//   }
-// });
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
 
-// const CBStatisticsSchema = Joi.object({
-//   countryUuid: Joi.string().required(),
-// });
-// router.get('/CBStatistics', async ctx => {
-//   try {
-//     const { countryUuid } = await CBStatisticsSchema.validateAsync(ctx.query);
+const POBStatisticsSchema = Joi.object({
+  policyOrganizationUuid: Joi.string().required(),
+});
+router.get('/POBStatistics', async ctx => {
+  try {
+    const { policyOrganizationUuid } = await POBStatisticsSchema.validateAsync(
+      ctx.query
+    );
 
-//     let res = await service.getCBStatistics(countryUuid);
+    let res = await service.getPOBStatistics(policyOrganizationUuid);
 
-//     ctx.body = res;
-//   } catch (error) {
-//     throw error;
-//   }
-// });
+    ctx.body = res;
+  } catch (error) {
+    throw error;
+  }
+});
 
 const BPOStatisticsSchema = Joi.object({
   billNumber: Joi.string().required(),

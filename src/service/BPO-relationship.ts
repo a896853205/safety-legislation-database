@@ -68,35 +68,87 @@ export default {
     };
   },
 
-  // getCountryAndBill: async (
-  //   countryUuid: string,
-  //   page: number,
-  //   pageSize: number
-  // ) => {
-  //   let { rows, count } = await Bill.findAndCountAll({
-  //     attributes: ['uuid', 'number', 'congress'],
-  //     where: {
-  //       countryUuid,
-  //     },
-  //     limit: pageSize,
-  //     offset: (page - 1) * pageSize,
-  //   });
+  getPolicyOrganizationAndBill: async (
+    policyOrganizationUuid: string,
+    page: number,
+    pageSize: number
+  ) => {
+    let billUuidArr: { uuid: string }[] = [];
 
-  //   return {
-  //     data: rows,
-  //     totalNum: count,
-  //   };
-  // },
+    let billRows = await Bill.findAll({
+      attributes: ['uuid'],
+      include: [
+        {
+          model: Country,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: politicalOrganization,
+              attributes: ['uuid'],
+              where: {
+                uuid: policyOrganizationUuid,
+              },
+            },
+          ],
+        },
+      ],
+    });
 
-  // getCBStatistics: async (countryUuid: string) => {
-  //   let relativeBillTotal = await Bill.count({
-  //     where: {
-  //       countryUuid,
-  //     },
-  //   });
+    for (let item of billRows) {
+      if (item.uuid) billUuidArr.push({ uuid: item.uuid });
+    }
 
-  //   return {
-  //     relativeBillTotal,
-  //   };
-  // },
+    let { rows, count } = await Bill.findAndCountAll({
+      distinct: true,
+      where: {
+        [Op.or]: billUuidArr,
+      },
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      attributes: ['uuid', 'number', 'congress'],
+      include: [
+        {
+          model: Country,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: politicalOrganization,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      data: rows,
+      totalNum: count,
+    };
+  },
+
+  getPOBStatistics: async (policyOrganizationUuid: string) => {
+    let relativeBillTotal = await Bill.count({
+      attributes: ['uuid'],
+      distinct: true,
+      include: [
+        {
+          model: Country,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: politicalOrganization,
+              attributes: ['uuid'],
+              where: {
+                uuid: policyOrganizationUuid,
+              },
+            },
+          ],
+        },
+      ],
+    });
+
+    return {
+      relativeBillTotal,
+    };
+  },
 };
