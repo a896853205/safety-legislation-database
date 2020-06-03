@@ -12,7 +12,7 @@ import {
 } from 'sequelize-typescript';
 import PersonIdentity from './person-identity';
 
-@Table
+@Table({ tableName: 'people' })
 export default class Person extends Model<Person> {
   @PrimaryKey
   @Unique
