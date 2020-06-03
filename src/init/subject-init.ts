@@ -12,7 +12,7 @@ export default async () => {
 
   try {
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number']
+      attributes: ['uuid', 'number', 'congress'],
     });
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/subject.xlsx')
@@ -25,6 +25,7 @@ export default async () => {
 
     interface IExcelRow {
       number?: string;
+      congress?: string;
       subject: string;
     }
 
@@ -42,14 +43,22 @@ export default async () => {
     for (let item of dataArray) {
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
-        lastNumberUuid = await billArr.find(item => item.number === _lastNumber)
-          ?.uuid;
+
+        // 处理国会届数
+        let congress: number | undefined = Number(
+          item.congress?.substring(0, 3)
+        );
+        congress = !isNaN(congress) ? congress : undefined;
+
+        lastNumberUuid = billArr.find(
+          item => item.congress === congress && item.number === _lastNumber
+        )?.uuid;
       }
 
       subjectArr.push({
         uuid: uuidv1(),
         billUuid: lastNumberUuid,
-        subject: item.subject?.trim()
+        subject: item.subject?.trim(),
       });
     }
 

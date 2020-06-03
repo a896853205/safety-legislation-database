@@ -4,6 +4,7 @@ import { Sequelize } from 'sequelize-typescript';
 export default (): Sequelize => {
   return new Sequelize({
     database: dbConfig.db.name,
+    host: dbConfig.db.host,
     dialect: 'mysql',
     username: dbConfig.db.user,
     password: dbConfig.db.password,
