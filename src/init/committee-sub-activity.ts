@@ -13,6 +13,7 @@ import Organization from '../models/organization';
 
 interface IExcelRow {
   number: string;
+  congress: string;
   committee?: string;
   subcommittee?: string;
   subCommitteeActivityDate?: string;
@@ -30,7 +31,7 @@ export default async () => {
   const spinner = ora('CommitteeSub').start();
   try {
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number'],
+      attributes: ['uuid', 'number', 'congress'],
     });
     const committeeArr = await Committee.findAll({
       attributes: ['uuid', 'billUuid'],
@@ -60,8 +61,16 @@ export default async () => {
     for (let item of dataArray) {
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
-        lastNumberUuid = billArr.find(item => item.number === _lastNumber)
-          ?.uuid;
+
+        // 处理国会届数
+        let congress: number | undefined = Number(
+          item.congress?.substring(0, 3)
+        );
+        congress = !isNaN(congress) ? congress : undefined;
+
+        lastNumberUuid = billArr.find(
+          item => item.congress === congress && item.number === _lastNumber
+        )?.uuid;
       }
 
       let committeeUuid: string | undefined;

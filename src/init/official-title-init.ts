@@ -11,7 +11,7 @@ export default async () => {
   const spinner = ora('OfficialTitle').start();
   try {
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number'],
+      attributes: ['uuid', 'number', 'congress'],
     });
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/official-title.xlsx')
@@ -24,6 +24,7 @@ export default async () => {
 
     interface IExcelRow {
       number: string;
+      congress: string;
       officialTitle?: string;
       officialTitleStatus?: string;
     }
@@ -44,8 +45,16 @@ export default async () => {
 
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
-        lastNumberUuid = billArr.find(item => item.number === _lastNumber)
-          ?.uuid;
+
+        // 处理国会届数
+        let congress: number | undefined = Number(
+          item.congress?.substring(0, 3)
+        );
+        congress = !isNaN(congress) ? congress : undefined;
+
+        lastNumberUuid = billArr.find(
+          item => item.congress === congress && item.number === _lastNumber
+        )?.uuid;
       }
 
       officialTitleArr.push({

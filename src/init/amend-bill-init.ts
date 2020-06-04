@@ -12,7 +12,7 @@ export default async () => {
 
   try {
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number']
+      attributes: ['uuid', 'number', 'congress'],
     });
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/amend-bill.xlsx')
@@ -26,6 +26,7 @@ export default async () => {
     interface IExcelRow {
       number: string;
       amendBill?: string;
+      congress: string;
     }
 
     interface IAmendBill {
@@ -40,11 +41,19 @@ export default async () => {
       if (item.amendBill) {
         amendBillArr.push({
           uuid: uuidv1(),
-          billUuid: await billArr.find(
-            billItem =>
+          billUuid: billArr.find(billItem => {
+            // 处理国会届数
+            let congress: number | undefined = Number(
+              item.congress?.substring(0, 3)
+            );
+            congress = !isNaN(congress) ? congress : undefined;
+
+            return (
+              billItem.congress === congress &&
               billItem.number === item.number?.replace(/\(.*\)/g, '')?.trim()
-          )?.uuid,
-          amendBillNumber: item.amendBill.trim()
+            );
+          })?.uuid,
+          amendBillNumber: item.amendBill.trim(),
         });
       }
     }

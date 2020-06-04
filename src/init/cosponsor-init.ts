@@ -6,12 +6,13 @@ import moment from 'moment';
 import ora from 'ora';
 
 // 数据库
-import Person from '../models/person';
 import Bill from '../models/bill';
 import Cosponsor from '../models/cosponsor';
+import Person from '../models/person';
 
 interface IExcelRow {
   number?: string;
+  congress?: string;
   cosponsor?: string;
   cosponsorDate?: string;
 }
@@ -38,7 +39,7 @@ export default async () => {
 
     let personArr = await Person.findAll();
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number'],
+      attributes: ['uuid', 'number', 'congress'],
     });
     let cosponsorArr: ICosponsor[] = [];
 
@@ -48,8 +49,16 @@ export default async () => {
     for (let item of dataArray) {
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
-        lastNumberUuid = await billArr.find(item => item.number === _lastNumber)
-          ?.uuid;
+
+        // 处理国会届数
+        let congress: number | undefined = Number(
+          item.congress?.substring(0, 3)
+        );
+        congress = !isNaN(congress) ? congress : undefined;
+
+        lastNumberUuid = billArr.find(
+          item => item.congress === congress && item.number === _lastNumber
+        )?.uuid;
       }
 
       let cosponsorUuid: string | undefined;

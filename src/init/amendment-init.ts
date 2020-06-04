@@ -11,7 +11,7 @@ export default async () => {
   const spinner = ora('Amendment').start();
   try {
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number'],
+      attributes: ['uuid', 'number', 'congress'],
     });
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/amendment.xlsx')
@@ -24,6 +24,7 @@ export default async () => {
 
     interface IExcelRow {
       number: string;
+      billCongress: string;
       amendmentNumber?: string;
       congress?: string;
     }
@@ -42,8 +43,16 @@ export default async () => {
     for (let item of dataArray) {
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
-        lastNumberUuid = await billArr.find(item => item.number === _lastNumber)
-          ?.uuid;
+
+        // 处理国会届数
+        let billCongress: number | undefined = Number(
+          item.billCongress?.substring(0, 3)
+        );
+        billCongress = !isNaN(billCongress) ? billCongress : undefined;
+
+        lastNumberUuid = billArr.find(
+          item => item.congress === billCongress && item.number === _lastNumber
+        )?.uuid;
       }
 
       amendmentArr.push({

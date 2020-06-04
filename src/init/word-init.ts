@@ -13,11 +13,12 @@ export default async () => {
 
   try {
     const billArr = await Bill.findAll({
-      attributes: ['uuid', 'number']
+      attributes: ['uuid', 'number', 'congress'],
     });
 
     interface IExcelRow {
       number: string;
+      congress: string;
       humanWord: string;
       programWord: string;
     }
@@ -25,13 +26,13 @@ export default async () => {
     interface IHumanWord {
       uuid: string;
       billUuid?: string;
-      humanWord: string;
+      word: string;
     }
 
     interface IProgramWord {
       uuid: string;
       billUuid?: string;
-      programWord: string;
+      word: string;
     }
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/words.xlsx')
@@ -49,15 +50,21 @@ export default async () => {
 
     for (let item of dataArray) {
       let curNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
-      let billUuid = await billArr.find(item => item.number === curNumber)
-        ?.uuid;
+
+      // 处理国会届数
+      let congress: number | undefined = Number(item.congress?.substring(0, 3));
+      congress = !isNaN(congress) ? congress : undefined;
+
+      let billUuid = billArr.find(
+        item => item.congress === congress && item.number === curNumber
+      )?.uuid;
 
       if (item.humanWord) {
         for (let humanWord of item.humanWord.split('\n')) {
           humanWordArr.push({
             uuid: uuidv1(),
             billUuid,
-            humanWord
+            word: humanWord,
           });
         }
       }
@@ -67,7 +74,7 @@ export default async () => {
           programWordArr.push({
             uuid: uuidv1(),
             billUuid,
-            programWord
+            word: programWord,
           });
         }
       }
