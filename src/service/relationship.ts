@@ -1,4 +1,4 @@
-import { Op } from 'sequelize';
+import { Op, Model } from 'sequelize';
 
 import Bill from '../models/bill';
 import Committee from '../models/committee';
@@ -9,6 +9,7 @@ import Executor from '../models/executor';
 import Organization from '../models/organization';
 import Person from '../models/person';
 import RelatedObject from '../models/related-object';
+import { addAttribute } from 'sequelize-typescript';
 
 interface ISponsorAndCosponsorTable extends Bill {
   personType: string;
@@ -377,6 +378,20 @@ export default {
       distinct: true,
       include: [
         {
+          model: Person,
+          attributes: ['uuid', 'name'],
+        },
+        {
+          model: Cosponsor,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Person,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
           model: Committee,
           attributes: ['uuid'],
           include: [
@@ -434,6 +449,16 @@ export default {
       attributes: ['uuid'],
       include: [
         {
+          model: Cosponsor,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Person,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
           model: Committee,
           attributes: ['uuid'],
           include: [
@@ -477,6 +502,7 @@ export default {
     });
 
     return {
+      cosponsorNum: rows && rows.cosponsors ? rows.cosponsors.length : 0,
       committeeNum: rows && rows.committees ? rows.committees.length : 0,
       constraintNum: rows && rows.constraint ? rows.constraint.length : 0,
       executorNum: rows && rows.executor ? rows.executor.length : 0,

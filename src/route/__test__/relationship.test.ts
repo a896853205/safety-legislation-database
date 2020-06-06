@@ -602,6 +602,7 @@ describe('relationship', () => {
       constraintNum: Joi.number().min(0).required(),
       executorNum: Joi.number().min(0).required(),
       relatedObjectNum: Joi.number().min(0).required(),
+      cosponsorNum: Joi.number().min(0).required(),
     });
 
     it('empty params', done => {
