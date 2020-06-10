@@ -1,10 +1,10 @@
 import { read, WorkBook, utils, stream } from 'xlsx';
 import fs from 'fs';
 import path from 'path';
-import dbInit from '../db-connect';
 
 import Bill from '../models/bill';
 import Committee from '../models/committee';
+import dbInit from '../db-connect';
 import Organization from '../models/organization';
 
 /* make worksheet */
