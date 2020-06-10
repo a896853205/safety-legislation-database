@@ -1,23 +1,35 @@
 import Bill from '../models/bill';
 
+import dbInit from '../db-connect';
 import {
   getBeforeTotalBill,
   getSponsorTimes,
   getCosponsorTimes,
 } from './util/influence';
 
+dbInit();
 (async () => {
   const allBill = await Bill.findAll({
-    attributes: ['uuid'],
+    attributes: ['uuid', 'number', 'congress'],
   });
+
+  const res = [];
   while (allBill.length) {
-    let billUuid = allBill.pop()?.uuid;
+    const bill = allBill.pop();
+    const billUuid = bill?.uuid;
 
     const totalBill = await getBeforeTotalBill(billUuid);
 
     if (totalBill && totalBill.length) {
-      const sponsorTimes = getSponsorTimes(totalBill, billUuid);
+      const sponsorTimes = await getSponsorTimes(totalBill, billUuid);
       // const cosponsorTimes = getCosponsorTimes(billUuid, totalBill);
+
+      res.push({
+        number: bill?.number,
+        congress: bill?.congress,
+        sponsorTimes,
+      });
     }
   }
+  console.table(res);
 })();

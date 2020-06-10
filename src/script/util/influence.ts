@@ -16,6 +16,7 @@ const getBeforeTotalBill = async (billUuid?: string) => {
     });
 
     return await Bill.findAll({
+      attributes: ['uuid'],
       where: {
         congress: {
           [Op.lt]: bill?.congress,
@@ -56,14 +57,17 @@ const getSponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
       const sponsorTimes = totalBill.filter(
         bill => bill?.sponsor?.uuid === curBill?.sponsor?.uuid
       ).length;
-      const cosponsorTimes = totalBill.filter(
-        bill =>
-          bill.cosponsors?.findIndex(
-            cosponsor => cosponsor.uuid === curBill?.sponsorUuid
-          ) !== -1
-      ).length;
 
-      return sponsorTimes * SPONSOR_W + cosponsorTimes * COSPONSOR_W;
+      let cosponsorTimes = 0;
+      curBill?.cosponsors?.forEach(curCosponsor => {
+        cosponsorTimes += totalBill.filter(
+          bill => bill?.sponsor?.uuid === curCosponsor.uuid
+        ).length;
+      });
+
+      return (sponsorTimes * SPONSOR_W + cosponsorTimes * COSPONSOR_W).toFixed(
+        1
+      );
     } else {
       return 0;
     }
