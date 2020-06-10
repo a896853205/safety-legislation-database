@@ -22,12 +22,13 @@ dbInit();
 
     if (totalBill && totalBill.length) {
       const sponsorTimes = await getSponsorTimes(totalBill, billUuid);
-      // const cosponsorTimes = getCosponsorTimes(billUuid, totalBill);
+      const cosponsorTimes = await getCosponsorTimes(totalBill, billUuid);
 
       res.push({
         number: bill?.number,
         congress: bill?.congress,
         sponsorTimes,
+        cosponsorTimes,
       });
     }
   }
