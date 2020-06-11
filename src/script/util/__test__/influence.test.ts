@@ -21,7 +21,7 @@ describe('influence', () => {
 
       if (totalBill && totalBill.length) {
         const sponsorTimes = await getSponsorTimes(totalBill, billUuid);
-        assert(sponsorTimes >= 0);
+        assert(Number(sponsorTimes) >= 0);
         done();
       } else {
         console.log('此法案没数据');

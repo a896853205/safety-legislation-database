@@ -10,7 +10,6 @@ import {
   Default,
   ForeignKey,
   BelongsTo,
-  HasOne,
 } from 'sequelize-typescript';
 import Cosponsor from './cosponsor';
 import LegislativeSubject from './legislative-subject';
