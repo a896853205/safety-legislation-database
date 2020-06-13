@@ -6,21 +6,30 @@ const router = new Router({
   prefix: '/csv',
 });
 
-router.get('/:name', async ctx => {
-  const name = ctx.params.name;
+router.get('/committee.csv', async ctx => {
+  await service.committeeCsvInit();
 
-  switch (name) {
-    case 'committee.csv':
-      await service.committeeCsvInit();
-      break;
-    case 'person.csv':
-      // await service.committeeCsvInit();
-      break;
-    default:
-      console.error('没有相关csv文件');
-  }
+  const path = `dist-csv/committee.csv`;
+  ctx.attachment(path);
+  await send(ctx, path);
+});
 
-  const path = `dist-csv/${name}`;
+router.get('/person.csv/:billUuid', async ctx => {
+  const billUuid = ctx.params.billUuid;
+
+  await service.personCsvInit(billUuid);
+
+  const path = `dist-csv/person.csv`;
+  ctx.attachment(path);
+  await send(ctx, path);
+});
+
+router.get('/person-relationship.csv/:billUuid', async ctx => {
+  const billUuid = ctx.params.billUuid;
+
+  await service.personRelationshipCsvInit(billUuid);
+
+  const path = `dist-csv/person-relationship.csv`;
   ctx.attachment(path);
   await send(ctx, path);
 });
