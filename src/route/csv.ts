@@ -14,10 +14,9 @@ router.get('/committee.csv', async ctx => {
   await send(ctx, path);
 });
 
-router.get('/person.csv/:billUuid', async ctx => {
-  const billUuid = ctx.params.billUuid;
+router.get('/person.csv', async ctx => {
 
-  await service.personCsvInit(billUuid);
+  await service.personCsvInit();
 
   const path = `dist-csv/person.csv`;
   ctx.attachment(path);

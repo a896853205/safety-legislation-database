@@ -11,13 +11,12 @@ import Person from '../models/person';
 const Op = Sequelize.Op;
 
 /* make worksheet */
-const ws_data: (string | undefined)[][] = [['personName']];
-const ws_PR_data: (string | undefined)[][] = [['sponsor', 'cosponsor']];
 
 export default {
   // 生成committee两者关系csv文件
   committeeCsvInit: () => committeeCsvInit(),
-  personCsvInit: async (billUuid: string) => {
+  personCsvInit: async () => {
+    const ws_data: (string | undefined)[][] = [['personName']];
     const filePath = path.resolve(__dirname, `../../dist-csv/person.csv`);
 
     try {
@@ -27,20 +26,8 @@ export default {
       console.log('没有文件,不用删除');
     }
 
-    const bill = await Bill.findOne({
-      where: {
-        uuid: billUuid,
-      },
-      attributes: ['congress'],
-    });
-
     const billArr = await Bill.findAll({
       attributes: ['uuid'],
-      where: {
-        congress: {
-          [Op.lt]: bill?.congress,
-        },
-      },
       include: [
         {
           model: Cosponsor,
@@ -85,6 +72,8 @@ export default {
   },
 
   personRelationshipCsvInit: async (billUuid: string) => {
+    const ws_PR_data: (string | undefined)[][] = [['sponsor', 'cosponsor']];
+
     const filePath = path.resolve(
       __dirname,
       '../../dist-csv/person-relationship.csv'

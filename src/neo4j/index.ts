@@ -7,18 +7,28 @@ const driver = neo4j.driver(
   neo4j.auth.basic('neo4j', 'a1208979946')
 );
 
-export const socialInfluence = async (billUuid: string) => {
+export const initNeo4j = async () => {
   const session = driver.session();
-  try {
-    await session.run(`MATCH (n) DETACH DELETE n;`);
 
+  try {
     await session.run(
       `
-      load csv with headers from "http://localhost:4000/csv/person.csv/${billUuid}"
+      load csv with headers from "http://localhost:4000/csv/person.csv"
       as line
       with line merge (:personAll{ name: line.personName })
       `
     );
+  } catch (err) {
+    console.log(err);
+  } finally {
+    await session.close();
+  }
+};
+
+export const socialInfluence = async (billUuid: string) => {
+  const session = driver.session();
+  try {
+    await session.run(`MATCH ()-[r:supportall]->() delete r`);
 
     await session.run(
       `

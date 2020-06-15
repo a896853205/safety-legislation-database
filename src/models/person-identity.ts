@@ -2,14 +2,15 @@ import {
   Table,
   Column,
   Model,
-  HasMany,
   DataType,
   Unique,
   PrimaryKey,
   Comment,
   Default,
-  ForeignKey
+  ForeignKey,
 } from 'sequelize-typescript';
+import moment from 'moment';
+
 import Person from './person';
 
 @Table({ tableName: 'person_identities' })
@@ -18,7 +19,7 @@ export default class PersonIdentity extends Model<PersonIdentity> {
   @Unique
   @Default(DataType.UUIDV1)
   @Column({
-    type: DataType.UUID
+    type: DataType.UUID,
   })
   uuid: string | undefined;
 
@@ -44,11 +45,25 @@ export default class PersonIdentity extends Model<PersonIdentity> {
 
   @Comment('开始日期')
   @Column(DataType.DATE)
-  dateStart: Date | undefined;
+  get dateStart(): Date | undefined {
+    return this.getDataValue('dateStart')
+      ? moment(this.getDataValue('dateStart')).toDate()
+      : undefined;
+  }
+  set dateStart(value: Date | undefined) {
+    this.setDataValue('dateStart', value);
+  }
 
   @Comment('结束日期')
   @Column(DataType.DATE)
-  dateEnd: Date | undefined;
+  get dateEnd(): Date | undefined {
+    return this.getDataValue('dateEnd')
+      ? moment(this.getDataValue('dateEnd')).toDate()
+      : undefined;
+  }
+  set dateEnd(value: Date | undefined) {
+    this.setDataValue('dateEnd', value);
+  }
 
   @Comment('身份')
   @Column(DataType.TEXT)

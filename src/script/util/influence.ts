@@ -7,7 +7,9 @@ import LegislativeSubject from '../../models/legislative-subject';
 import { socialInfluence } from '../../neo4j';
 import { JUMP_PROBABILITY } from '../../constants/pagerank-constants';
 import Person from '../../models/person';
+import PersonIdentity from '../../models/person-identity';
 import PoliticalOrganization from '../../models/political-organization';
+import moment from 'moment';
 
 const Op = Sequelize.Op;
 
@@ -437,13 +439,13 @@ const getSocialNums = async (totalBill: Bill[], billUuid?: string) => {
             include: [
               {
                 model: Person,
-                attributes: ['uuid'],
+                attributes: ['uuid', 'name'],
               },
             ],
           },
           {
             model: Person,
-            attributes: ['uuid'],
+            attributes: ['uuid', 'name'],
           },
         ],
       });
@@ -524,6 +526,167 @@ const getSocialNums = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
+// 提出者的身份影响力
+const getIdentityNums = async (billUuid?: string) => {
+  const HOUSE_W = 0.3;
+  const SENATE_W = 0.6;
+
+  try {
+    if (billUuid) {
+      const curBill = await Bill.findOne({
+        where: {
+          uuid: billUuid,
+        },
+        attributes: ['uuid', 'congress'],
+        include: [
+          {
+            model: Cosponsor,
+            attributes: ['uuid'],
+            include: [
+              {
+                model: Person,
+                attributes: ['uuid', 'name'],
+                include: [
+                  {
+                    model: PersonIdentity,
+                    attributes: ['dateStart', 'dateEnd', 'identity'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Person,
+            attributes: ['uuid', 'name'],
+            include: [
+              {
+                model: PersonIdentity,
+                attributes: ['dateStart', 'dateEnd', 'identity'],
+              },
+            ],
+          },
+        ],
+      });
+
+      const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
+      const COSPONSOR_W = curBill?.cosponsors?.length
+        ? (1 - SPONSOR_W) / curBill?.cosponsors?.length
+        : 0;
+
+      let curDateStartYear = 0;
+      // 将congress转换为年份
+      if (curBill?.congress) {
+        curDateStartYear = (curBill.congress - 100 - 13) * 2 + 2013;
+      }
+
+      const culTotalYears = (PIs: PersonIdentity[]) => {
+        let minYear = Infinity;
+        let maxYear = -Infinity;
+
+        PIs.forEach(PI => {
+          let dateStart = PI?.dateStart?.getFullYear();
+          let dateEnd = PI?.dateEnd?.getFullYear();
+
+          if (dateStart && curDateStartYear > dateStart) {
+            if (dateStart && dateStart < minYear) {
+              minYear = dateStart;
+            }
+            if (dateEnd && curDateStartYear >= dateEnd) {
+              if (dateEnd && dateEnd > maxYear) {
+                maxYear = dateEnd;
+              }
+            } else if (dateEnd && curDateStartYear < dateEnd) {
+              maxYear = curDateStartYear;
+            }
+            if (!dateEnd) {
+              maxYear = curDateStartYear;
+            }
+          }
+        });
+
+        return { minYear, maxYear };
+      };
+
+      const culSHLastYears = (PIs: PersonIdentity[]) => {
+        let senteLastYears = 0;
+        let houseLastYears = 0;
+
+        PIs.forEach(PI => {
+          let dateStart = PI?.dateStart?.getFullYear();
+          let dateEnd = PI?.dateEnd?.getFullYear();
+
+          if (dateStart && curDateStartYear > dateStart) {
+            if (PI.identity === 'Senate') {
+              if (dateEnd) {
+                // 有最后年
+                if (curDateStartYear < dateEnd) {
+                  senteLastYears += curDateStartYear - dateStart;
+                } else {
+                  senteLastYears += dateEnd - dateStart;
+                }
+              } else {
+                // 没有最后年
+                senteLastYears += curDateStartYear - dateStart;
+              }
+            } else if (PI.identity === 'House') {
+              if (dateEnd) {
+                // 有最后年
+                if (curDateStartYear < dateEnd) {
+                  houseLastYears += curDateStartYear - dateStart;
+                } else {
+                  houseLastYears += dateEnd - dateStart;
+                }
+              } else {
+                // 没有最后年
+                houseLastYears += curDateStartYear - dateStart;
+              }
+            }
+          }
+        });
+        return { senteLastYears, houseLastYears };
+      };
+
+      const culPersonScore = (PIs: PersonIdentity[]) => {
+        let senteLastYears = 0;
+        let houseLastYears = 0;
+
+        const res = culSHLastYears(PIs);
+        const { maxYear, minYear } = culTotalYears(PIs);
+
+        senteLastYears = res.senteLastYears;
+        houseLastYears = res.houseLastYears;
+
+        return (
+          (houseLastYears * HOUSE_W + senteLastYears * SENATE_W) /
+          (maxYear - minYear)
+        );
+      };
+
+      let sponsorScore = 0;
+      let cosponsorScore = 0;
+      if (curBill?.sponsor?.personIdentities) {
+        sponsorScore = culPersonScore(curBill?.sponsor?.personIdentities);
+      }
+
+      curBill?.cosponsors?.forEach(cos => {
+        if (cos.cosponsor?.personIdentities) {
+          cosponsorScore += culPersonScore(cos.cosponsor?.personIdentities);
+        }
+      });
+
+      return (
+        (sponsorScore * SPONSOR_W * 10 + cosponsorScore * COSPONSOR_W * 10) /
+        10
+      ).toFixed(2);
+    } else {
+      return '0.0';
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 export {
   getBeforeTotalBill,
   getSponsorTimes,
@@ -532,4 +695,5 @@ export {
   getCountryPoliticalOrganizationNums,
   getLegislativeSubjectTimes,
   getSocialNums,
+  getIdentityNums,
 };
