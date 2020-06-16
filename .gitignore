@@ -9,3 +9,5 @@ dist-csv
 dist-influence
 
 dist-test
+
+dist-json

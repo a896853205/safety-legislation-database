@@ -1,4 +1,6 @@
+import fs from 'fs';
 import ora from 'ora';
+import path from 'path';
 
 import Bill from '../models/bill';
 import dbInit from '../db-connect';
@@ -61,6 +63,14 @@ dbInit();
       });
     }
   }
-  spinner.succeed();
-  console.table(res, ['countryPoliticalOrganizationNums', 'index']);
+
+  spinner.text = '开始生成json文件';
+
+  fs.writeFileSync(
+    path.resolve(__dirname, '../../dist-json/influence.json'),
+    JSON.stringify(res, null, 2)
+  );
+
+  spinner.succeed('influence.json文件生成成功');
+  // console.table(res);
 })();
