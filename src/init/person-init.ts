@@ -42,8 +42,8 @@ export default async () => {
       district?: number;
       congressStart?: number;
       congressEnd?: number;
-      dateStart?: Date;
-      dateEnd?: Date;
+      dateStart?: number;
+      dateEnd?: number;
       identity?: string;
       party?: string;
     }
@@ -77,10 +77,10 @@ export default async () => {
         congressStart: item.congressStart ? +item.congressStart : undefined,
         congressEnd: item.congressEnd ? +item.congressEnd : undefined,
         dateStart: item.dateStart
-          ? moment(item.dateStart, 'YYYY', false).toDate()
+          ? moment(item.dateStart, 'YYYY', false).unix()
           : undefined,
         dateEnd: item.dateEnd
-          ? moment(item.dateEnd, 'YYYY', false).toDate()
+          ? moment(item.dateEnd, 'YYYY', false).unix()
           : undefined,
         identity: item.identity,
         party: item.party,

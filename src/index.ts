@@ -18,7 +18,9 @@ import committeeSubActivity from './init/committee-sub-activity';
 import organization from './init/organization-init';
 
 import ora from 'ora';
+import moment from 'moment';
 
+moment.locale('en');
 const db = dbInit();
 ora.promise(
   (async () => {

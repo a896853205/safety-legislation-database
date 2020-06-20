@@ -13,6 +13,10 @@ import {
   getLegislativeSubjectTimes,
   getSocialNums,
   getIdentityNums,
+  getBecameLawRate,
+  getRecognitionNums,
+  getStateRate,
+  personPartyRate,
 } from './util/influence';
 import { initNeo4j } from '../neo4j';
 
@@ -37,29 +41,37 @@ dbInit();
     const totalBill = await getBeforeTotalBill(billUuid);
 
     if (totalBill && totalBill.length) {
-      const sponsorTimes = await getSponsorTimes(totalBill, billUuid);
-      const cosponsorTimes = await getCosponsorTimes(totalBill, billUuid);
-      const policyAreaTimes = await getPolicyAreaTimes(totalBill, billUuid);
-      const countryPoliticalOrganizationNums = await getCountryPoliticalOrganizationNums(
-        billUuid
-      );
-      const legislativeSubjectTimes = await getLegislativeSubjectTimes(
-        totalBill,
-        billUuid
-      );
-      const socialNums = await getSocialNums(totalBill, billUuid);
-      const identityNums = await getIdentityNums(billUuid);
+      // const sponsorTimes = await getSponsorTimes(totalBill, billUuid);
+      // const cosponsorTimes = await getCosponsorTimes(totalBill, billUuid);
+      // const policyAreaTimes = await getPolicyAreaTimes(totalBill, billUuid);
+      // const countryPoliticalOrganizationNums = await getCountryPoliticalOrganizationNums(
+      //   billUuid
+      // );
+      // const legislativeSubjectTimes = await getLegislativeSubjectTimes(
+      //   totalBill,
+      //   billUuid
+      // );
+      // const socialNums = await getSocialNums(totalBill, billUuid);
+      // const identityNums = await getIdentityNums(billUuid);
+      // const becameLawRate = await getBecameLawRate(totalBill, billUuid);
+      // const recognitionNums = await getRecognitionNums(totalBill, billUuid);
+      // const stateRate = await getStateRate(billUuid);
+      const partyRate = await personPartyRate(billUuid);
 
       res.push({
         number: bill?.number,
         congress: bill?.congress,
-        sponsorTimes,
-        cosponsorTimes,
-        policyAreaTimes,
-        countryPoliticalOrganizationNums,
-        legislativeSubjectTimes,
-        socialNums,
-        identityNums,
+        // sponsorTimes,
+        // cosponsorTimes,
+        // policyAreaTimes,
+        // countryPoliticalOrganizationNums,
+        // legislativeSubjectTimes,
+        // socialNums,
+        // identityNums,
+        // becameLawRate,
+        // recognitionNums,
+        // stateRate,
+        partyRate,
       });
     }
   }
@@ -72,5 +84,5 @@ dbInit();
   );
 
   spinner.succeed('influence.json文件生成成功');
-  // console.table(res);
+  console.table(res, ['number', 'congress', 'partyRate']);
 })();

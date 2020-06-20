@@ -13,6 +13,10 @@ import moment from 'moment';
 
 const Op = Sequelize.Op;
 
+const _congress2startYear = (congress: number) => {
+  return (congress - 100 - 13) * 2 + 2013;
+};
+
 // 获取当前法案国会届数之前的法案集合
 const getBeforeTotalBill = async (billUuid?: string) => {
   if (billUuid) {
@@ -24,7 +28,7 @@ const getBeforeTotalBill = async (billUuid?: string) => {
     });
 
     return await Bill.findAll({
-      attributes: ['uuid', 'policyArea'],
+      attributes: ['uuid', 'policyArea', 'status', 'number', 'congress'],
       where: {
         congress: {
           [Op.lt]: bill?.congress,
@@ -576,7 +580,7 @@ const getIdentityNums = async (billUuid?: string) => {
       let curDateStartYear = 0;
       // 将congress转换为年份
       if (curBill?.congress) {
-        curDateStartYear = (curBill.congress - 100 - 13) * 2 + 2013;
+        curDateStartYear = _congress2startYear(curBill.congress);
       }
 
       const culTotalYears = (PIs: PersonIdentity[]) => {
@@ -584,8 +588,8 @@ const getIdentityNums = async (billUuid?: string) => {
         let maxYear = -Infinity;
 
         PIs.forEach(PI => {
-          let dateStart = PI?.dateStart?.getFullYear();
-          let dateEnd = PI?.dateEnd?.getFullYear();
+          let dateStart = moment(PI?.dateStart).year();
+          let dateEnd = moment(PI?.dateEnd).year();
 
           if (dateStart && curDateStartYear > dateStart) {
             if (dateStart && dateStart < minYear) {
@@ -612,8 +616,8 @@ const getIdentityNums = async (billUuid?: string) => {
         let houseLastYears = 0;
 
         PIs.forEach(PI => {
-          let dateStart = PI?.dateStart?.getFullYear();
-          let dateEnd = PI?.dateEnd?.getFullYear();
+          let dateStart = moment(PI?.dateStart).year();
+          let dateEnd = moment(PI?.dateEnd).year();
 
           if (dateStart && curDateStartYear > dateStart) {
             if (PI.identity === 'Senate') {
@@ -687,6 +691,398 @@ const getIdentityNums = async (billUuid?: string) => {
   }
 };
 
+// 8 与提出者相关的全部法案正式成为法律的比率
+const getBecameLawRate = async (totalBill: Bill[], billUuid?: string) => {
+  try {
+    if (billUuid) {
+      const curBill = await Bill.findOne({
+        where: {
+          uuid: billUuid,
+        },
+        include: [
+          {
+            model: Cosponsor,
+            attributes: ['uuid'],
+            include: [
+              {
+                model: Person,
+                attributes: ['uuid', 'name'],
+              },
+            ],
+          },
+          {
+            model: Person,
+            attributes: ['uuid', 'name'],
+          },
+        ],
+      });
+
+      const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
+      const COSPONSOR_W = curBill?.cosponsors?.length
+        ? (1 - SPONSOR_W) / curBill?.cosponsors?.length
+        : 0;
+
+      const culPersonRate = (personUuid: string) => {
+        let totalRelativeBill = 0;
+        let becameLawBill = 0;
+
+        totalBill.forEach(bill => {
+          if (bill?.sponsor?.uuid === personUuid) {
+            totalRelativeBill++;
+
+            if (bill.status === 'BecameLaw') {
+              becameLawBill++;
+            }
+          } else {
+            bill.cosponsors?.forEach(cos => {
+              if (cos.cosponsor?.uuid === personUuid) {
+                totalRelativeBill++;
+
+                if (bill.status === 'BecameLaw') {
+                  becameLawBill++;
+                }
+              }
+            });
+          }
+        });
+
+        return becameLawBill ? becameLawBill / totalRelativeBill : 0;
+      };
+
+      let sponsorRate = 0;
+      let cosponsorRate = 0;
+
+      if (curBill?.sponsor?.uuid) {
+        sponsorRate = culPersonRate(curBill?.sponsor?.uuid);
+      }
+
+      curBill?.cosponsors?.forEach(cos => {
+        if (cos.uuid) {
+          cosponsorRate += culPersonRate(cos.uuid);
+        }
+      });
+
+      return (
+        (sponsorRate * SPONSOR_W * 10 + cosponsorRate * COSPONSOR_W * 10) /
+        10
+      ).toFixed(2);
+    } else {
+      return '0.0';
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+// 9 与提出者相关的法案获得的认可度
+const getRecognitionNums = async (totalBill: Bill[], billUuid?: string) => {
+  const RECOGNITION_ARR = [
+    'PassedHouse',
+    'AgreedInHouse',
+    'PassedSenate',
+    'BecameLaw',
+    'PassedSenate',
+    'AgreedToInSenate',
+  ];
+
+  try {
+    if (billUuid) {
+      const curBill = await Bill.findOne({
+        where: {
+          uuid: billUuid,
+        },
+        include: [
+          {
+            model: Cosponsor,
+            attributes: ['uuid'],
+            include: [
+              {
+                model: Person,
+                attributes: ['uuid', 'name'],
+              },
+            ],
+          },
+          {
+            model: Person,
+            attributes: ['uuid', 'name'],
+          },
+        ],
+      });
+
+      const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
+      const COSPONSOR_W = curBill?.cosponsors?.length
+        ? (1 - SPONSOR_W) / curBill?.cosponsors?.length
+        : 0;
+
+      const culPersonTimes = (personUuid: string) => {
+        let totalRelativeBill = 0;
+
+        totalBill.forEach(bill => {
+          if (bill?.sponsor?.uuid === personUuid) {
+            if (
+              !bill.status ||
+              RECOGNITION_ARR.findIndex(item => item === bill.status) !== -1
+            ) {
+              totalRelativeBill++;
+            }
+          } else {
+            bill.cosponsors?.forEach(cos => {
+              if (cos.cosponsor?.uuid === personUuid) {
+                if (
+                  !bill.status ||
+                  RECOGNITION_ARR.findIndex(item => item === bill.status) !== -1
+                ) {
+                  totalRelativeBill++;
+                }
+              }
+            });
+          }
+        });
+
+        return totalRelativeBill;
+      };
+
+      let sponsorTimes = 0;
+      let cosponsorTimes = 0;
+
+      if (curBill?.sponsor?.uuid) {
+        sponsorTimes = culPersonTimes(curBill?.sponsor?.uuid);
+      }
+
+      curBill?.cosponsors?.forEach(cos => {
+        if (cos?.cosponsor?.uuid) {
+          cosponsorTimes += culPersonTimes(cos?.cosponsor.uuid);
+        }
+      });
+
+      return (
+        (sponsorTimes * SPONSOR_W * 10 + cosponsorTimes * COSPONSOR_W * 10) /
+        10
+      ).toFixed(2);
+    } else {
+      return '0.0';
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+// 12 议员覆盖的地理区域
+const getStateRate = async (billUuid?: string) => {
+  try {
+    if (billUuid) {
+      const curBill = await Bill.findOne({
+        where: {
+          uuid: billUuid,
+        },
+        include: [
+          {
+            model: Cosponsor,
+            attributes: ['uuid'],
+            include: [
+              {
+                model: Person,
+                attributes: ['uuid', 'name'],
+                include: [
+                  {
+                    model: PersonIdentity,
+                    attributes: ['state'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Person,
+            attributes: ['uuid', 'name'],
+            include: [
+              {
+                model: PersonIdentity,
+                attributes: ['state'],
+              },
+            ],
+          },
+        ],
+      });
+
+      let stateSet = new Set<string>();
+      curBill?.sponsor?.personIdentities?.forEach(PI => {
+        if (PI.state) {
+          stateSet.add(PI.state);
+        }
+      });
+      curBill?.cosponsors?.forEach(cos => {
+        cos.cosponsor?.personIdentities?.forEach(PI => {
+          if (PI.state) {
+            stateSet.add(PI.state);
+          }
+        });
+      });
+
+      return (stateSet.size / 50).toFixed(2);
+    } else {
+      return '0.00';
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+// 13 议员覆盖的党派比例
+const personPartyRate = async (billUuid?: string) => {
+  const typeArr = [
+    'Democratic',
+    'Republican',
+    'Independent',
+    'Independent Democrat',
+  ];
+  try {
+    if (billUuid) {
+      const curBill = await Bill.findOne({
+        where: {
+          uuid: billUuid,
+        },
+        attributes: ['uuid', 'congress'],
+        include: [
+          {
+            model: Cosponsor,
+            attributes: ['uuid'],
+            include: [
+              {
+                model: Person,
+                attributes: ['uuid', 'name'],
+                include: [
+                  {
+                    model: PersonIdentity,
+                    attributes: ['party'],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: Person,
+            attributes: ['uuid', 'name'],
+            include: [
+              {
+                model: PersonIdentity,
+                attributes: ['party'],
+              },
+            ],
+          },
+        ],
+      });
+
+      let startYear = 0;
+      if (curBill?.congress) {
+        startYear = _congress2startYear(curBill?.congress);
+      }
+
+      const totalPerson = await Person.findAll({
+        include: [
+          {
+            model: PersonIdentity,
+            attributes: ['party', 'dateStart', 'dateEnd'],
+            where: {
+              [Op.and]: {
+                dateStart: {
+                  [Op.lt]: moment(startYear, 'YYYY').unix(),
+                },
+                dateEnd: {
+                  [Op.or]: {
+                    [Op.gt]: moment(startYear, 'YYYY').unix(),
+                    [Op.is]: null,
+                  },
+                },
+              },
+            },
+          },
+        ],
+      });
+
+      const personPartyType = (person: Person) => {
+        let partyType = undefined;
+
+        if (person?.personIdentities) {
+          for (let PI of person?.personIdentities) {
+            if (PI?.party && typeArr.includes(PI?.party)) {
+              partyType = PI.party;
+            }
+          }
+        }
+
+        return partyType;
+      };
+
+      let democraticNums = 0;
+      let republicanNums = 0;
+      let independentNums = 0;
+      let independentDemocratNums = 0;
+
+      totalPerson.forEach(person => {
+        let partyType = personPartyType(person);
+
+        switch (partyType) {
+          case 'Democratic':
+            democraticNums++;
+            break;
+          case 'Republican':
+            republicanNums++;
+            break;
+
+          case 'Independent':
+            independentNums++;
+            break;
+          case 'Independent Democrat':
+            independentDemocratNums++;
+            break;
+        }
+      });
+
+      const personPartyScore = (person: Person) => {
+        let partyType = personPartyType(person);
+        let total = totalPerson.length;
+
+        switch (partyType) {
+          case 'Democratic':
+            return democraticNums / total;
+
+          case 'Republican':
+            return republicanNums / total;
+
+          case 'Independent':
+            return independentNums / total;
+
+          case 'Independent Democrat':
+            return independentDemocratNums / total;
+          default:
+            return 0;
+        }
+      };
+
+      let totalScore = 0;
+      if (curBill?.sponsor) {
+        totalScore += personPartyScore(curBill?.sponsor);
+      }
+      curBill?.cosponsors?.forEach(cos => {
+        if (cos.cosponsor) {
+          totalScore += personPartyScore(cos.cosponsor);
+        }
+      });
+
+      return totalScore.toFixed(2);
+    } else {
+      return '0.00';
+    }
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
 export {
   getBeforeTotalBill,
   getSponsorTimes,
@@ -696,4 +1092,8 @@ export {
   getLegislativeSubjectTimes,
   getSocialNums,
   getIdentityNums,
+  getBecameLawRate,
+  getRecognitionNums,
+  getStateRate,
+  personPartyRate,
 };

@@ -44,26 +44,12 @@ export default class PersonIdentity extends Model<PersonIdentity> {
   congressEnd: number | undefined;
 
   @Comment('开始日期')
-  @Column(DataType.DATE)
-  get dateStart(): Date | undefined {
-    return this.getDataValue('dateStart')
-      ? moment(this.getDataValue('dateStart')).toDate()
-      : undefined;
-  }
-  set dateStart(value: Date | undefined) {
-    this.setDataValue('dateStart', value);
-  }
+  @Column(DataType.INTEGER)
+  dateStart: number | undefined;
 
   @Comment('结束日期')
-  @Column(DataType.DATE)
-  get dateEnd(): Date | undefined {
-    return this.getDataValue('dateEnd')
-      ? moment(this.getDataValue('dateEnd')).toDate()
-      : undefined;
-  }
-  set dateEnd(value: Date | undefined) {
-    this.setDataValue('dateEnd', value);
-  }
+  @Column(DataType.INTEGER)
+  dateEnd: number | undefined;
 
   @Comment('身份')
   @Column(DataType.TEXT)
