@@ -1156,10 +1156,6 @@ const getCommitteesTimes = async (totalBill: Bill[], billUuid: string) => {
         )
           totalCom++;
       });
-
-      if (curBill.uuid === '36cbb0d2-b120-11ea-9d68-f9a3a17eb635') {
-        console.log(totalCom);
-      }
     });
 
     return (totalCom * committee_w).toFixed(2);

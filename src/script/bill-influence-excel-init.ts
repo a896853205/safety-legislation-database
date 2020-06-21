@@ -21,6 +21,27 @@ import {
 } from './util/influence';
 import { initNeo4j } from '../neo4j';
 
+const _needTotalBillInfluence = async (billUuid: string) => {
+  const totalBill = await getBeforeTotalBill(billUuid);
+
+  let func = [
+    getSponsorTimes,
+    getCosponsorTimes,
+    getPolicyAreaTimes,
+    getLegislativeSubjectTimes,
+    getSocialNums,
+    getBecameLawRate,
+    getRecognitionNums,
+    getCommitteesTimes,
+  ];
+
+  if (totalBill && totalBill.length) {
+    return await Promise.all(func.map(func => func(totalBill, billUuid)));
+  } else {
+    return new Array(func.length).fill('0.00');
+  }
+};
+
 const spinner = ora('influence start').start();
 
 dbInit();
@@ -39,25 +60,6 @@ dbInit();
     const bill = allBill.pop();
     const billUuid = bill?.uuid;
 
-    const needTotalBillInfluence = async (billUuid: string) => {
-      const totalBill = await getBeforeTotalBill(billUuid);
-
-      if (totalBill && totalBill.length) {
-        return await Promise.all([
-          getSponsorTimes(totalBill, billUuid),
-          getCosponsorTimes(totalBill, billUuid),
-          getPolicyAreaTimes(totalBill, billUuid),
-          getLegislativeSubjectTimes(totalBill, billUuid),
-          getSocialNums(totalBill, billUuid),
-          getBecameLawRate(totalBill, billUuid),
-          getRecognitionNums(totalBill, billUuid),
-          getCommitteesTimes(totalBill, billUuid),
-        ]);
-      } else {
-        return new Array(7).fill('0.00');
-      }
-    };
-
     if (billUuid) {
       const [
         [
@@ -75,7 +77,7 @@ dbInit();
         stateRate,
         partyRate,
       ] = await Promise.all([
-        needTotalBillInfluence(billUuid),
+        _needTotalBillInfluence(billUuid),
         getCountryPoliticalOrganizationNums(billUuid),
         getIdentityNums(billUuid),
         getStateRate(billUuid),
