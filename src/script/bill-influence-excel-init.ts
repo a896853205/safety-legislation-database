@@ -16,7 +16,8 @@ import {
   getBecameLawRate,
   getRecognitionNums,
   getStateRate,
-  personPartyRate,
+  getPersonPartyRate,
+  getCommitteesTimes,
 } from './util/influence';
 import { initNeo4j } from '../neo4j';
 
@@ -38,40 +39,64 @@ dbInit();
     const bill = allBill.pop();
     const billUuid = bill?.uuid;
 
-    const totalBill = await getBeforeTotalBill(billUuid);
+    const needTotalBillInfluence = async (billUuid: string) => {
+      const totalBill = await getBeforeTotalBill(billUuid);
 
-    if (totalBill && totalBill.length) {
-      // const sponsorTimes = await getSponsorTimes(totalBill, billUuid);
-      // const cosponsorTimes = await getCosponsorTimes(totalBill, billUuid);
-      // const policyAreaTimes = await getPolicyAreaTimes(totalBill, billUuid);
-      // const countryPoliticalOrganizationNums = await getCountryPoliticalOrganizationNums(
-      //   billUuid
-      // );
-      // const legislativeSubjectTimes = await getLegislativeSubjectTimes(
-      //   totalBill,
-      //   billUuid
-      // );
-      // const socialNums = await getSocialNums(totalBill, billUuid);
-      // const identityNums = await getIdentityNums(billUuid);
-      // const becameLawRate = await getBecameLawRate(totalBill, billUuid);
-      // const recognitionNums = await getRecognitionNums(totalBill, billUuid);
-      // const stateRate = await getStateRate(billUuid);
-      const partyRate = await personPartyRate(billUuid);
+      if (totalBill && totalBill.length) {
+        return await Promise.all([
+          getSponsorTimes(totalBill, billUuid),
+          getCosponsorTimes(totalBill, billUuid),
+          getPolicyAreaTimes(totalBill, billUuid),
+          getLegislativeSubjectTimes(totalBill, billUuid),
+          getSocialNums(totalBill, billUuid),
+          getBecameLawRate(totalBill, billUuid),
+          getRecognitionNums(totalBill, billUuid),
+          getCommitteesTimes(totalBill, billUuid),
+        ]);
+      } else {
+        return new Array(7).fill('0.00');
+      }
+    };
+
+    if (billUuid) {
+      const [
+        [
+          sponsorTimes,
+          cosponsorTimes,
+          policyAreaTimes,
+          legislativeSubjectTimes,
+          socialNums,
+          becameLawRate,
+          recognitionNums,
+          committeesTimes,
+        ],
+        countryPoliticalOrganizationNums,
+        identityNums,
+        stateRate,
+        partyRate,
+      ] = await Promise.all([
+        needTotalBillInfluence(billUuid),
+        getCountryPoliticalOrganizationNums(billUuid),
+        getIdentityNums(billUuid),
+        getStateRate(billUuid),
+        getPersonPartyRate(billUuid),
+      ]);
 
       res.push({
         number: bill?.number,
         congress: bill?.congress,
-        // sponsorTimes,
-        // cosponsorTimes,
-        // policyAreaTimes,
-        // countryPoliticalOrganizationNums,
-        // legislativeSubjectTimes,
-        // socialNums,
-        // identityNums,
-        // becameLawRate,
-        // recognitionNums,
-        // stateRate,
+        sponsorTimes,
+        cosponsorTimes,
+        policyAreaTimes,
+        countryPoliticalOrganizationNums,
+        legislativeSubjectTimes,
+        socialNums,
+        identityNums,
+        becameLawRate,
+        recognitionNums,
+        stateRate,
         partyRate,
+        committeesTimes,
       });
     }
   }

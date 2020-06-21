@@ -10,6 +10,7 @@ import Person from '../../models/person';
 import PersonIdentity from '../../models/person-identity';
 import PoliticalOrganization from '../../models/political-organization';
 import moment from 'moment';
+import Committee from '../../models/committee';
 
 const Op = Sequelize.Op;
 
@@ -36,6 +37,10 @@ const getBeforeTotalBill = async (billUuid?: string) => {
       },
       include: [
         {
+          model: Committee,
+          attributes: ['organizationUuid'],
+        },
+        {
           model: Cosponsor,
           attributes: ['uuid'],
           include: [
@@ -58,7 +63,11 @@ const getBeforeTotalBill = async (billUuid?: string) => {
   }
 };
 
-// 人作为法案的主要提出者的次数
+/**
+ * [1] 提出者作为法案的主要提出者的次数
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getSponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
   try {
     if (billUuid) {
@@ -117,7 +126,11 @@ const getSponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
-// 提出者作为法案的联合提出者的次数
+/**
+ * [2] 提出者作为法案的联合提出者的次数
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getCosponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
   try {
     if (billUuid) {
@@ -179,7 +192,11 @@ const getCosponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
-// 与提出者相关的法案覆盖的行业范围
+/**
+ * [3] 与提出者相关的法案覆盖的行业范围
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getPolicyAreaTimes = async (totalBill: Bill[], billUuid?: string) => {
   try {
     if (billUuid) {
@@ -283,7 +300,10 @@ const getPolicyAreaTimes = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
-// 与提出者相关的法案覆盖的地理范围
+/**
+ * [4] 与提出者相关的法案覆盖的地理范围
+ * @param billUuid 计算法案的uuid
+ */
 const getCountryPoliticalOrganizationNums = async (billUuid?: string) => {
   try {
     if (billUuid) {
@@ -306,10 +326,10 @@ const getCountryPoliticalOrganizationNums = async (billUuid?: string) => {
       });
 
       return curBill?.country?.politicalOrganizations?.length
-        ? curBill?.country?.politicalOrganizations?.length
-        : 0;
+        ? curBill?.country?.politicalOrganizations?.length.toFixed(2)
+        : '0.00';
     } else {
-      return 0;
+      return '0.00';
     }
   } catch (error) {
     console.error(error);
@@ -317,7 +337,11 @@ const getCountryPoliticalOrganizationNums = async (billUuid?: string) => {
   }
 };
 
-// 与提出者相关的法案覆盖的立法范围
+/**
+ * [5] 与提出者相关的法案覆盖的立法范围
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getLegislativeSubjectTimes = async (
   totalBill: Bill[],
   billUuid?: string
@@ -428,7 +452,11 @@ const getLegislativeSubjectTimes = async (
   }
 };
 
-// 提出者的社交影响力
+/**
+ * [6] 提出者的社交影响力
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getSocialNums = async (totalBill: Bill[], billUuid?: string) => {
   try {
     if (billUuid) {
@@ -530,7 +558,10 @@ const getSocialNums = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
-// 提出者的身份影响力
+/**
+ * [7] 提出者的身份影响力
+ * @param billUuid 计算法案的uuid
+ */
 const getIdentityNums = async (billUuid?: string) => {
   const HOUSE_W = 0.3;
   const SENATE_W = 0.6;
@@ -660,10 +691,10 @@ const getIdentityNums = async (billUuid?: string) => {
         senteLastYears = res.senteLastYears;
         houseLastYears = res.houseLastYears;
 
-        return (
-          (houseLastYears * HOUSE_W + senteLastYears * SENATE_W) /
-          (maxYear - minYear)
-        );
+        return maxYear - minYear
+          ? (houseLastYears * HOUSE_W + senteLastYears * SENATE_W) /
+              (maxYear - minYear)
+          : 0;
       };
 
       let sponsorScore = 0;
@@ -683,7 +714,7 @@ const getIdentityNums = async (billUuid?: string) => {
         10
       ).toFixed(2);
     } else {
-      return '0.0';
+      return '0.00';
     }
   } catch (error) {
     console.error(error);
@@ -691,7 +722,11 @@ const getIdentityNums = async (billUuid?: string) => {
   }
 };
 
-// 8 与提出者相关的全部法案正式成为法律的比率
+/**
+ * [8] 与提出者相关的全部法案正式成为法律的比率
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getBecameLawRate = async (totalBill: Bill[], billUuid?: string) => {
   try {
     if (billUuid) {
@@ -775,7 +810,11 @@ const getBecameLawRate = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
-// 9 与提出者相关的法案获得的认可度
+/**
+ * [9] 与提出者相关的法案获得的认可度
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
 const getRecognitionNums = async (totalBill: Bill[], billUuid?: string) => {
   const RECOGNITION_ARR = [
     'PassedHouse',
@@ -869,7 +908,10 @@ const getRecognitionNums = async (totalBill: Bill[], billUuid?: string) => {
   }
 };
 
-// 12 议员覆盖的地理区域
+/**
+ * [12] 议员覆盖的地理区域
+ * @param billUuid 计算法案的uuid
+ */
 const getStateRate = async (billUuid?: string) => {
   try {
     if (billUuid) {
@@ -931,8 +973,11 @@ const getStateRate = async (billUuid?: string) => {
   }
 };
 
-// 13 议员覆盖的党派比例
-const personPartyRate = async (billUuid?: string) => {
+/**
+ * [13] 议员覆盖的党派比例
+ * @param billUuid 计算法案的uuid
+ */
+const getPersonPartyRate = async (billUuid: string) => {
   const typeArr = [
     'Democratic',
     'Republican',
@@ -940,146 +985,186 @@ const personPartyRate = async (billUuid?: string) => {
     'Independent Democrat',
   ];
   try {
-    if (billUuid) {
-      const curBill = await Bill.findOne({
-        where: {
-          uuid: billUuid,
-        },
-        attributes: ['uuid', 'congress'],
-        include: [
-          {
-            model: Cosponsor,
-            attributes: ['uuid'],
-            include: [
-              {
-                model: Person,
-                attributes: ['uuid', 'name'],
-                include: [
-                  {
-                    model: PersonIdentity,
-                    attributes: ['party'],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            model: Person,
-            attributes: ['uuid', 'name'],
-            include: [
-              {
-                model: PersonIdentity,
-                attributes: ['party'],
-              },
-            ],
-          },
-        ],
-      });
-
-      let startYear = 0;
-      if (curBill?.congress) {
-        startYear = _congress2startYear(curBill?.congress);
-      }
-
-      const totalPerson = await Person.findAll({
-        include: [
-          {
-            model: PersonIdentity,
-            attributes: ['party', 'dateStart', 'dateEnd'],
-            where: {
-              [Op.and]: {
-                dateStart: {
-                  [Op.lt]: moment(startYear, 'YYYY').unix(),
+    const curBill = await Bill.findOne({
+      where: {
+        uuid: billUuid,
+      },
+      attributes: ['uuid', 'congress'],
+      include: [
+        {
+          model: Cosponsor,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Person,
+              attributes: ['uuid', 'name'],
+              include: [
+                {
+                  model: PersonIdentity,
+                  attributes: ['party'],
                 },
-                dateEnd: {
-                  [Op.or]: {
-                    [Op.gt]: moment(startYear, 'YYYY').unix(),
-                    [Op.is]: null,
-                  },
+              ],
+            },
+          ],
+        },
+        {
+          model: Person,
+          attributes: ['uuid', 'name'],
+          include: [
+            {
+              model: PersonIdentity,
+              attributes: ['party'],
+            },
+          ],
+        },
+      ],
+    });
+
+    let startYear = 0;
+    if (curBill?.congress) {
+      startYear = _congress2startYear(curBill?.congress);
+    }
+
+    const totalPerson = await Person.findAll({
+      include: [
+        {
+          model: PersonIdentity,
+          attributes: ['party', 'dateStart', 'dateEnd'],
+          where: {
+            [Op.and]: {
+              dateStart: {
+                [Op.lt]: moment(startYear, 'YYYY').unix(),
+              },
+              dateEnd: {
+                [Op.or]: {
+                  [Op.gt]: moment(startYear, 'YYYY').unix(),
+                  [Op.is]: null,
                 },
               },
             },
           },
-        ],
-      });
+        },
+      ],
+    });
 
-      const personPartyType = (person: Person) => {
-        let partyType = undefined;
+    const personPartyType = (person: Person) => {
+      let partyType = undefined;
 
-        if (person?.personIdentities) {
-          for (let PI of person?.personIdentities) {
-            if (PI?.party && typeArr.includes(PI?.party)) {
-              partyType = PI.party;
-            }
+      if (person?.personIdentities) {
+        for (let PI of person?.personIdentities) {
+          if (PI?.party && typeArr.includes(PI?.party)) {
+            partyType = PI.party;
           }
         }
-
-        return partyType;
-      };
-
-      let democraticNums = 0;
-      let republicanNums = 0;
-      let independentNums = 0;
-      let independentDemocratNums = 0;
-
-      totalPerson.forEach(person => {
-        let partyType = personPartyType(person);
-
-        switch (partyType) {
-          case 'Democratic':
-            democraticNums++;
-            break;
-          case 'Republican':
-            republicanNums++;
-            break;
-
-          case 'Independent':
-            independentNums++;
-            break;
-          case 'Independent Democrat':
-            independentDemocratNums++;
-            break;
-        }
-      });
-
-      const personPartyScore = (person: Person) => {
-        let partyType = personPartyType(person);
-        let total = totalPerson.length;
-
-        switch (partyType) {
-          case 'Democratic':
-            return democraticNums / total;
-
-          case 'Republican':
-            return republicanNums / total;
-
-          case 'Independent':
-            return independentNums / total;
-
-          case 'Independent Democrat':
-            return independentDemocratNums / total;
-          default:
-            return 0;
-        }
-      };
-
-      let totalScore = 0;
-      if (curBill?.sponsor) {
-        totalScore += personPartyScore(curBill?.sponsor);
       }
-      curBill?.cosponsors?.forEach(cos => {
-        if (cos.cosponsor) {
-          totalScore += personPartyScore(cos.cosponsor);
-        }
-      });
 
-      return totalScore.toFixed(2);
-    } else {
-      return '0.00';
+      return partyType;
+    };
+
+    let democraticNums = 0;
+    let republicanNums = 0;
+    let independentNums = 0;
+    let independentDemocratNums = 0;
+
+    totalPerson.forEach(person => {
+      let partyType = personPartyType(person);
+
+      switch (partyType) {
+        case 'Democratic':
+          democraticNums++;
+          break;
+        case 'Republican':
+          republicanNums++;
+          break;
+
+        case 'Independent':
+          independentNums++;
+          break;
+        case 'Independent Democrat':
+          independentDemocratNums++;
+          break;
+      }
+    });
+
+    const personPartyScore = (person: Person) => {
+      let partyType = personPartyType(person);
+      let total = totalPerson.length;
+
+      switch (partyType) {
+        case 'Democratic':
+          return democraticNums / total;
+
+        case 'Republican':
+          return republicanNums / total;
+
+        case 'Independent':
+          return independentNums / total;
+
+        case 'Independent Democrat':
+          return independentDemocratNums / total;
+        default:
+          return 0;
+      }
+    };
+
+    let totalScore = 0;
+    if (curBill?.sponsor) {
+      totalScore += personPartyScore(curBill?.sponsor);
     }
+    curBill?.cosponsors?.forEach(cos => {
+      if (cos.cosponsor) {
+        totalScore += personPartyScore(cos.cosponsor);
+      }
+    });
+
+    return totalScore.toFixed(2);
   } catch (err) {
     console.error(err);
     throw err;
+  }
+};
+
+/**
+ * [15] 管理者作为法案的管理者的次数
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
+const getCommitteesTimes = async (totalBill: Bill[], billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        attributes: ['organizationUuid'],
+      },
+    ],
+  });
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+    let totalCom = 0;
+
+    curBill.committees.forEach(committee => {
+      totalBill.forEach(bill => {
+        if (
+          bill.committees?.findIndex(
+            com => com.organizationUuid === committee.organizationUuid
+          ) !== -1
+        )
+          totalCom++;
+      });
+
+      if (curBill.uuid === '36cbb0d2-b120-11ea-9d68-f9a3a17eb635') {
+        console.log(totalCom);
+      }
+    });
+
+    return (totalCom * committee_w).toFixed(2);
+  } else {
+    return '0.00';
   }
 };
 
@@ -1095,5 +1180,6 @@ export {
   getBecameLawRate,
   getRecognitionNums,
   getStateRate,
-  personPartyRate,
+  getPersonPartyRate,
+  getCommitteesTimes,
 };
