@@ -58,6 +58,16 @@ const getBeforeTotalBill = async (billUuid?: string) => {
           model: LegislativeSubject,
           attributes: ['subject'],
         },
+        {
+          model: Country,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: PoliticalOrganization,
+              attributes: ['uuid'],
+            },
+          ],
+        },
       ],
     });
   }
@@ -1164,6 +1174,165 @@ const getCommitteesTimes = async (totalBill: Bill[], billUuid: string) => {
   }
 };
 
+/**
+ * [17] 与管理者相关的法案覆盖的行业范围
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
+const getCommitteesPATimes = async (totalBill: Bill[], billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        attributes: ['organizationUuid'],
+      },
+    ],
+  });
+
+  let PAScore = 0;
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+
+    curBill.committees.forEach(committee => {
+      let PASet = new Set<string>();
+
+      totalBill.forEach(bill => {
+        if (
+          bill.committees?.findIndex(
+            com => com.organizationUuid === committee.organizationUuid
+          ) !== -1
+        )
+          if (bill.policyArea) {
+            PASet.add(bill.policyArea);
+          }
+      });
+
+      PAScore += PASet.size;
+    });
+
+    return (PAScore * committee_w).toFixed(2);
+  } else {
+    return '0.00';
+  }
+};
+
+/**
+ * [18] 与管理者相关的法案覆盖的地理范围
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
+const getCommitteesPOTimes = async (totalBill: Bill[], billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        attributes: ['organizationUuid'],
+      },
+      {
+        model: Country,
+        attributes: ['uuid'],
+        include: [
+          {
+            model: PoliticalOrganization,
+            attributes: ['uuid'],
+          },
+        ],
+      },
+    ],
+  });
+
+  let POScore = 0;
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+
+    curBill.committees.forEach(committee => {
+      let POSet = new Set<string>();
+
+      totalBill.forEach(bill => {
+        if (
+          bill.committees?.findIndex(
+            com => com.organizationUuid === committee.organizationUuid
+          ) !== -1
+        )
+          bill.country?.politicalOrganizations?.forEach(PO => {
+            if (PO && PO.uuid) {
+              POSet.add(PO.uuid);
+            }
+          });
+      });
+
+      POScore += POSet.size;
+    });
+
+    return (POScore * committee_w).toFixed(2);
+  } else {
+    return '0.00';
+  }
+};
+
+/**
+ * [19] 与管理者相关的法案覆盖的立法范围
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
+const getCommitteesLSTimes = async (totalBill: Bill[], billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        attributes: ['organizationUuid'],
+      },
+      {
+        model: LegislativeSubject,
+        attributes: ['subject'],
+      },
+    ],
+  });
+
+  let LSScore = 0;
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+
+    curBill.committees.forEach(committee => {
+      let LSSet = new Set<string>();
+
+      totalBill.forEach(bill => {
+        if (
+          bill.committees?.findIndex(
+            com => com.organizationUuid === committee.organizationUuid
+          ) !== -1
+        )
+          bill?.legislativeSubjects?.forEach(LS => {
+            if (LS && LS.subject) {
+              LSSet.add(LS.subject);
+            }
+          });
+      });
+
+      LSScore += LSSet.size;
+    });
+
+    return (LSScore * committee_w).toFixed(2);
+  } else {
+    return '0.00';
+  }
+};
+
 export {
   getBeforeTotalBill,
   getSponsorTimes,
@@ -1178,4 +1347,7 @@ export {
   getStateRate,
   getPersonPartyRate,
   getCommitteesTimes,
+  getCommitteesPATimes,
+  getCommitteesPOTimes,
+  getCommitteesLSTimes,
 };

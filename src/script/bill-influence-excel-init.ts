@@ -18,8 +18,11 @@ import {
   getStateRate,
   getPersonPartyRate,
   getCommitteesTimes,
+  getCommitteesPATimes,
+  getCommitteesPOTimes,
+  getCommitteesLSTimes,
 } from './util/influence';
-import { initNeo4j } from '../neo4j';
+import { initNeo4j, driver } from '../neo4j';
 
 const _needTotalBillInfluence = async (billUuid: string) => {
   const totalBill = await getBeforeTotalBill(billUuid);
@@ -33,6 +36,9 @@ const _needTotalBillInfluence = async (billUuid: string) => {
     getBecameLawRate,
     getRecognitionNums,
     getCommitteesTimes,
+    getCommitteesPATimes,
+    getCommitteesPOTimes,
+    getCommitteesLSTimes,
   ];
 
   if (totalBill && totalBill.length) {
@@ -48,7 +54,7 @@ dbInit();
 (async () => {
   await initNeo4j();
   const allBill = await Bill.findAll({
-    attributes: ['uuid', 'number', 'congress'],
+    attributes: ['uuid', 'number', 'congress', 'status'],
   });
 
   const totalLen = allBill.length;
@@ -71,6 +77,9 @@ dbInit();
           becameLawRate,
           recognitionNums,
           committeesTimes,
+          committeesPATimes,
+          committeesPOTimes,
+          committeesLSTimes,
         ],
         countryPoliticalOrganizationNums,
         identityNums,
@@ -87,18 +96,22 @@ dbInit();
       res.push({
         number: bill?.number,
         congress: bill?.congress,
-        sponsorTimes,
-        cosponsorTimes,
-        policyAreaTimes,
-        countryPoliticalOrganizationNums,
-        legislativeSubjectTimes,
-        socialNums,
-        identityNums,
-        becameLawRate,
-        recognitionNums,
-        stateRate,
-        partyRate,
-        committeesTimes,
+        status: bill?.status,
+        '1': sponsorTimes,
+        '2': cosponsorTimes,
+        '3': policyAreaTimes,
+        '4': countryPoliticalOrganizationNums,
+        '5': legislativeSubjectTimes,
+        '6': socialNums,
+        '7': identityNums,
+        '8': becameLawRate,
+        '9': recognitionNums,
+        '12': stateRate,
+        '13': partyRate,
+        '15': committeesTimes,
+        '17': committeesPATimes,
+        '18': committeesPOTimes,
+        '19': committeesLSTimes,
       });
     }
   }
@@ -111,5 +124,6 @@ dbInit();
   );
 
   spinner.succeed('influence.json文件生成成功');
-  console.table(res, ['number', 'congress', 'partyRate']);
+  driver.close();
+  // console.table(res, ['number', 'congress', 'partyRate']);
 })();

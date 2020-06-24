@@ -2,7 +2,7 @@ import neo4j from 'neo4j-driver';
 
 import { JUMP_PROBABILITY } from '../constants/pagerank-constants';
 
-const driver = neo4j.driver(
+export const driver = neo4j.driver(
   'bolt://localhost:7687',
   neo4j.auth.basic('neo4j', 'a1208979946')
 );
