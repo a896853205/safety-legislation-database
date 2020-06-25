@@ -21,6 +21,7 @@ import {
   getCommitteesPATimes,
   getCommitteesPOTimes,
   getCommitteesLSTimes,
+  getCommitteesBLRate,
 } from './util/influence';
 import { initNeo4j, driver } from '../neo4j';
 
@@ -39,6 +40,7 @@ const _needTotalBillInfluence = async (billUuid: string) => {
     getCommitteesPATimes,
     getCommitteesPOTimes,
     getCommitteesLSTimes,
+    getCommitteesBLRate,
   ];
 
   if (totalBill && totalBill.length) {
@@ -80,6 +82,7 @@ dbInit();
           committeesPATimes,
           committeesPOTimes,
           committeesLSTimes,
+          committeesBLRate,
         ],
         countryPoliticalOrganizationNums,
         identityNums,
@@ -112,6 +115,7 @@ dbInit();
         '17': committeesPATimes,
         '18': committeesPOTimes,
         '19': committeesLSTimes,
+        '21': committeesBLRate,
       });
     }
   }

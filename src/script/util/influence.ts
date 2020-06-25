@@ -1333,6 +1333,59 @@ const getCommitteesLSTimes = async (totalBill: Bill[], billUuid: string) => {
   }
 };
 
+/**
+ * [21] 与管理者相关的全部法案正式成为法律的比率
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
+const getCommitteesBLRate = async (totalBill: Bill[], billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        attributes: ['organizationUuid'],
+      },
+      {
+        model: LegislativeSubject,
+        attributes: ['subject'],
+      },
+    ],
+  });
+
+  let LSScore = 0;
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+
+    let committeeScore = 0;
+
+    curBill.committees.forEach(curCommittee => {
+      let committeeTimes = 0;
+      let becameLawTimes = 0;
+      totalBill.forEach(bill => {
+        bill.committees?.forEach(committee => {
+          if (committee.organizationUuid === curCommittee.organizationUuid) {
+            committeeTimes++;
+            if (bill.status === 'BecameLaw') {
+              becameLawTimes++;
+            }
+          }
+        });
+      });
+
+      committeeScore += becameLawTimes / committeeTimes;
+    });
+
+    return (committeeScore * committee_w).toFixed(2);
+  } else {
+    return '0.00';
+  }
+};
+
 export {
   getBeforeTotalBill,
   getSponsorTimes,
@@ -1350,4 +1403,5 @@ export {
   getCommitteesPATimes,
   getCommitteesPOTimes,
   getCommitteesLSTimes,
+  getCommitteesBLRate,
 };
