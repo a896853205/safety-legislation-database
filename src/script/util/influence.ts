@@ -826,14 +826,7 @@ const getBecameLawRate = async (totalBill: Bill[], billUuid?: string) => {
  * @param billUuid 计算法案的uuid
  */
 const getRecognitionNums = async (totalBill: Bill[], billUuid?: string) => {
-  const RECOGNITION_ARR = [
-    'PassedHouse',
-    'AgreedInHouse',
-    'PassedSenate',
-    'BecameLaw',
-    'PassedSenate',
-    'AgreedToInSenate',
-  ];
+  const RECOGNITION_ARR = ['AgreedInHouse', 'BecameLaw', 'AgreedToInSenate'];
 
   try {
     if (billUuid) {
@@ -1316,12 +1309,13 @@ const getCommitteesLSTimes = async (totalBill: Bill[], billUuid: string) => {
           bill.committees?.findIndex(
             com => com.organizationUuid === committee.organizationUuid
           ) !== -1
-        )
+        ) {
           bill?.legislativeSubjects?.forEach(LS => {
             if (LS && LS.subject) {
               LSSet.add(LS.subject);
             }
           });
+        }
       });
 
       LSScore += LSSet.size;
@@ -1349,14 +1343,8 @@ const getCommitteesBLRate = async (totalBill: Bill[], billUuid: string) => {
         model: Committee,
         attributes: ['organizationUuid'],
       },
-      {
-        model: LegislativeSubject,
-        attributes: ['subject'],
-      },
     ],
   });
-
-  let LSScore = 0;
 
   if (curBill?.committees?.length) {
     const committee_w = 1 / curBill?.committees?.length;
@@ -1377,13 +1365,84 @@ const getCommitteesBLRate = async (totalBill: Bill[], billUuid: string) => {
         });
       });
 
-      committeeScore += becameLawTimes / committeeTimes;
+      if (committeeTimes) {
+        committeeScore += becameLawTimes / committeeTimes;
+      }
     });
 
     return (committeeScore * committee_w).toFixed(2);
   } else {
     return '0.00';
   }
+};
+
+/**
+ * [22] 与管理者相关的法案获得的认可度
+ * @param totalBill 法案集合
+ * @param billUuid 计算法案的uuid
+ */
+const getCommitteesRecognitionTimes = async (
+  totalBill: Bill[],
+  billUuid: string
+) => {
+  const RECOGNITION_ARR = ['AgreedInHouse', 'BecameLaw', 'AgreedToInSenate'];
+
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        attributes: ['organizationUuid'],
+      },
+    ],
+  });
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+
+    let committeeScore = 0;
+
+    curBill.committees.forEach(curCommittee => {
+      totalBill.forEach(bill => {
+        bill.committees?.forEach(committee => {
+          if (committee.organizationUuid === curCommittee.organizationUuid) {
+            if (
+              !bill.status ||
+              RECOGNITION_ARR.findIndex(rec => bill.status === rec) !== -1
+            ) {
+              committeeScore++;
+            }
+          }
+        });
+      });
+    });
+
+    return (committeeScore * committee_w).toFixed(2);
+  } else {
+    return '0.00';
+  }
+};
+
+const getLSRate = async (billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: LegislativeSubject,
+        attributes: ['subject'],
+      },
+    ],
+  });
+
+  return curBill?.legislativeSubjects?.length
+    ? (curBill?.legislativeSubjects.length / 864).toFixed(2)
+    : '0.00';
 };
 
 export {
@@ -1404,4 +1463,6 @@ export {
   getCommitteesPOTimes,
   getCommitteesLSTimes,
   getCommitteesBLRate,
+  getCommitteesRecognitionTimes,
+  getLSRate,
 };
