@@ -13,10 +13,18 @@ export const initNeo4j = async () => {
   try {
     await session.run(
       `
-      load csv with headers from "http://localhost:4000/csv/person.csv"
-      as line
-      with line merge (:personAll{ name: line.personName })
+        load csv with headers from "http://localhost:4000/csv/person.csv"
+        as line
+        with line merge (:personAll{ name: line.personName })
+        `
+    );
+
+    await session.run(
       `
+        load csv with headers from "http://localhost:4000/csv/committee.csv"
+        as line
+        with line merge (:allCommittee{ name: line.committee })
+        `
     );
   } catch (err) {
     console.log(err);
@@ -70,18 +78,6 @@ export const socialInfluence = async (billUuid: string) => {
     });
 
     return standRes;
-
-    // let str = JSON.stringify(standRes, null, '\t');
-
-    // fs.writeFile(
-    //   path.resolve(__dirname, '../../dist-test/data.json'),
-    //   str,
-    //   function (err) {
-    //     if (err) {
-    //       console.error(err);
-    //     }
-    //   }
-    // );
   } catch (err) {
     console.log(err);
   } finally {
@@ -90,4 +86,61 @@ export const socialInfluence = async (billUuid: string) => {
 
   // // on application exit:
   // await driver.close();
+};
+
+export const committeeInfluence = async (billUuid: string) => {
+  const session = driver.session();
+  try {
+    // 清除之前关系
+    await session.run(`MATCH ()-[r: together]->() delete r`);
+
+    // 关系导入
+    await session.run(`
+      load csv with headers from "http://localhost:4000/csv/committee-relationship.csv/${billUuid}"
+      as line with line
+      merge (n1: allCommittee{ name: line.committee1 })
+      merge(n2: allCommittee{ name: line.committee2 }) 
+      with * create (n2) - [r:together{ weight: 1 }] -> (n1)
+    `);
+    await session.run(`
+      load csv with headers from "http://localhost:4000/csv/committee-relationship.csv/${billUuid}"
+      as line with line
+      merge (n1: allCommittee{ name: line.committee1 })
+      merge(n2: allCommittee{ name: line.committee2 })
+      with * create (n1) - [r: together{ weight: 1 }] -> (n2)
+    `);
+
+    // 更新权重
+    await session.run(`
+      match (n1:allCommittee)-[r:together]->(n2:allCommittee) with n1,n2,collect(r) as rr foreach(r in rr| set r.weight=length(rr))
+    `);
+
+    // 删除多余关系
+    await session.run(`
+      match (n1:allCommittee)-[r:together]->(n2:allCommittee) with n1,n2,TAIL(collect(r)) as rr foreach(r in rr| delete r)
+    `);
+
+    // 计算影响力
+    let res = await session.run(`
+      CALL algo.pageRank.stream(
+        'allCommittee',
+        'together',
+        {iterations:20,dampingFactor:0.85,weightProperty:"weight"}
+      ) YIELD nodeId,score RETURN algo.getNodeById(nodeId).name as committee,score ORDER BY score DESC
+    `);
+
+    const standRes: any[] = [];
+    res.records.forEach(item => {
+      standRes.push({
+        [item.keys[0]]: item.get(item.keys[0]),
+        [item.keys[1]]: item.get(item.keys[1]),
+      });
+    });
+
+    return standRes;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    await session.close();
+  }
 };

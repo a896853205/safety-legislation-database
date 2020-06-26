@@ -4,13 +4,14 @@ import Bill from '../../models/bill';
 import Cosponsor from '../../models/cosponsor';
 import Country from '../../models/country';
 import LegislativeSubject from '../../models/legislative-subject';
-import { socialInfluence } from '../../neo4j';
+import { socialInfluence, committeeInfluence } from '../../neo4j';
 import { JUMP_PROBABILITY } from '../../constants/pagerank-constants';
 import Person from '../../models/person';
 import PersonIdentity from '../../models/person-identity';
 import PoliticalOrganization from '../../models/political-organization';
 import moment from 'moment';
 import Committee from '../../models/committee';
+import Organization from '../../models/organization';
 
 const Op = Sequelize.Op;
 
@@ -1445,6 +1446,47 @@ const getLSRate = async (billUuid: string) => {
     : '0.00';
 };
 
+const getCommitteeSocialNums = async (billUuid: string) => {
+  const curBill = await Bill.findOne({
+    where: {
+      uuid: billUuid,
+    },
+    attributes: ['uuid', 'congress'],
+    include: [
+      {
+        model: Committee,
+        include: [
+          {
+            model: Organization,
+            attributes: ['name'],
+          },
+        ],
+      },
+    ],
+  });
+
+  if (curBill?.committees?.length) {
+    const committee_w = 1 / curBill?.committees?.length;
+
+    const res = await committeeInfluence(billUuid);
+
+    let totalScore = 0;
+    curBill?.committees.forEach(com => {
+      let committee = res?.find(
+        item => item.committee === com.organization?.name
+      );
+
+      if (committee) {
+        totalScore += committee.score;
+      }
+    });
+
+    return (totalScore * committee_w).toFixed(2);
+  } else {
+    return '0.00';
+  }
+};
+
 export {
   getBeforeTotalBill,
   getSponsorTimes,
@@ -1465,4 +1507,5 @@ export {
   getCommitteesBLRate,
   getCommitteesRecognitionTimes,
   getLSRate,
+  getCommitteeSocialNums,
 };

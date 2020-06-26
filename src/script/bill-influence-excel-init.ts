@@ -24,6 +24,7 @@ import {
   getCommitteesBLRate,
   getCommitteesRecognitionTimes,
   getLSRate,
+  getCommitteeSocialNums,
 } from './util/influence';
 import { initNeo4j, driver } from '../neo4j';
 
@@ -93,6 +94,7 @@ dbInit();
         stateRate,
         partyRate,
         LSRate,
+        committeeSocialNums,
       ] = await Promise.all([
         _needTotalBillInfluence(billUuid),
         getCountryPoliticalOrganizationNums(billUuid),
@@ -100,6 +102,7 @@ dbInit();
         getStateRate(billUuid),
         getPersonPartyRate(billUuid),
         getLSRate(billUuid),
+        getCommitteeSocialNums(billUuid),
       ]);
 
       res.push({
@@ -121,6 +124,7 @@ dbInit();
         '17': committeesPATimes,
         '18': committeesPOTimes,
         '19': committeesLSTimes,
+        '20': committeeSocialNums,
         '21': committeesBLRate,
         '22': committeesRecognitionTimes,
         '26': LSRate,

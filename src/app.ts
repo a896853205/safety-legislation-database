@@ -6,7 +6,9 @@ import moment from 'moment';
 import logger from 'koa-logger';
 import routes from './route';
 import errorCatch from './middle/error';
+import dbInit from './db-connect';
 
+dbInit();
 const app = new Koa();
 
 // cors
