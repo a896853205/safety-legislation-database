@@ -136,7 +136,7 @@ dbInit();
 
   fs.writeFileSync(
     path.resolve(__dirname, '../../dist-json/influence.json'),
-    JSON.stringify(res, null, 2)
+    JSON.stringify(res)
   );
 
   spinner.succeed('influence.json文件生成成功');

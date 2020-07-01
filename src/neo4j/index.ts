@@ -99,25 +99,24 @@ export const committeeInfluence = async (billUuid: string) => {
       load csv with headers from "http://localhost:4000/csv/committee-relationship.csv/${billUuid}"
       as line with line
       merge (n1: allCommittee{ name: line.committee1 })
-      merge(n2: allCommittee{ name: line.committee2 }) 
-      with * create (n2) - [r:together{ weight: 1 }] -> (n1)
-    `);
-    await session.run(`
-      load csv with headers from "http://localhost:4000/csv/committee-relationship.csv/${billUuid}"
-      as line with line
-      merge (n1: allCommittee{ name: line.committee1 })
-      merge(n2: allCommittee{ name: line.committee2 })
-      with * create (n1) - [r: together{ weight: 1 }] -> (n2)
+      merge (n2: allCommittee{ name: line.committee2 })
+      with *
+      create (n1) - [r1: together{ weight: 1 }] -> (n2)
+      create (n2) - [r2: together{ weight: 1 }] -> (n1)
     `);
 
     // 更新权重
     await session.run(`
-      match (n1:allCommittee)-[r:together]->(n2:allCommittee) with n1,n2,collect(r) as rr foreach(r in rr| set r.weight=length(rr))
+      match (n1: allCommittee) - [r:together] -> (n2:allCommittee)
+      with n1, n2, collect(r) as rr
+      foreach(r in rr | set r.weight=length(rr))
     `);
 
     // 删除多余关系
     await session.run(`
-      match (n1:allCommittee)-[r:together]->(n2:allCommittee) with n1,n2,TAIL(collect(r)) as rr foreach(r in rr| delete r)
+      match (n1:allCommittee) - [r: together] -> (n2:allCommittee)
+      with n1, n2, TAIL(collect(r)) as rr
+      foreach(r in rr | delete r)
     `);
 
     // 计算影响力
@@ -125,8 +124,12 @@ export const committeeInfluence = async (billUuid: string) => {
       CALL algo.pageRank.stream(
         'allCommittee',
         'together',
-        {iterations:20,dampingFactor:0.85,weightProperty:"weight"}
-      ) YIELD nodeId,score RETURN algo.getNodeById(nodeId).name as committee,score ORDER BY score DESC
+        {
+          iterations:20,
+          dampingFactor: 0.85,
+          weightProperty: "weight"
+        }
+      ) YIELD nodeId,score RETURN algo.getNodeById(nodeId).name as committee, score ORDER BY score DESC
     `);
 
     const standRes: any[] = [];
