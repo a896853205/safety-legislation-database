@@ -13,7 +13,7 @@ const unlessColumnArray: string[] = [
   '全称',
   '地域',
   '地域细分',
-  '序号'
+  '序号',
 ];
 
 export default async () => {
@@ -58,7 +58,7 @@ export default async () => {
     organizationArray.forEach(item => {
       politicalOrganizationArray.push({
         uuid: uuidv1(),
-        name: item
+        name: item,
       });
     });
 
@@ -81,7 +81,7 @@ export default async () => {
         name: item['国家'],
         fullName: item['全称'],
         territory: item['地域'],
-        territoryDetail: item['地域细分']
+        territoryDetail: item['地域细分'],
       });
     }
 
@@ -111,7 +111,7 @@ export default async () => {
           politicalOrganizationDivisionArray.push({
             uuid: uuidv1(),
             CUuid,
-            POUuid
+            POUuid,
           });
         }
       }

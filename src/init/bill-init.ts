@@ -10,7 +10,11 @@ import Country from '../models/country';
 import Person from '../models/person';
 import Bill from '../models/bill';
 
-const TYPE = ['BILL', 'AMENDMENT', 'RESOLUTION', 'CONCURRENTRESOLUTION'];
+// const TYPE = ['BILL', 'AMENDMENT', 'RESOLUTION', 'CONCURRENTRESOLUTION'];
+
+const _congress2startYear = (congress: number) => {
+  return (congress - 100 - 13) * 2 + 2013;
+};
 
 export default async () => {
   const spinner = ora('Bill').start();
@@ -23,7 +27,6 @@ export default async () => {
 
     // 处理掉中文表头
     dataArray.shift();
-    // console.log(dataArray);
 
     interface IExcelRow {
       [propName: string]: string | undefined;
@@ -53,34 +56,52 @@ export default async () => {
       countryUuid?: string;
     }
 
-    // 目前全部是美国uuid
-    let USUuid: string | undefined = '';
-
-    let country = await Country.findOne({
-      where: { name: '美国' },
-    });
-    USUuid = country?.uuid;
-
     let personArr = await Person.findAll();
 
     let billArray: IBill[] = [];
 
     for (let item of dataArray) {
-      // 处理国会届数
-      let congress: number | undefined = Number(item.congress?.substring(0, 3));
-      congress = !isNaN(congress) ? congress : undefined;
+      let congress: number | undefined = undefined;
 
-      if (
-        !TYPE.includes(item.type?.toUpperCase() ? item.type?.toUpperCase() : '')
-      ) {
-        throw new Error(`type有非法字段为${item.type?.toUpperCase()}`);
+      // 处理国会届数
+      if (item.congress) {
+        congress = Number(item.congress?.substring(0, 3));
+        congress = !isNaN(congress) ? congress : undefined;
+      } else {
+        if (item.dateSponsored) {
+          congress = _congress2startYear(
+            moment(item.dateSponsored, 'MM/DD/YYYY', false).year()
+          );
+        }
+      }
+
+      // if (
+      //   !TYPE.includes(item.type?.toUpperCase() ? item.type?.toUpperCase() : '')
+      // ) {
+      //   throw new Error(`type有非法字段为${item.type?.toUpperCase()}`);
+      // }
+
+      // 目前全部是美国uuid
+      let countryUuid: string | undefined = '';
+      let country: Country | null;
+
+      if (item.country) {
+        country = await Country.findOne({
+          where: { name: item.country },
+        });
+
+        if (!country) {
+          throw Error(item.country);
+        }
+
+        countryUuid = country?.uuid;
       }
 
       let sponsor = personArr.find(
         person => person.name === item.sponsor?.trim()
       )?.uuid;
 
-      if (!sponsor) {
+      if (!sponsor && item.sponsor) {
         console.error(item.number);
         throw new Error(`sponsor有非法字段为${item.number}`);
       }
@@ -88,12 +109,16 @@ export default async () => {
       billArray.push({
         uuid: uuidv1(),
         // 处理括号和年份
-        number: item.number?.replace(/\(.*\)/g, '')?.trim(),
+        number: item.number
+          ? `${item.number}`?.replace(/\(.*\)/g, '')?.trim()
+          : undefined,
         type: item.type?.toUpperCase(),
         // 处理国会届数
         congress,
         name: item.name,
-        dateSponsored: moment(item.dateSponsored, 'MM/DD/YYYY', false).toDate(),
+        dateSponsored: item.dateSponsored
+          ? moment(item.dateSponsored, 'MM/DD/YYYY', false).toDate()
+          : undefined,
         sponsorUuid: sponsor,
         originChamber: item.originChamber?.trim(),
         status: item.status,
@@ -108,7 +133,7 @@ export default async () => {
         explanatory: item.explanatory,
         country: item.country,
         member: item.member,
-        countryUuid: USUuid,
+        countryUuid,
       });
     }
 
