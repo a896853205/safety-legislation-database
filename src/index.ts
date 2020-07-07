@@ -36,17 +36,17 @@ ora.promise(
       await Promise.all([
         subjectInit(),
         wordInit(),
-        //   amendBillInit(),
-        //   shortTitleInit(),
-        //   officialTitleInit(),
-        //   amendment(),
+        amendBillInit(),
+        shortTitleInit(),
+        officialTitleInit(),
+        amendment(),
         relatedBill(),
-        //   action(),
-        //   cosponsor(),
-        //   committee(),
+        // action(),
+        cosponsor(),
+        committee(),
       ]);
-      // await Promise.all([committeeSub(), committeeActivity()]);
-      // await committeeSubActivity();
+      await Promise.all([committeeSub(), committeeActivity()]);
+      await committeeSubActivity();
     } catch (error) {
       console.error(error);
     }

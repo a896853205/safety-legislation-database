@@ -10,6 +10,7 @@ import {
   Default,
   ForeignKey,
   BelongsTo,
+  Length,
 } from 'sequelize-typescript';
 import Cosponsor from './cosponsor';
 import LegislativeSubject from './legislative-subject';
@@ -98,11 +99,19 @@ export default class Bill extends Model<Bill> {
   description: string | undefined;
 
   @Comment('摘要')
-  @Column(DataType.TEXT)
+  @Column(
+    DataType.TEXT({
+      length: 'medium',
+    })
+  )
   summary: string | undefined;
 
   @Comment('文本')
-  @Column(DataType.TEXT)
+  @Column(
+    DataType.TEXT({
+      length: 'medium',
+    })
+  )
   text: string | undefined;
 
   @Comment('负责人')

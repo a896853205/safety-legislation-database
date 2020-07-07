@@ -36,4 +36,8 @@ export default class Action extends Model<Action> {
   @Comment('动态通过')
   @Column(DataType.TEXT)
   actionBy: string | undefined;
+
+  @Comment('数值')
+  @Column(DataType.STRING)
+  value: string | undefined;
 }

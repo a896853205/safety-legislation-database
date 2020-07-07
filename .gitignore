@@ -11,3 +11,7 @@ dist-influence
 dist-test
 
 dist-json
+
+/src/summary
+
+/src/text

@@ -27,6 +27,7 @@ export default async () => {
       actionDate: string;
       actionBy: string;
       action: string;
+      value: string;
     }
 
     interface IAction {
@@ -35,6 +36,7 @@ export default async () => {
       action?: string;
       actionDate?: Date;
       actionBy?: string;
+      value?: string;
     }
 
     // 中文标题
@@ -67,6 +69,7 @@ export default async () => {
           ? moment(item.actionDate, 'MM/DD/YYYY-hh:mmA', false).toDate()
           : undefined,
         actionBy: item.actionBy,
+        value: item.value,
       });
     }
 

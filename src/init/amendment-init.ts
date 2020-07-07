@@ -44,22 +44,30 @@ export default async () => {
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
 
-        // 处理国会届数
-        let billCongress: number | undefined = Number(
-          item.billCongress?.substring(0, 3)
-        );
-        billCongress = !isNaN(billCongress) ? billCongress : undefined;
+        if (item.billCongress) {
+          // 处理国会届数
+          let billCongress: number | undefined = Number(
+            item.billCongress?.substring(0, 3)
+          );
+          billCongress = !isNaN(billCongress) ? billCongress : undefined;
 
-        lastNumberUuid = billArr.find(
-          item => item.congress === billCongress && item.number === _lastNumber
-        )?.uuid;
+          lastNumberUuid = billArr.find(
+            item =>
+              item.congress === billCongress && item.number === _lastNumber
+          )?.uuid;
+        } else {
+          lastNumberUuid = billArr.find(item => item.number === _lastNumber)
+            ?.uuid;
+        }
       }
 
       amendmentArr.push({
         uuid: uuidv1(),
         billUuid: lastNumberUuid,
         amendmentCode: item.amendmentNumber?.trim(),
-        congress: parseInt(item?.congress?.slice(0, 3) || ''),
+        congress: item?.congress
+          ? parseInt(item?.congress?.slice(0, 3) || '')
+          : undefined,
       });
     }
 

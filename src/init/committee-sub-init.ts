@@ -54,15 +54,20 @@ export default async () => {
       if (item.number) {
         _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
 
-        // 处理国会届数
-        let congress: number | undefined = Number(
-          item.congress?.substring(0, 3)
-        );
-        congress = !isNaN(congress) ? congress : undefined;
+        if (item.congress) {
+          // 处理国会届数
+          let congress: number | undefined = Number(
+            item.congress?.substring(0, 3)
+          );
+          congress = !isNaN(congress) ? congress : undefined;
 
-        lastNumberUuid = billArr.find(
-          item => item.congress === congress && item.number === _lastNumber
-        )?.uuid;
+          lastNumberUuid = billArr.find(
+            item => item.congress === congress && item.number === _lastNumber
+          )?.uuid;
+        } else {
+          lastNumberUuid = billArr.find(item => item.number === _lastNumber)
+            ?.uuid;
+        }
       }
 
       let committeeUuid: string | undefined = '';

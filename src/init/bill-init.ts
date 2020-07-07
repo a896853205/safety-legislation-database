@@ -106,6 +106,33 @@ export default async () => {
         throw new Error(`sponsor有非法字段为${item.number}`);
       }
 
+      // text 读取
+      let textNumber = `${item.number}`?.replace('/', '_');
+      let text: string | undefined;
+      let summary: string | undefined;
+      try {
+        text = fs
+          .readFileSync(
+            path.resolve(
+              __dirname,
+              `../text/text-${textNumber}-${congress}.txt`
+            )
+          )
+          .toString();
+      } catch (error) {}
+
+      try {
+        // summary 读取
+        summary = fs
+          .readFileSync(
+            path.resolve(
+              __dirname,
+              `../summary/summary-${textNumber}-${congress}.txt`
+            )
+          )
+          .toString();
+      } catch (error) {}
+
       billArray.push({
         uuid: uuidv1(),
         // 处理括号和年份
@@ -125,8 +152,8 @@ export default async () => {
         policyArea: item.policyArea,
         purpose: item.purpose,
         description: item.description,
-        summary: item.summary,
-        text: item.text,
+        summary,
+        text,
         ref: item.ref,
         businessUnit: item.businessUnit,
         proposed: item.proposed,

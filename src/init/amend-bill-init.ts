@@ -26,7 +26,7 @@ export default async () => {
     interface IExcelRow {
       number: string;
       amendBill?: string;
-      congress: string;
+      congress?: string;
     }
 
     interface IAmendBill {
@@ -37,22 +37,33 @@ export default async () => {
 
     let amendBillArr: Array<IAmendBill> = [];
 
+    let _lastNumber: string = '';
+    let lastNumberUuid: string | undefined = '';
+
     for (let item of dataArray) {
       if (item.amendBill) {
-        amendBillArr.push({
-          uuid: uuidv1(),
-          billUuid: billArr.find(billItem => {
+        if (item.number) {
+          _lastNumber = item.number?.replace(/\(.*\)/g, '')?.trim();
+
+          if (item.congress) {
             // 处理国会届数
             let congress: number | undefined = Number(
               item.congress?.substring(0, 3)
             );
             congress = !isNaN(congress) ? congress : undefined;
 
-            return (
-              billItem.congress === congress &&
-              billItem.number === item.number?.replace(/\(.*\)/g, '')?.trim()
-            );
-          })?.uuid,
+            lastNumberUuid = billArr.find(
+              item => item.congress === congress && item.number === _lastNumber
+            )?.uuid;
+          } else {
+            lastNumberUuid = billArr.find(item => item.number === _lastNumber)
+              ?.uuid;
+          }
+        }
+
+        amendBillArr.push({
+          uuid: uuidv1(),
+          billUuid: lastNumberUuid,
           amendBillNumber: item.amendBill.trim(),
         });
       }
