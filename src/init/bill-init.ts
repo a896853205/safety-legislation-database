@@ -12,8 +12,8 @@ import Bill from '../models/bill';
 
 // const TYPE = ['BILL', 'AMENDMENT', 'RESOLUTION', 'CONCURRENTRESOLUTION'];
 
-const _congress2startYear = (congress: number) => {
-  return (congress - 100 - 13) * 2 + 2013;
+const _startYear2congress = (startYear: number) => {
+  return Math.floor((startYear - 2013) / 2) + 13 + 100;
 };
 
 export default async () => {
@@ -69,7 +69,7 @@ export default async () => {
         congress = !isNaN(congress) ? congress : undefined;
       } else {
         if (item.dateSponsored) {
-          congress = _congress2startYear(
+          congress = _startYear2congress(
             moment(item.dateSponsored, 'MM/DD/YYYY', false).year()
           );
         }
