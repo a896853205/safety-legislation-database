@@ -58,6 +58,10 @@ export default class Bill extends Model<Bill> {
   @Column(DataType.TEXT)
   type: string | undefined;
 
+  @Comment('法案归类')
+  @Column(DataType.TEXT)
+  categorize: string | undefined;
+
   @Comment('国会届数')
   @Column(DataType.INTEGER)
   congress: number | undefined;

@@ -12,13 +12,28 @@ import Bill from '../models/bill';
 
 // const TYPE = ['BILL', 'AMENDMENT', 'RESOLUTION', 'CONCURRENTRESOLUTION'];
 
+interface ICategorize {
+  number: string;
+  congress: number;
+  area: string;
+  cls: string;
+  cos: number;
+}
+
 const _startYear2congress = (startYear: number) => {
   return Math.floor((startYear - 2013) / 2) + 13 + 100;
 };
 
 export default async () => {
   const spinner = ora('Bill').start();
+
   try {
+    const categorizeArr = JSON.parse(
+      fs
+        .readFileSync(path.resolve(__dirname, `../json/categorize.json`))
+        .toString()
+    );
+
     const buf: Buffer = fs.readFileSync(
       path.resolve(__dirname, '../excel/bill.xlsx')
     );
@@ -54,6 +69,7 @@ export default async () => {
       country?: string;
       member?: string;
       countryUuid?: string;
+      categorize?: string;
     }
 
     let personArr = await Person.findAll();
@@ -133,12 +149,22 @@ export default async () => {
           .toString();
       } catch (error) {}
 
+      const number = item.number
+        ? `${item.number}`
+            ?.replace(/\(.*\)/g, '')
+            ?.replace(/\s/g, '')
+            ?.trim()
+        : undefined;
+      const categorize = categorizeArr.find(
+        (cate: ICategorize) =>
+          cate.number.replace(/\s/g, '') === number &&
+          cate.congress === congress
+      );
+
       billArray.push({
         uuid: uuidv1(),
         // 处理括号和年份
-        number: item.number
-          ? `${item.number}`?.replace(/\(.*\)/g, '')?.trim()
-          : undefined,
+        number,
         type: item.type?.toUpperCase(),
         // 处理国会届数
         congress,
@@ -161,6 +187,9 @@ export default async () => {
         country: item.country,
         member: item.member,
         countryUuid,
+        categorize: categorize
+          ? `${categorize.area}-${categorize.cls}`
+          : undefined,
       });
     }
 
