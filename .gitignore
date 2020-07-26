@@ -15,3 +15,5 @@ dist-json
 /src/summary
 
 /src/text
+
+/build

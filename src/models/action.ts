@@ -33,9 +33,9 @@ export default class Action extends Model<Action> {
   @Column(DataType.DATE)
   actionDate: Date | undefined;
 
-  @Comment('动态通过')
+  @Comment('动作状态')
   @Column(DataType.TEXT)
-  actionBy: string | undefined;
+  actionStatus: string | undefined;
 
   @Comment('数值')
   @Column(DataType.STRING)

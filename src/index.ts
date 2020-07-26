@@ -41,7 +41,7 @@ ora.promise(
         officialTitleInit(),
         amendment(),
         relatedBill(),
-        // action(),
+        action(),
         cosponsor(),
         committee(),
       ]);

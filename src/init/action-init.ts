@@ -25,7 +25,7 @@ export default async () => {
       number: string;
       congress: string;
       actionDate: string;
-      actionBy: string;
+      actionStatus: string;
       action: string;
       value: string;
     }
@@ -35,7 +35,7 @@ export default async () => {
       billUuid?: string;
       action?: string;
       actionDate?: Date;
-      actionBy?: string;
+      actionStatus?: string;
       value?: string;
     }
 
@@ -68,7 +68,7 @@ export default async () => {
         actionDate: item.actionDate
           ? moment(item.actionDate, 'MM/DD/YYYY-hh:mmA', false).toDate()
           : undefined,
-        actionBy: item.actionBy,
+        actionStatus: item.actionStatus,
         value: item.value,
       });
     }

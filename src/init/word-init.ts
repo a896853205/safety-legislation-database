@@ -20,7 +20,6 @@ export default async () => {
       number: string;
       congress: string;
       humanWord: string;
-      programWord: string;
     }
 
     interface IHumanWord {
@@ -42,6 +41,12 @@ export default async () => {
 
     // 中文表头筛除
     dataArray.shift();
+
+    const jsonBuf: Buffer = fs.readFileSync(
+      path.resolve(__dirname, '../json/programWord.json')
+    );
+
+    const programJson = JSON.parse(jsonBuf.toString());
 
     // console.table(dataArray);
 
@@ -68,9 +73,17 @@ export default async () => {
           });
         }
       }
+    }
 
-      if (item.programWord) {
-        for (let programWord of item.programWord.split('\n')) {
+    for (let key in programJson) {
+      let [number, congress] = key.split('-');
+
+      let billUuid = billArr.find(
+        item => item.congress === Number(congress) && item.number === number
+      )?.uuid;
+
+      if (billUuid) {
+        for (let programWord of programJson[key]) {
           programWordArr.push({
             uuid: uuidv1(),
             billUuid,

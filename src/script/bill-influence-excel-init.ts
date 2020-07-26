@@ -1,3 +1,5 @@
+// @ts-ignore
+import consoleGrid from 'console-grid';
 import fs from 'fs';
 import ora from 'ora';
 import path from 'path';
@@ -138,6 +140,22 @@ dbInit();
     path.resolve(__dirname, '../../dist-json/influence.json'),
     JSON.stringify(res)
   );
+
+  const col: any[] = [];
+
+  for (let key in res[0]) {
+    col.push({
+      id: key,
+      name: key,
+      type: 'string',
+      maxWidth: 20,
+    });
+  }
+
+  new consoleGrid().render({
+    columns: col,
+    rows: res,
+  });
 
   spinner.succeed('influence.json文件生成成功');
   driver.close();
