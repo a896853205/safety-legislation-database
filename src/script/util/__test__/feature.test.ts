@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { isArray } from 'util';
 
-import { getBeforeTotalBill, getSponsorTimes } from '../influence';
+import { getBeforeTotalBill, getSponsorTimes } from '../feature';
 
 describe('influence', () => {
   it('getBeforeTotalBill', done => {
