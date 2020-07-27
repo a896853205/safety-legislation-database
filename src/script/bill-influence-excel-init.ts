@@ -9,6 +9,8 @@ import {
   cosponsorTotalNum,
   policyAreaTotalNum,
   legislativeSubjectsTotalNum,
+  becameLawRate,
+  recognizedRate,
 } from './util/influence';
 
 dbInit();
@@ -27,6 +29,8 @@ dbInit();
         R01: policyAreaTotalNum(person?.uuid, USBill),
         R02: 4,
         R03: legislativeSubjectsTotalNum(person?.uuid, USBill),
+        D03: becameLawRate(person?.uuid, USBill),
+        D04: recognizedRate(person?.uuid, USBill),
       });
     }
   }

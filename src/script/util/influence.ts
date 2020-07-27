@@ -180,3 +180,72 @@ export const legislativeSubjectsTotalNum = (
 
   return legislativeSubjectsSet.size;
 };
+
+// 计算D03
+export const becameLawRate = (personUuid: string, USBill: Bill[]) => {
+  let total = 0;
+  let bacameLaw = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      total++;
+
+      if (bill?.status) {
+        if (bill.status === 'BecameLaw') {
+          bacameLaw++;
+        }
+      }
+    }
+  }
+
+  return +(bacameLaw / total).toFixed(2);
+};
+
+// 计算D04
+export const recognizedRate = (personUuid: string, USBill: Bill[]) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let total = 0;
+  let recognized = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      total++;
+
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        recognized++;
+      }
+    }
+  }
+
+  return +(recognized / total).toFixed(2);
+};
