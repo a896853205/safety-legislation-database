@@ -77,10 +77,10 @@ export default async () => {
         congressStart: item.congressStart ? +item.congressStart : undefined,
         congressEnd: item.congressEnd ? +item.congressEnd : undefined,
         dateStart: item.dateStart
-          ? moment(item.dateStart, 'YYYY', false).unix()
+          ? moment(item.dateStart, 'YYYY', false).valueOf()
           : undefined,
         dateEnd: item.dateEnd
-          ? moment(item.dateEnd, 'YYYY', false).unix()
+          ? moment(item.dateEnd, 'YYYY', false).valueOf()
           : undefined,
         identity: item.identity,
         party: item.party,

@@ -5,8 +5,40 @@ import Country from '../../models/country';
 import Cosponsor from '../../models/cosponsor';
 import LegislativeSubject from '../../models/legislative-subject';
 import Person from '../../models/person';
+import Action from '../../models/action';
+import PersonIdentity from '../../models/person-identity';
+import moment from 'moment';
 
 const Op = Sequelize.Op;
+
+const _culSHLastYears = (PIs: PersonIdentity[]) => {
+  let senteLastYears = 0;
+  let houseLastYears = 0;
+
+  PIs.forEach(PI => {
+    let dateStart = moment(PI?.dateStart).year();
+    let dateEnd = moment(PI?.dateEnd).year();
+
+    if (PI.identity === 'Senate') {
+      if (dateEnd) {
+        // 有最后年
+        senteLastYears += dateEnd - dateStart;
+      } else {
+        // 没有最后年
+        senteLastYears += moment().year() - dateStart;
+      }
+    } else if (PI.identity === 'House') {
+      if (dateEnd) {
+        // 有最后年
+        houseLastYears += dateEnd - dateStart;
+      } else {
+        // 没有最后年
+        houseLastYears += moment().year() - dateStart;
+      }
+    }
+  });
+  return { senteLastYears, houseLastYears };
+};
 
 // 获取美国法案
 export const getUSBill = async () =>
@@ -35,6 +67,10 @@ export const getUSBill = async () =>
             attributes: ['uuid'],
           },
         ],
+      },
+      {
+        model: Action,
+        order: ['actionDate', 'DESC'],
       },
     ],
   });
@@ -181,6 +217,76 @@ export const legislativeSubjectsTotalNum = (
   return legislativeSubjectsSet.size;
 };
 
+// 计算D01
+export const socialInflu = (
+  personName: string,
+  personSocialInfluArr: { name: string; value: number }[]
+) => {
+  let curPerson = personSocialInfluArr.find(personSocial => {
+    return personSocial.name === personName;
+  });
+
+  return curPerson ? +curPerson.value.toFixed(2) : 0.15;
+};
+
+// 计算D02
+export const identityScore = async (personUuid: string, USBill: Bill[]) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let houseBillNums = 0;
+  let senateBillNums = 0;
+  let houseRecognizedNums = 0;
+  let senateRecognizedNums = 0;
+
+  for (let bill of USBill) {
+    if (bill.originChamber === 'House') {
+      houseBillNums++;
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        houseRecognizedNums++;
+      }
+    } else if (bill.originChamber === 'Senate') {
+      senateBillNums++;
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        senateRecognizedNums++;
+      }
+    }
+  }
+
+  if (houseBillNums || senateBillNums) {
+    let person = await Person.findOne({
+      where: {
+        uuid: personUuid,
+      },
+      include: [
+        {
+          model: PersonIdentity,
+          attributes: ['dateStart', 'dateEnd', 'identity'],
+        },
+      ],
+    });
+
+    if (person?.personIdentities) {
+      let { senteLastYears, houseLastYears } = _culSHLastYears(
+        person?.personIdentities
+      );
+
+      let a = houseBillNums ? houseRecognizedNums / houseBillNums : 0;
+      let b = senateBillNums ? senateRecognizedNums / senateBillNums : 0;
+
+      if (!(houseLastYears + senteLastYears)) {
+        return 0;
+      }
+      return +(
+        (a * houseLastYears) / (houseLastYears + senteLastYears) +
+        (b * senteLastYears) / (houseLastYears + senteLastYears)
+      ).toFixed(2);
+    } else {
+      return 0;
+    }
+  } else {
+    return 0;
+  }
+};
+
 // 计算D03
 export const becameLawRate = (personUuid: string, USBill: Bill[]) => {
   let total = 0;
@@ -248,4 +354,79 @@ export const recognizedRate = (personUuid: string, USBill: Bill[]) => {
   }
 
   return +(recognized / total).toFixed(2);
+};
+
+// 计算T01
+export const influTime = (personUuid: string, USBill: Bill[]) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let total = 0;
+  let time = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      total++;
+
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        if (bill.actions && bill.actions[0] && bill.actions[0].actionDate) {
+          time += +new Date() - +bill.actions[0].actionDate;
+        }
+      }
+    }
+  }
+
+  return +(time / total).toFixed(2);
+};
+
+// 计算T02
+export const relativeTime = (personUuid: string, USBill: Bill[]) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let total = 0;
+  let time = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        USBill.forEach(bi => {
+          if (bi.categorize === bill.categorize) {
+            total++;
+            if (bill.actions && bill.actions[0] && bill.actions[0].actionDate) {
+              time += +new Date() - +bill.actions[0].actionDate;
+            }
+          }
+        });
+      }
+    }
+  }
+
+  return total ? +(time / total).toFixed(2) : 0;
 };

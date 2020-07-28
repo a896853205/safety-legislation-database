@@ -44,11 +44,19 @@ export default class PersonIdentity extends Model<PersonIdentity> {
   congressEnd: number | undefined;
 
   @Comment('开始日期')
-  @Column(DataType.INTEGER)
+  @Column(
+    DataType.BIGINT({
+      length: 20,
+    })
+  )
   dateStart: number | undefined;
 
   @Comment('结束日期')
-  @Column(DataType.INTEGER)
+  @Column(
+    DataType.BIGINT({
+      length: 20,
+    })
+  )
   dateEnd: number | undefined;
 
   @Comment('身份')
