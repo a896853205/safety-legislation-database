@@ -182,17 +182,17 @@ export const data2One = (data: any[]) => {
   let T01VW = T01W * variT;
   let T02VW = T02W * variT;
 
-  let M01TotalW = +((M01VW + 0.1258) / 2).toFixed(2);
-  let M02TotalW = +((M02VW + 0.2442) / 2).toFixed(2);
-  let R01TotalW = +((R01VW + 0.03) / 2).toFixed(2);
-  let R02TotalW = +((R02VW + 0.04) / 2).toFixed(2);
-  let R03TotalW = +((R03VW + 0.03) / 2).toFixed(2);
-  let D01TotalW = +((D01VW + 0.1287) / 2).toFixed(2);
-  let D02TotalW = +((D02VW + 0.0693) / 2).toFixed(2);
-  let D03TotalW = +((D03VW + 0.0594) / 2).toFixed(2);
-  let D04TotalW = +((D04VW + 0.0726) / 2).toFixed(2);
-  let T01TotalW = +((T01VW + 0.132) / 2).toFixed(2);
-  let T02TotalW = +((T02VW + 0.068) / 2).toFixed(2);
+  let M01TotalW = +((M01VW + 0.1258) / 2).toFixed(5);
+  let M02TotalW = +((M02VW + 0.2442) / 2).toFixed(5);
+  let R01TotalW = +((R01VW + 0.03) / 2).toFixed(5);
+  let R02TotalW = +((R02VW + 0.04) / 2).toFixed(5);
+  let R03TotalW = +((R03VW + 0.03) / 2).toFixed(5);
+  let D01TotalW = +((D01VW + 0.1287) / 2).toFixed(5);
+  let D02TotalW = +((D02VW + 0.0693) / 2).toFixed(5);
+  let D03TotalW = +((D03VW + 0.0594) / 2).toFixed(5);
+  let D04TotalW = +((D04VW + 0.0726) / 2).toFixed(5);
+  let T01TotalW = +((T01VW + 0.132) / 2).toFixed(5);
+  let T02TotalW = +((T02VW + 0.068) / 2).toFixed(5);
 
   console.log(
     M01TotalW,

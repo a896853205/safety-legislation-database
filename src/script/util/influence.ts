@@ -1,13 +1,16 @@
 import Sequelize from 'sequelize';
+import moment from 'moment';
 
 import Bill from '../../models/bill';
 import Country from '../../models/country';
 import Cosponsor from '../../models/cosponsor';
+import Committee from '../../models/committee';
 import LegislativeSubject from '../../models/legislative-subject';
 import Person from '../../models/person';
 import Action from '../../models/action';
 import PersonIdentity from '../../models/person-identity';
-import moment from 'moment';
+import Organization from '../../models/organization';
+import organizationInit from '../../init/organization-init';
 
 const Op = Sequelize.Op;
 
@@ -50,6 +53,9 @@ export const getUSBill = async () =>
         where: {
           name: '美国',
         },
+      },
+      {
+        model: Committee,
       },
       {
         model: LegislativeSubject,
@@ -118,6 +124,44 @@ export const getUSPerson = async () => {
     where: {
       uuid: {
         [Op.in]: Array.from(personSet.values()),
+      },
+    },
+  });
+};
+
+// 获取美国所有committee
+export const getUSCommittee = async () => {
+  const committeeSet = new Set<string>();
+
+  const USBill = await Bill.findAll({
+    include: [
+      {
+        model: Country,
+        attributes: ['uuid'],
+        where: {
+          name: '美国',
+        },
+      },
+      {
+        model: Committee,
+      },
+    ],
+  });
+
+  for (let bill of USBill) {
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        committee.organizationUuid
+          ? committeeSet.add(committee.organizationUuid)
+          : undefined;
+      }
+    }
+  }
+
+  return Organization.findAll({
+    where: {
+      uuid: {
+        [Op.in]: Array.from(committeeSet.values()),
       },
     },
   });
@@ -408,6 +452,222 @@ export const relativeTime = (personUuid: string, USBill: Bill[]) => {
     if (bill?.cosponsors) {
       for (let cos of bill?.cosponsors) {
         if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        USBill.forEach(bi => {
+          if (bi.categorize === bill.categorize) {
+            total++;
+            if (bill.actions && bill.actions[0] && bill.actions[0].actionDate) {
+              time += +new Date() - +bill.actions[0].actionDate;
+            }
+          }
+        });
+      }
+    }
+  }
+
+  return total ? +(time / total).toFixed(2) : 0;
+};
+
+// 管理者计算M01
+export const committeeTotalNum = (organizationUuid: string, USBill: Bill[]) => {
+  let M01 = 0;
+
+  for (let bill of USBill) {
+    if (bill.committees) {
+      for (let committee of bill.committees) {
+        if (committee.organizationUuid === organizationUuid) {
+          M01++;
+          break;
+        }
+      }
+    }
+  }
+
+  return M01;
+};
+
+// 管理者计算R01
+export const committeePolicyAreaTotalNum = (
+  organizationUuid: string,
+  USBill: Bill[]
+) => {
+  const policyAreaSet = new Set<string>();
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        if (committee.organizationUuid === organizationUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      bill.policyArea ? policyAreaSet.add(bill.policyArea) : undefined;
+    }
+  }
+
+  return policyAreaSet.size;
+};
+
+// 管理者计算R03
+export const committeeLegislativeSubjectsTotalNum = (
+  organizationUuid: string,
+  USBill: Bill[]
+) => {
+  const legislativeSubjectsSet = new Set<string>();
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        if (committee.organizationUuid === organizationUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      if (bill?.legislativeSubjects) {
+        for (let LS of bill?.legislativeSubjects) {
+          LS.subject ? legislativeSubjectsSet.add(LS.subject) : undefined;
+        }
+      }
+    }
+  }
+
+  return legislativeSubjectsSet.size;
+};
+
+// 管理者计算D03
+export const committeeBecameLawRate = (
+  organizationUuid: string,
+  USBill: Bill[]
+) => {
+  let total = 0;
+  let bacameLaw = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        if (committee.organizationUuid === organizationUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      total++;
+
+      if (bill?.status) {
+        if (bill.status === 'BecameLaw') {
+          bacameLaw++;
+        }
+      }
+    }
+  }
+
+  return +(bacameLaw / total).toFixed(2);
+};
+
+// 管理者计算D04
+export const committeeRecognizedRate = (
+  organizationUuid: string,
+  USBill: Bill[]
+) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let total = 0;
+  let recognized = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        if (committee.organizationUuid === organizationUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      total++;
+
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        recognized++;
+      }
+    }
+  }
+
+  return +(recognized / total).toFixed(2);
+};
+
+// 管理者计算T01
+export const committeeInfluTime = (
+  organizationUuid: string,
+  USBill: Bill[]
+) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let total = 0;
+  let time = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        if (committee.organizationUuid === organizationUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      total++;
+
+      if (!bill?.status || RECOGNIZED.includes(bill.status)) {
+        if (bill.actions && bill.actions[0] && bill.actions[0].actionDate) {
+          time += +new Date() - +bill.actions[0].actionDate;
+        }
+      }
+    }
+  }
+
+  return +(time / total).toFixed(2);
+};
+
+// 管理者计算T02
+export const committeeRelativeTime = (
+  organizationUuid: string,
+  USBill: Bill[]
+) => {
+  const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
+  let total = 0;
+  let time = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill?.committees) {
+      for (let committee of bill?.committees) {
+        if (committee.organizationUuid === organizationUuid) {
           isHave = true;
           break;
         }
