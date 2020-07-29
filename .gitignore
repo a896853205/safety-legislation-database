@@ -12,6 +12,8 @@ dist-test
 
 dist-json
 
+dist-excel
+
 /src/summary
 
 /src/text

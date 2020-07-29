@@ -2,6 +2,7 @@
 import consoleGrid from 'console-grid';
 import fs from 'fs';
 import path from 'path';
+import XLSX from 'xlsx';
 
 import { csv2Array } from './util/csv2array';
 import dbInit from '../db-connect';
@@ -19,6 +20,7 @@ import {
   identityScore,
   relativeTime,
 } from './util/influence';
+import { data2One } from './util/2one';
 
 dbInit();
 
@@ -51,9 +53,26 @@ dbInit();
     }
   }
 
+  const oneRes = data2One(res);
+
+  let wb = XLSX.utils.book_new();
+
+  let ws_name = 'SheetJS';
+
+  /* make worksheet */
+  let ws_data = [
+    ['name', 'score'],
+    ...oneRes.map(item => [item.name, item.score]),
+  ];
+  let ws = XLSX.utils.aoa_to_sheet(ws_data);
+
+  /* Add the worksheet to the workbook */
+  XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+  XLSX.writeFile(wb, path.resolve(__dirname, '../../dist-excel/out.xlsx'));
   const col: any[] = [];
 
-  for (let key in res[0]) {
+  for (let key in oneRes[0]) {
     col.push({
       id: key,
       name: key,
@@ -64,6 +83,6 @@ dbInit();
 
   new consoleGrid().render({
     columns: col,
-    rows: res,
+    rows: oneRes,
   });
 })();
