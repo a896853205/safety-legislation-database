@@ -1,2210 +1,3700 @@
-[{
-        "number": "H.R.1975",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9433132410049438
-    }, {
-        "number": "10",
-        "congress": 105,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9267541766166687
-    }, {
-        "number": "11DECEMBER1998",
-        "congress": 49,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.92555171251297
-    }, {
-        "number": "152.3",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.920951783657074
-    }, {
-        "number": "15_1999",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "1720 _ 2007",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "1998\uff1a204",
-        "congress": 105,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.918042004108429
-    }, {
-        "number": "1999_364 _ JHA",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.905964195728302
-    }, {
-        "number": "19_2013",
-        "congress": 113,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9288560748100281
-    }, {
-        "number": "2017_443",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8987590670585632
-    }, {
-        "number": "2019_796",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9136145710945129
-    }, {
-        "number": "2019_797",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9322888255119324
-    }, {
-        "number": "2020_651",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.735399603843689
-    }, {
-        "number": "235.1",
-        "congress": 102,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "2472_1997",
-        "congress": 105,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "2_94",
-        "congress": 103,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8972886204719543
-    }, {
-        "number": "30JULI2018",
-        "congress": 54,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.4455493688583374
-    }, {
-        "number": "31995L0046",
-        "congress": 105,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "322_2001",
-        "congress": 126,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9059454202651978
-    }, {
-        "number": "32_2003",
-        "congress": 108,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.9030663967132568
-    }, {
-        "number": "34_2002",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8636385798454285
-    }, {
-        "number": "45",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.889030396938324
-    }, {
-        "number": "460_2003",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9365696907043457
-    }, {
-        "number": "50_1996",
-        "congress": 120,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9177749752998352
-    }, {
-        "number": "523_1999",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.918042004108429
-    }, {
-        "number": "621_1999",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9274192452430725
-    }, {
-        "number": "62_2003",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8619529008865356
-    }, {
-        "number": "66_1985",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9053850173950195
-    }, {
-        "number": "761_2003",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8915230631828308
-    }, {
-        "number": "77_2000",
-        "congress": 125,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "780.1",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.7313358783721924
-    }, {
-        "number": "81_692_EEC",
-        "congress": 97,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.7744961977005005
-    }, {
-        "number": "837_2006",
-        "congress": 133,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "83_521_EEC",
-        "congress": 98,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.847463071346283
-    }, {
-        "number": "83_534_EEC",
-        "congress": 98,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8832582235336304
-    }, {
-        "number": "8DECEMBER1992",
-        "congress": 48,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "917_2014",
-        "congress": 113,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9322904348373413
-    }, {
-        "number": "Act52 of 2003G.25961GoN 83",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6954847574234009
-    }, {
-        "number": "Act65 of 2002G.24390GoN 236",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9397795796394348
-    }, {
-        "number": "Act67 of 2002G.24391GoN 237",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9559654593467712
-    }, {
-        "number": "Act68 of 2002G.24356GoN 189",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9433371424674988
-    }, {
-        "number": "Bul001",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9318199157714844
-    }, {
-        "number": "Bul002",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.8844487071037292
-    }, {
-        "number": "Bul003",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.8844487071037292
-    }, {
-        "number": "Bul004",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.929078221321106
-    }, {
-        "number": "Dz.U. 1997 nr 133 poz. 883",
-        "congress": 105,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "Dz.U. 2001 nr 112 poz. 1198",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8829206228256226
-    }, {
-        "number": "ger001",
-        "congress": 13,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8906658291816711
-    }, {
-        "number": "ger002",
-        "congress": 12,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9359493255615234
-    }, {
-        "number": "ger003",
-        "congress": 15,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "ger004",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8992802500724792
-    }, {
-        "number": "H. R. 1017",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9667620658874512
-    }, {
-        "number": "H. R. 1030",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9270084500312805
-    }, {
-        "number": "H. R. 1136",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H. R. 174",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H. R. 234",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9782901406288147
-    }, {
-        "number": "H. R. 263",
-        "congress": 110,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H. R. 266",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H. R. 266",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H. R. 331",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9385441541671753
-    }, {
-        "number": "H. R. 359",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9553084373474121
-    }, {
-        "number": "H. R. 360",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9437637329101562
-    }, {
-        "number": "H. R. 404",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9555627703666687
-    }, {
-        "number": "H. R. 451",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9555627703666687
-    }, {
-        "number": "H. R. 455",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9555627703666687
-    }, {
-        "number": "H. R. 4852",
-        "congress": 108,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9782421588897705
-    }, {
-        "number": "H. R. 4897",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9668634533882141
-    }, {
-        "number": "H. R. 4900",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H. R. 5024",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9605308175086975
-    }, {
-        "number": "H. R. 5050",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9479267001152039
-    }, {
-        "number": "H. R. 5057",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9568549394607544
-    }, {
-        "number": "H. R. 5064",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9549740552902222
-    }, {
-        "number": "H. R. 5069",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9453881978988647
-    }, {
-        "number": "H. R. 5175",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9346023201942444
-    }, {
-        "number": "H. R. 5179",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9656797647476196
-    }, {
-        "number": "H. R. 5222",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.946608304977417
-    }, {
-        "number": "H. R. 5225",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8843793272972107
-    }, {
-        "number": "H. R. 5300",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9113747477531433
-    }, {
-        "number": "H. R. 5312",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9686857461929321
-    }, {
-        "number": "H. R. 5390",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9663154482841492
-    }, {
-        "number": "H. R. 5440",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H. R. 5517",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H. R. 5522",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.923167884349823
-    }, {
-        "number": "H. R. 5548",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H. R. 5588",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9344745874404907
-    }, {
-        "number": "H. R. 5733",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707770943641663
-    }, {
-        "number": "H. R. 5749",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9510802626609802
-    }, {
-        "number": "H. R. 5783",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9257361888885498
-    }, {
-        "number": "H. R. 5792",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9686857461929321
-    }, {
-        "number": "H. R. 5825",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H. R. 584",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9552298188209534
-    }, {
-        "number": "H. R. 5843",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9588320851325989
-    }, {
-        "number": "H. R. 5966",
-        "congress": 111,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9516014456748962
-    }, {
-        "number": "H. R. 5983",
-        "congress": 110,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9450938701629639
-    }, {
-        "number": "H. R. 60",
-        "congress": 114,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9496768712997437
-    }, {
-        "number": "H. R. 6004",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9745597243309021
-    }, {
-        "number": "H. R. 6032",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9395673274993896
-    }, {
-        "number": "H. R. 6056",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H. R. 6066",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9521446824073792
-    }, {
-        "number": "H. R. 6073",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.961326003074646
-    }, {
-        "number": "H. R. 612",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9588320851325989
-    }, {
-        "number": "H. R. 624",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9782901406288147
-    }, {
-        "number": "H. R. 6277",
-        "congress": 112,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9288862347602844
-    }, {
-        "number": "H. R. 6351",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707704782485962
-    }, {
-        "number": "H. R. 6423",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H. R. 6436",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9575615525245667
-    }, {
-        "number": "H. R. 6443",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9656797647476196
-    }, {
-        "number": "H. R. 6638",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9488897323608398
-    }, {
-        "number": "H. R. 6735",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9453881978988647
-    }, {
-        "number": "H. R. 7007",
-        "congress": 110,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9590480327606201
-    }, {
-        "number": "H. R. 7045",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9416880011558533
-    }, {
-        "number": "H. R. 7214",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9621565341949463
-    }, {
-        "number": "H. R. 739",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.973126232624054
-    }, {
-        "number": "H. R. 76",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H. R. 85",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9420183300971985
-    }, {
-        "number": "H. R. 86",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H. R. 935",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H. R. 955",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9496768712997437
-    }, {
-        "number": "H. Res. 164",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9674810171127319
-    }, {
-        "number": "H. RES. 200",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8972988724708557
-    }, {
-        "number": "H. Res. 212",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.922820508480072
-    }, {
-        "number": "H. RES. 355",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8971056342124939
-    }, {
-        "number": "H. RES. 368",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9087745547294617
-    }, {
-        "number": "H. RES. 399",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9299112558364868
-    }, {
-        "number": "H. RES. 446",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9195041656494141
-    }, {
-        "number": "H. RES. 459",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8998399972915649
-    }, {
-        "number": "H. RES. 585",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8971056342124939
-    }, {
-        "number": "H. RES. 590",
-        "congress": 111,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9338743686676025
-    }, {
-        "number": "H. Res. 631",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9268336296081543
-    }, {
-        "number": "H.Amdt.555",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.556",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.557",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.558",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.559",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.560",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.561",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.562",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.566",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.568",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.569",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.579",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.694",
-        "congress": 113,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.Amdt.777",
-        "congress": 113,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6644701957702637
-    }, {
-        "number": "H.R.2721",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9656797647476196
-    }, {
-        "number": "H.R.2807",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.95518958568573
-    }, {
-        "number": "H.R.2812",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9334130883216858
-    }, {
-        "number": "H.R.2860",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.901751697063446
-    }, {
-        "number": "H.R.2952",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9588320851325989
-    }, {
-        "number": "H.R.3002",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8552429676055908
-    }, {
-        "number": "H.R.3032",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H.R.3093",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9130250215530396
-    }, {
-        "number": "H.R.3101",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9658913612365723
-    }, {
-        "number": "H.R.3109",
-        "congress": 109,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "H.R.3266",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9246843457221985
-    }, {
-        "number": "H.R.3270",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9395161867141724
-    }, {
-        "number": "H.R.3313",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9745597243309021
-    }, {
-        "number": "H.R.3321",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H.R.3356",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H.R.3359",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9600699543952942
-    }, {
-        "number": "H.R.3403",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9417022466659546
-    }, {
-        "number": "H.R.3407",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9074109196662903
-    }, {
-        "number": "H.R.3411",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.927007257938385
-    }, {
-        "number": "H.R.3412",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9654695987701416
-    }, {
-        "number": "H.R.3490",
-        "congress": 114,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9270010590553284
-    }, {
-        "number": "H.R.3510",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9511132836341858
-    }, {
-        "number": "H.R.3523",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9748009443283081
-    }, {
-        "number": "H.R.3635",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9555627703666687
-    }, {
-        "number": "H.R.3678",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9086955189704895
-    }, {
-        "number": "H.R.3685",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8845192790031433
-    }, {
-        "number": "H.R.3696",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H.R.3712",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9390876293182373
-    }, {
-        "number": "H.R.3776",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9709805250167847
-    }, {
-        "number": "H.R.3840",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9471602439880371
-    }, {
-        "number": "H.R.3843",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.8967318534851074
-    }, {
-        "number": "H.R.3846",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H.R.3869",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9452658891677856
-    }, {
-        "number": "H.R.3878",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9658913612365723
-    }, {
-        "number": "H.R.3968",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9425548911094666
-    }, {
-        "number": "H.R.3989",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9629918932914734
-    }, {
-        "number": "H.R.3990",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9637492299079895
-    }, {
-        "number": "H.R.4028",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9447553157806396
-    }, {
-        "number": "H.R.4036",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9395161867141724
-    }, {
-        "number": "H.R.4053",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8162374496459961
-    }, {
-        "number": "H.R.4061",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9308657050132751
-    }, {
-        "number": "H.R.4061",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H.R.4104",
-        "congress": 108,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9633128046989441
-    }, {
-        "number": "H.R.4120",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H.R.4124",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9765040278434753
-    }, {
-        "number": "H.R.4133",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9404954314231873
-    }, {
-        "number": "H.R.4137",
-        "congress": 103,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9430464506149292
-    }, {
-        "number": "H.R.4163",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9516361951828003
-    }, {
-        "number": "H.R.4191",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9453881978988647
-    }, {
-        "number": "H.R.4215",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9497281908988953
-    }, {
-        "number": "H.R.4263",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H.R.4350",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8931827545166016
-    }, {
-        "number": "H.R.4361",
-        "congress": 114,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.956351101398468
-    }, {
-        "number": "H.R.4370",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9667620658874512
-    }, {
-        "number": "H.R.4374",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8391619324684143
-    }, {
-        "number": "H.R.4400",
-        "congress": 108,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9375752806663513
-    }, {
-        "number": "H.R.4463",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8931977152824402
-    }, {
-        "number": "H.R.4478",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9765040278434753
-    }, {
-        "number": "H.R.4479",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9436708688735962
-    }, {
-        "number": "H.R.4489",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9289796352386475
-    }, {
-        "number": "H.R.4505",
-        "congress": 113,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8981384038925171
-    }, {
-        "number": "H.R.4507",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8308351039886475
-    }, {
-        "number": "H.R.4559",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9414412379264832
-    }, {
-        "number": "H.R.4625",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9582546353340149
-    }, {
-        "number": "H.R.4668",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9658913612365723
-    }, {
-        "number": "H.R.4672",
-        "congress": 115,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.9514642953872681
-    }, {
-        "number": "H.R.4681",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9802576899528503
-    }, {
-        "number": "H.R.4743",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9538218975067139
-    }, {
-        "number": "H.R.6304",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "H.R.7327",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.966743528842926
-    }, {
-        "number": "H.R.756",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "H.Res.1051",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8054732084274292
-    }, {
-        "number": "H.Res.1512",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8997306227684021
-    }, {
-        "number": "H.Res.1688",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9195041656494141
-    }, {
-        "number": "IX_2135",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9228889346122742
-    }, {
-        "number": "I_1115",
-        "congress": 104,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8474951982498169
-    }, {
-        "number": "I_1374",
-        "congress": 104,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "I_1418",
-        "congress": 104,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8992802500724792
-    }, {
-        "number": "net",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9153767824172974
-    }, {
-        "number": "net001",
-        "congress": 102,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9234030246734619
-    }, {
-        "number": "No. 101_2000Coll",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "No. 106_1999Coll",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8898129463195801
-    }, {
-        "number": "No. 149_FZ",
-        "congress": 4,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9200183153152466
-    }, {
-        "number": "No. 2690",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8686520457267761
-    }, {
-        "number": "No. 429",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9399696588516235
-    }, {
-        "number": "No. 571",
-        "congress": 99,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.928822934627533
-    }, {
-        "number": "No. 572",
-        "congress": 99,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9048771262168884
-    }, {
-        "number": "No. 596",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8844009041786194
-    }, {
-        "number": "No.78_17",
-        "congress": 95,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.8366556167602539
-    }, {
-        "number": "Nor001",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9157423377037048
-    }, {
-        "number": "PL 188_2011",
-        "congress": 112,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6954847574234009
-    }, {
-        "number": "PL 7100_2017",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6954847574234009
-    }, {
-        "number": "PL 7151_2010",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.6954847574234009
-    }, {
-        "number": "Pol002",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.924019455909729
-    }, {
-        "number": "S.1011",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9680366516113281
-    }, {
-        "number": "S.1023",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9453881978988647
-    }, {
-        "number": "S.1065",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707770943641663
-    }, {
-        "number": "S.1111",
-        "congress": 113,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9644174575805664
-    }, {
-        "number": "S.1114",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.1151",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9637492299079895
-    }, {
-        "number": "S.1152",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.1157",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9738626480102539
-    }, {
-        "number": "S.1158",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9617758989334106
-    }, {
-        "number": "S.1159",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9552298188209534
-    }, {
-        "number": "S.1241",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9614722728729248
-    }, {
-        "number": "S.1256",
-        "congress": 112,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9243838787078857
-    }, {
-        "number": "S.1336",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9648298025131226
-    }, {
-        "number": "S.1339",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9620921015739441
-    }, {
-        "number": "S.1342",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9670968055725098
-    }, {
-        "number": "S.1348",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9162219762802124
-    }, {
-        "number": "S.1353",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.1428",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8552429676055908
-    }, {
-        "number": "S.1438",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.943423330783844
-    }, {
-        "number": "S.1443",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8954511284828186
-    }, {
-        "number": "S.1448",
-        "congress": 107,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9660115838050842
-    }, {
-        "number": "S.1454",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9247727394104004
-    }, {
-        "number": "S.1466",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9656797647476196
-    }, {
-        "number": "S.1469",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9720017910003662
-    }, {
-        "number": "S.1469",
-        "congress": 114,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.1475",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.1510",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9727519750595093
-    }, {
-        "number": "S.1515",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9254806637763977
-    }, {
-        "number": "S.1528",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.964411735534668
-    }, {
-        "number": "S.1569",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9456251859664917
-    }, {
-        "number": "S.1638",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.963320255279541
-    }, {
-        "number": "S.1656",
-        "congress": 115,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.9490090012550354
-    }, {
-        "number": "S.1691",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9686129689216614
-    }, {
-        "number": "S.1798",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.947604775428772
-    }, {
-        "number": "S.1799",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.8600228428840637
-    }, {
-        "number": "S.1821",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9698599576950073
-    }, {
-        "number": "S.1846",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707770943641663
-    }, {
-        "number": "S.1869",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9714102149009705
-    }, {
-        "number": "S.187",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.188",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9005883932113647
-    }, {
-        "number": "S.1885",
-        "congress": 103,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9598734974861145
-    }, {
-        "number": "S.1946",
-        "congress": 108,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9599650502204895
-    }, {
-        "number": "S.2001",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9308657050132751
-    }, {
-        "number": "S.2007",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "S.2020",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9516361951828003
-    }, {
-        "number": "S.2083",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9658913612365723
-    }, {
-        "number": "S.21",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9514556527137756
-    }, {
-        "number": "S.21",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9514556527137756
-    }, {
-        "number": "S.2102",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9802576899528503
-    }, {
-        "number": "S.2105",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9802576899528503
-    }, {
-        "number": "S.2151",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.2234",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9471602439880371
-    }, {
-        "number": "S.2248",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.2356",
-        "congress": 114,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9549202919006348
-    }, {
-        "number": "S.2372",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9508159160614014
-    }, {
-        "number": "S.2392",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9114412069320679
-    }, {
-        "number": "S.2410",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9488897323608398
-    }, {
-        "number": "S.2441",
-        "congress": 110,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.2444",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9408167004585266
-    }, {
-        "number": "S.2455",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707770943641663
-    }, {
-        "number": "S.2519",
-        "congress": 113,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.2521",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9156888127326965
-    }, {
-        "number": "S.2586",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.9174737334251404
-    }, {
-        "number": "S.2588",
-        "congress": 113,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9774032831192017
-    }, {
-        "number": "S.2659",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9665636420249939
-    }, {
-        "number": "S.2666",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9650745987892151
-    }, {
-        "number": "S.2735",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9658913612365723
-    }, {
-        "number": "S.2840",
-        "congress": 108,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9660115838050842
-    }, {
-        "number": "S.2956",
-        "congress": 107,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9374634027481079
-    }, {
-        "number": "S.2991",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8766680955886841
-    }, {
-        "number": "S.2999",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9410104155540466
-    }, {
-        "number": "S.300",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9329348206520081
-    }, {
-        "number": "S.3001",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.3024",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9244012236595154
-    }, {
-        "number": "S.315",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707770943641663
-    }, {
-        "number": "S.3193",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.3263",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9686857461929321
-    }, {
-        "number": "S.3295",
-        "congress": 114,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9538218975067139
-    }, {
-        "number": "S.3309",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.961861252784729
-    }, {
-        "number": "S.333",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9538218975067139
-    }, {
-        "number": "S.3342",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.3355",
-        "congress": 111,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9212576746940613
-    }, {
-        "number": "S.3378",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9734817147254944
-    }, {
-        "number": "S.3414",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9802576899528503
-    }, {
-        "number": "S.3437",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9745597243309021
-    }, {
-        "number": "S.3464",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9656797647476196
-    }, {
-        "number": "S.3480",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.3677",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9549757838249207
-    }, {
-        "number": "S.3707",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9549757838249207
-    }, {
-        "number": "S.372",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9641062021255493
-    }, {
-        "number": "S.3786",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9162219762802124
-    }, {
-        "number": "S.3876",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.3877",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.3931",
-        "congress": 109,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9833192229270935
-    }, {
-        "number": "S.4021",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9370943307876587
-    }, {
-        "number": "S.412",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9452658891677856
-    }, {
-        "number": "S.413",
-        "congress": 112,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9802576899528503
-    }, {
-        "number": "S.429",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9601600170135498
-    }, {
-        "number": "S.456",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9776511788368225
-    }, {
-        "number": "S.516",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9707770943641663
-    }, {
-        "number": "S.536",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9488897323608398
-    }, {
-        "number": "S.592",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9552298188209534
-    }, {
-        "number": "S.592",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9488897323608398
-    }, {
-        "number": "S.594",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9538218975067139
-    }, {
-        "number": "S.602",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9718030095100403
-    }, {
-        "number": "S.624",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9171336889266968
-    }, {
-        "number": "S.719",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9588320851325989
-    }, {
-        "number": "S.734",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9745597243309021
-    }, {
-        "number": "S.754",
-        "congress": 114,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9802576899528503
-    }, {
-        "number": "S.770",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9509115815162659
-    }, {
-        "number": "S.771",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.8552429676055908
-    }, {
-        "number": "S.772",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9284257292747498
-    }, {
-        "number": "S.773",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9760537147521973
-    }, {
-        "number": "S.778",
-        "congress": 111,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9521588683128357
-    }, {
-        "number": "S.8",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.9334846138954163
-    }, {
-        "number": "S.838",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9634304046630859
-    }, {
-        "number": "S.853",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8802071809768677
-    }, {
-        "number": "S.890",
-        "congress": 116,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9597645401954651
-    }, {
-        "number": "S.911",
-        "congress": 112,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.9572670459747314
-    }, {
-        "number": "S.936",
-        "congress": 116,
-        "area": "Armed Forces and National Security",
-        "cls": "0",
-        "cos": 0.9719703197479248
-    }, {
-        "number": "S.990",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "2",
-        "cos": 0.9668709635734558
-    }, {
-        "number": "S.Con.Res.22",
-        "congress": 115,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.7784350514411926
-    }, {
-        "number": "S.Res.140",
-        "congress": 116,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.9374326467514038
-    }, {
-        "number": "S.Res.23",
-        "congress": 115,
-        "area": "Government Operations and Politics",
-        "cls": "0",
-        "cos": 0.9612637758255005
-    }, {
-        "number": "S.Res.285",
-        "congress": 116,
-        "area": "Science, Technology, Communications",
-        "cls": "2",
-        "cos": 0.7752470970153809
-    }, {
-        "number": "S.Res.306",
-        "congress": 112,
-        "area": "Science, Technology, Communications",
-        "cls": "1",
-        "cos": 0.9195041656494141
-    }, {
-        "number": "S.Res.663",
-        "congress": 115,
-        "area": "Armed Forces and National Security",
-        "cls": "2",
-        "cos": 0.8320297002792358
-    }, {
-        "number": "S.Res.736",
-        "congress": 115,
-        "area": "International Affairs",
-        "cls": "0",
-        "cos": 0.9374326467514038
-    }, {
-        "number": "spa006",
-        "congress": 104,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8871222138404846
-    }, {
-        "number": "Swe001",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.8923109173774719
-    }, {
-        "number": "VIII_1443",
-        "congress": 106,
-        "area": "Armed Forces and National Security",
-        "cls": "4",
-        "cos": 0.9100485444068909
-    }
+[
+  {
+    "number": "H.R.1975",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9433132410049438
+  },
+  {
+    "number": "10",
+    "congress": 105,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9267541766166687
+  },
+  {
+    "number": "11DECEMBER1998",
+    "congress": 49,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.92555171251297
+  },
+  {
+    "number": "152.3",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.920951783657074
+  },
+  {
+    "number": "15_1999",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "1720 _ 2007",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "1998\uff1a204",
+    "congress": 105,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.918042004108429
+  },
+  {
+    "number": "1999_364 _ JHA",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.905964195728302
+  },
+  {
+    "number": "19_2013",
+    "congress": 113,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9288560748100281
+  },
+  {
+    "number": "2017_443",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8987590670585632
+  },
+  {
+    "number": "2019_796",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9136145710945129
+  },
+  {
+    "number": "2019_797",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9322888255119324
+  },
+  {
+    "number": "2020_651",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.735399603843689
+  },
+  {
+    "number": "235.1",
+    "congress": 102,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "2472_1997",
+    "congress": 105,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "2_94",
+    "congress": 103,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8972886204719543
+  },
+  {
+    "number": "30JULI2018",
+    "congress": 54,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.4455493688583374
+  },
+  {
+    "number": "31995L0046",
+    "congress": 105,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "322_2001",
+    "congress": 126,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9059454202651978
+  },
+  {
+    "number": "32_2003",
+    "congress": 108,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.9030663967132568
+  },
+  {
+    "number": "34_2002",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8636385798454285
+  },
+  {
+    "number": "45",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.889030396938324
+  },
+  {
+    "number": "460_2003",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9365696907043457
+  },
+  {
+    "number": "50_1996",
+    "congress": 120,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9177749752998352
+  },
+  {
+    "number": "523_1999",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.918042004108429
+  },
+  {
+    "number": "621_1999",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9274192452430725
+  },
+  {
+    "number": "62_2003",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8619529008865356
+  },
+  {
+    "number": "66_1985",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9053850173950195
+  },
+  {
+    "number": "761_2003",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8915230631828308
+  },
+  {
+    "number": "77_2000",
+    "congress": 125,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "780.1",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.7313358783721924
+  },
+  {
+    "number": "81_692_EEC",
+    "congress": 97,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.7744961977005005
+  },
+  {
+    "number": "837_2006",
+    "congress": 133,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "83_521_EEC",
+    "congress": 98,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.847463071346283
+  },
+  {
+    "number": "83_534_EEC",
+    "congress": 98,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8832582235336304
+  },
+  {
+    "number": "8DECEMBER1992",
+    "congress": 48,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "917_2014",
+    "congress": 113,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9322904348373413
+  },
+  {
+    "number": "Act52 of 2003G.25961GoN 83",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6954847574234009
+  },
+  {
+    "number": "Act65 of 2002G.24390GoN 236",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9397795796394348
+  },
+  {
+    "number": "Act67 of 2002G.24391GoN 237",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9559654593467712
+  },
+  {
+    "number": "Act68 of 2002G.24356GoN 189",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9433371424674988
+  },
+  {
+    "number": "Bul001",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9318199157714844
+  },
+  {
+    "number": "Bul002",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.8844487071037292
+  },
+  {
+    "number": "Bul003",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.8844487071037292
+  },
+  {
+    "number": "Bul004",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.929078221321106
+  },
+  {
+    "number": "Dz.U. 1997 nr 133 poz. 883",
+    "congress": 105,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "Dz.U. 2001 nr 112 poz. 1198",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8829206228256226
+  },
+  {
+    "number": "ger001",
+    "congress": 13,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8906658291816711
+  },
+  {
+    "number": "ger002",
+    "congress": 12,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9359493255615234
+  },
+  {
+    "number": "ger003",
+    "congress": 15,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "ger004",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8992802500724792
+  },
+  {
+    "number": "H. R. 1017",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9667620658874512
+  },
+  {
+    "number": "H. R. 1030",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9270084500312805
+  },
+  {
+    "number": "H. R. 1136",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H. R. 174",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H. R. 234",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9782901406288147
+  },
+  {
+    "number": "H. R. 263",
+    "congress": 110,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H. R. 266",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H. R. 266",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H. R. 331",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9385441541671753
+  },
+  {
+    "number": "H. R. 359",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9553084373474121
+  },
+  {
+    "number": "H. R. 360",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9437637329101562
+  },
+  {
+    "number": "H. R. 404",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9555627703666687
+  },
+  {
+    "number": "H. R. 451",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9555627703666687
+  },
+  {
+    "number": "H. R. 455",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9555627703666687
+  },
+  {
+    "number": "H. R. 4852",
+    "congress": 108,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9782421588897705
+  },
+  {
+    "number": "H. R. 4897",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9668634533882141
+  },
+  {
+    "number": "H. R. 4900",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H. R. 5024",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9605308175086975
+  },
+  {
+    "number": "H. R. 5050",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9479267001152039
+  },
+  {
+    "number": "H. R. 5057",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9568549394607544
+  },
+  {
+    "number": "H. R. 5064",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9549740552902222
+  },
+  {
+    "number": "H. R. 5069",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9453881978988647
+  },
+  {
+    "number": "H. R. 5175",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9346023201942444
+  },
+  {
+    "number": "H. R. 5179",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9656797647476196
+  },
+  {
+    "number": "H. R. 5222",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.946608304977417
+  },
+  {
+    "number": "H. R. 5225",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8843793272972107
+  },
+  {
+    "number": "H. R. 5300",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9113747477531433
+  },
+  {
+    "number": "H. R. 5312",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9686857461929321
+  },
+  {
+    "number": "H. R. 5390",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9663154482841492
+  },
+  {
+    "number": "H. R. 5440",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H. R. 5517",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H. R. 5522",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.923167884349823
+  },
+  {
+    "number": "H. R. 5548",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H. R. 5588",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9344745874404907
+  },
+  {
+    "number": "H. R. 5733",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707770943641663
+  },
+  {
+    "number": "H. R. 5749",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9510802626609802
+  },
+  {
+    "number": "H. R. 5783",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9257361888885498
+  },
+  {
+    "number": "H. R. 5792",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9686857461929321
+  },
+  {
+    "number": "H. R. 5825",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H. R. 584",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9552298188209534
+  },
+  {
+    "number": "H. R. 5843",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9588320851325989
+  },
+  {
+    "number": "H. R. 5966",
+    "congress": 111,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9516014456748962
+  },
+  {
+    "number": "H. R. 5983",
+    "congress": 110,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9450938701629639
+  },
+  {
+    "number": "H. R. 60",
+    "congress": 114,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9496768712997437
+  },
+  {
+    "number": "H. R. 6004",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9745597243309021
+  },
+  {
+    "number": "H. R. 6032",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9395673274993896
+  },
+  {
+    "number": "H. R. 6056",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H. R. 6066",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9521446824073792
+  },
+  {
+    "number": "H. R. 6073",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.961326003074646
+  },
+  {
+    "number": "H. R. 612",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9588320851325989
+  },
+  {
+    "number": "H. R. 624",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9782901406288147
+  },
+  {
+    "number": "H. R. 6277",
+    "congress": 112,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9288862347602844
+  },
+  {
+    "number": "H. R. 6351",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707704782485962
+  },
+  {
+    "number": "H. R. 6423",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H. R. 6436",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9575615525245667
+  },
+  {
+    "number": "H. R. 6443",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9656797647476196
+  },
+  {
+    "number": "H. R. 6638",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9488897323608398
+  },
+  {
+    "number": "H. R. 6735",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9453881978988647
+  },
+  {
+    "number": "H. R. 7007",
+    "congress": 110,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9590480327606201
+  },
+  {
+    "number": "H. R. 7045",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9416880011558533
+  },
+  {
+    "number": "H. R. 7214",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9621565341949463
+  },
+  {
+    "number": "H. R. 739",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.973126232624054
+  },
+  {
+    "number": "H. R. 76",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H. R. 85",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9420183300971985
+  },
+  {
+    "number": "H. R. 86",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H. R. 935",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H. R. 955",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9496768712997437
+  },
+  {
+    "number": "H. Res. 164",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9674810171127319
+  },
+  {
+    "number": "H. RES. 200",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8972988724708557
+  },
+  {
+    "number": "H. Res. 212",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.922820508480072
+  },
+  {
+    "number": "H. RES. 355",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8971056342124939
+  },
+  {
+    "number": "H. RES. 368",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9087745547294617
+  },
+  {
+    "number": "H. RES. 399",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9299112558364868
+  },
+  {
+    "number": "H. RES. 446",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9195041656494141
+  },
+  {
+    "number": "H. RES. 459",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8998399972915649
+  },
+  {
+    "number": "H. RES. 585",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8971056342124939
+  },
+  {
+    "number": "H. RES. 590",
+    "congress": 111,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9338743686676025
+  },
+  {
+    "number": "H. Res. 631",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9268336296081543
+  },
+  {
+    "number": "H.Amdt.555",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.556",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.557",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.558",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.559",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.560",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.561",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.562",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.566",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.568",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.569",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.579",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.694",
+    "congress": 113,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.Amdt.777",
+    "congress": 113,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6644701957702637
+  },
+  {
+    "number": "H.R.2721",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9656797647476196
+  },
+  {
+    "number": "H.R.2807",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.95518958568573
+  },
+  {
+    "number": "H.R.2812",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9334130883216858
+  },
+  {
+    "number": "H.R.2860",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.901751697063446
+  },
+  {
+    "number": "H.R.2952",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9588320851325989
+  },
+  {
+    "number": "H.R.3002",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8552429676055908
+  },
+  {
+    "number": "H.R.3032",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H.R.3093",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9130250215530396
+  },
+  {
+    "number": "H.R.3101",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9658913612365723
+  },
+  {
+    "number": "H.R.3109",
+    "congress": 109,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "H.R.3266",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9246843457221985
+  },
+  {
+    "number": "H.R.3270",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9395161867141724
+  },
+  {
+    "number": "H.R.3313",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9745597243309021
+  },
+  {
+    "number": "H.R.3321",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H.R.3356",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H.R.3359",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9600699543952942
+  },
+  {
+    "number": "H.R.3403",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9417022466659546
+  },
+  {
+    "number": "H.R.3407",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9074109196662903
+  },
+  {
+    "number": "H.R.3411",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.927007257938385
+  },
+  {
+    "number": "H.R.3412",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9654695987701416
+  },
+  {
+    "number": "H.R.3490",
+    "congress": 114,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9270010590553284
+  },
+  {
+    "number": "H.R.3510",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9511132836341858
+  },
+  {
+    "number": "H.R.3523",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9748009443283081
+  },
+  {
+    "number": "H.R.3635",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9555627703666687
+  },
+  {
+    "number": "H.R.3678",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9086955189704895
+  },
+  {
+    "number": "H.R.3685",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8845192790031433
+  },
+  {
+    "number": "H.R.3696",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H.R.3712",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9390876293182373
+  },
+  {
+    "number": "H.R.3776",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9709805250167847
+  },
+  {
+    "number": "H.R.3840",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9471602439880371
+  },
+  {
+    "number": "H.R.3843",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.8967318534851074
+  },
+  {
+    "number": "H.R.3846",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H.R.3869",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9452658891677856
+  },
+  {
+    "number": "H.R.3878",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9658913612365723
+  },
+  {
+    "number": "H.R.3968",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9425548911094666
+  },
+  {
+    "number": "H.R.3989",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9629918932914734
+  },
+  {
+    "number": "H.R.3990",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9637492299079895
+  },
+  {
+    "number": "H.R.4028",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9447553157806396
+  },
+  {
+    "number": "H.R.4036",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9395161867141724
+  },
+  {
+    "number": "H.R.4053",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8162374496459961
+  },
+  {
+    "number": "H.R.4061",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9308657050132751
+  },
+  {
+    "number": "H.R.4061",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H.R.4104",
+    "congress": 108,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9633128046989441
+  },
+  {
+    "number": "H.R.4120",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H.R.4124",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9765040278434753
+  },
+  {
+    "number": "H.R.4133",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9404954314231873
+  },
+  {
+    "number": "H.R.4137",
+    "congress": 103,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9430464506149292
+  },
+  {
+    "number": "H.R.4163",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9516361951828003
+  },
+  {
+    "number": "H.R.4191",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9453881978988647
+  },
+  {
+    "number": "H.R.4215",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9497281908988953
+  },
+  {
+    "number": "H.R.4263",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H.R.4350",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8931827545166016
+  },
+  {
+    "number": "H.R.4361",
+    "congress": 114,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.956351101398468
+  },
+  {
+    "number": "H.R.4370",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9667620658874512
+  },
+  {
+    "number": "H.R.4374",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8391619324684143
+  },
+  {
+    "number": "H.R.4400",
+    "congress": 108,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9375752806663513
+  },
+  {
+    "number": "H.R.4463",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8931977152824402
+  },
+  {
+    "number": "H.R.4478",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9765040278434753
+  },
+  {
+    "number": "H.R.4479",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9436708688735962
+  },
+  {
+    "number": "H.R.4489",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9289796352386475
+  },
+  {
+    "number": "H.R.4505",
+    "congress": 113,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8981384038925171
+  },
+  {
+    "number": "H.R.4507",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8308351039886475
+  },
+  {
+    "number": "H.R.4559",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9414412379264832
+  },
+  {
+    "number": "H.R.4625",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9582546353340149
+  },
+  {
+    "number": "H.R.4668",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9658913612365723
+  },
+  {
+    "number": "H.R.4672",
+    "congress": 115,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.9514642953872681
+  },
+  {
+    "number": "H.R.4681",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9802576899528503
+  },
+  {
+    "number": "H.R.4743",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9538218975067139
+  },
+  {
+    "number": "H.R.6304",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "H.R.7327",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.966743528842926
+  },
+  {
+    "number": "H.R.756",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "H.Res.1051",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8054732084274292
+  },
+  {
+    "number": "H.Res.1512",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8997306227684021
+  },
+  {
+    "number": "H.Res.1688",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9195041656494141
+  },
+  {
+    "number": "IX_2135",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9228889346122742
+  },
+  {
+    "number": "I_1115",
+    "congress": 104,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8474951982498169
+  },
+  {
+    "number": "I_1374",
+    "congress": 104,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "I_1418",
+    "congress": 104,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8992802500724792
+  },
+  {
+    "number": "net",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9153767824172974
+  },
+  {
+    "number": "net001",
+    "congress": 102,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9234030246734619
+  },
+  {
+    "number": "No. 101_2000Coll",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "No. 106_1999Coll",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8898129463195801
+  },
+  {
+    "number": "No. 149_FZ",
+    "congress": 4,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9200183153152466
+  },
+  {
+    "number": "No. 2690",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8686520457267761
+  },
+  {
+    "number": "No. 429",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9399696588516235
+  },
+  {
+    "number": "No. 571",
+    "congress": 99,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.928822934627533
+  },
+  {
+    "number": "No. 572",
+    "congress": 99,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9048771262168884
+  },
+  {
+    "number": "No. 596",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8844009041786194
+  },
+  {
+    "number": "No.78_17",
+    "congress": 95,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.8366556167602539
+  },
+  {
+    "number": "Nor001",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9157423377037048
+  },
+  {
+    "number": "PL 188_2011",
+    "congress": 112,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6954847574234009
+  },
+  {
+    "number": "PL 7100_2017",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6954847574234009
+  },
+  {
+    "number": "PL 7151_2010",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.6954847574234009
+  },
+  {
+    "number": "Pol002",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.924019455909729
+  },
+  {
+    "number": "S.1011",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9680366516113281
+  },
+  {
+    "number": "S.1023",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9453881978988647
+  },
+  {
+    "number": "S.1065",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707770943641663
+  },
+  {
+    "number": "S.1111",
+    "congress": 113,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9644174575805664
+  },
+  {
+    "number": "S.1114",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.1151",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9637492299079895
+  },
+  {
+    "number": "S.1152",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.1157",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9738626480102539
+  },
+  {
+    "number": "S.1158",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9617758989334106
+  },
+  {
+    "number": "S.1159",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9552298188209534
+  },
+  {
+    "number": "S.1241",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9614722728729248
+  },
+  {
+    "number": "S.1256",
+    "congress": 112,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9243838787078857
+  },
+  {
+    "number": "S.1336",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9648298025131226
+  },
+  {
+    "number": "S.1339",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9620921015739441
+  },
+  {
+    "number": "S.1342",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9670968055725098
+  },
+  {
+    "number": "S.1348",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9162219762802124
+  },
+  {
+    "number": "S.1353",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.1428",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8552429676055908
+  },
+  {
+    "number": "S.1438",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.943423330783844
+  },
+  {
+    "number": "S.1443",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8954511284828186
+  },
+  {
+    "number": "S.1448",
+    "congress": 107,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9660115838050842
+  },
+  {
+    "number": "S.1454",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9247727394104004
+  },
+  {
+    "number": "S.1466",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9656797647476196
+  },
+  {
+    "number": "S.1469",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9720017910003662
+  },
+  {
+    "number": "S.1469",
+    "congress": 114,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.1475",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.1510",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9727519750595093
+  },
+  {
+    "number": "S.1515",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9254806637763977
+  },
+  {
+    "number": "S.1528",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.964411735534668
+  },
+  {
+    "number": "S.1569",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9456251859664917
+  },
+  {
+    "number": "S.1638",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.963320255279541
+  },
+  {
+    "number": "S.1656",
+    "congress": 115,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.9490090012550354
+  },
+  {
+    "number": "S.1691",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9686129689216614
+  },
+  {
+    "number": "S.1798",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.947604775428772
+  },
+  {
+    "number": "S.1799",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.8600228428840637
+  },
+  {
+    "number": "S.1821",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9698599576950073
+  },
+  {
+    "number": "S.1846",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707770943641663
+  },
+  {
+    "number": "S.1869",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9714102149009705
+  },
+  {
+    "number": "S.187",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.188",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9005883932113647
+  },
+  {
+    "number": "S.1885",
+    "congress": 103,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9598734974861145
+  },
+  {
+    "number": "S.1946",
+    "congress": 108,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9599650502204895
+  },
+  {
+    "number": "S.2001",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9308657050132751
+  },
+  {
+    "number": "S.2007",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "S.2020",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9516361951828003
+  },
+  {
+    "number": "S.2083",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9658913612365723
+  },
+  {
+    "number": "S.21",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9514556527137756
+  },
+  {
+    "number": "S.21",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9514556527137756
+  },
+  {
+    "number": "S.2102",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9802576899528503
+  },
+  {
+    "number": "S.2105",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9802576899528503
+  },
+  {
+    "number": "S.2151",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.2234",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9471602439880371
+  },
+  {
+    "number": "S.2248",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.2356",
+    "congress": 114,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9549202919006348
+  },
+  {
+    "number": "S.2372",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9508159160614014
+  },
+  {
+    "number": "S.2392",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9114412069320679
+  },
+  {
+    "number": "S.2410",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9488897323608398
+  },
+  {
+    "number": "S.2441",
+    "congress": 110,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.2444",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9408167004585266
+  },
+  {
+    "number": "S.2455",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707770943641663
+  },
+  {
+    "number": "S.2519",
+    "congress": 113,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.2521",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9156888127326965
+  },
+  {
+    "number": "S.2586",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.9174737334251404
+  },
+  {
+    "number": "S.2588",
+    "congress": 113,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9774032831192017
+  },
+  {
+    "number": "S.2659",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9665636420249939
+  },
+  {
+    "number": "S.2666",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9650745987892151
+  },
+  {
+    "number": "S.2735",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9658913612365723
+  },
+  {
+    "number": "S.2840",
+    "congress": 108,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9660115838050842
+  },
+  {
+    "number": "S.2956",
+    "congress": 107,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9374634027481079
+  },
+  {
+    "number": "S.2991",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8766680955886841
+  },
+  {
+    "number": "S.2999",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9410104155540466
+  },
+  {
+    "number": "S.300",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9329348206520081
+  },
+  {
+    "number": "S.3001",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.3024",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9244012236595154
+  },
+  {
+    "number": "S.315",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707770943641663
+  },
+  {
+    "number": "S.3193",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.3263",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9686857461929321
+  },
+  {
+    "number": "S.3295",
+    "congress": 114,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9538218975067139
+  },
+  {
+    "number": "S.3309",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.961861252784729
+  },
+  {
+    "number": "S.333",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9538218975067139
+  },
+  {
+    "number": "S.3342",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.3355",
+    "congress": 111,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9212576746940613
+  },
+  {
+    "number": "S.3378",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9734817147254944
+  },
+  {
+    "number": "S.3414",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9802576899528503
+  },
+  {
+    "number": "S.3437",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9745597243309021
+  },
+  {
+    "number": "S.3464",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9656797647476196
+  },
+  {
+    "number": "S.3480",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.3677",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9549757838249207
+  },
+  {
+    "number": "S.3707",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9549757838249207
+  },
+  {
+    "number": "S.372",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9641062021255493
+  },
+  {
+    "number": "S.3786",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9162219762802124
+  },
+  {
+    "number": "S.3876",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.3877",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.3931",
+    "congress": 109,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9833192229270935
+  },
+  {
+    "number": "S.4021",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9370943307876587
+  },
+  {
+    "number": "S.412",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9452658891677856
+  },
+  {
+    "number": "S.413",
+    "congress": 112,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9802576899528503
+  },
+  {
+    "number": "S.429",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9601600170135498
+  },
+  {
+    "number": "S.456",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9776511788368225
+  },
+  {
+    "number": "S.516",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9707770943641663
+  },
+  {
+    "number": "S.536",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9488897323608398
+  },
+  {
+    "number": "S.592",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9552298188209534
+  },
+  {
+    "number": "S.592",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9488897323608398
+  },
+  {
+    "number": "S.594",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9538218975067139
+  },
+  {
+    "number": "S.602",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9718030095100403
+  },
+  {
+    "number": "S.624",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9171336889266968
+  },
+  {
+    "number": "S.719",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9588320851325989
+  },
+  {
+    "number": "S.734",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9745597243309021
+  },
+  {
+    "number": "S.754",
+    "congress": 114,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9802576899528503
+  },
+  {
+    "number": "S.770",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9509115815162659
+  },
+  {
+    "number": "S.771",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.8552429676055908
+  },
+  {
+    "number": "S.772",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9284257292747498
+  },
+  {
+    "number": "S.773",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9760537147521973
+  },
+  {
+    "number": "S.778",
+    "congress": 111,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9521588683128357
+  },
+  {
+    "number": "S.8",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.9334846138954163
+  },
+  {
+    "number": "S.838",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9634304046630859
+  },
+  {
+    "number": "S.853",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8802071809768677
+  },
+  {
+    "number": "S.890",
+    "congress": 116,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9597645401954651
+  },
+  {
+    "number": "S.911",
+    "congress": 112,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.9572670459747314
+  },
+  {
+    "number": "S.936",
+    "congress": 116,
+    "area": "Armed Forces and National Security",
+    "cls": "0",
+    "cos": 0.9719703197479248
+  },
+  {
+    "number": "S.990",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "2",
+    "cos": 0.9668709635734558
+  },
+  {
+    "number": "S.Con.Res.22",
+    "congress": 115,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.7784350514411926
+  },
+  {
+    "number": "S.Res.140",
+    "congress": 116,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.9374326467514038
+  },
+  {
+    "number": "S.Res.23",
+    "congress": 115,
+    "area": "Government Operations and Politics",
+    "cls": "0",
+    "cos": 0.9612637758255005
+  },
+  {
+    "number": "S.Res.285",
+    "congress": 116,
+    "area": "Science, Technology, Communications",
+    "cls": "2",
+    "cos": 0.7752470970153809
+  },
+  {
+    "number": "S.Res.306",
+    "congress": 112,
+    "area": "Science, Technology, Communications",
+    "cls": "1",
+    "cos": 0.9195041656494141
+  },
+  {
+    "number": "S.Res.663",
+    "congress": 115,
+    "area": "Armed Forces and National Security",
+    "cls": "2",
+    "cos": 0.8320297002792358
+  },
+  {
+    "number": "S.Res.736",
+    "congress": 115,
+    "area": "International Affairs",
+    "cls": "0",
+    "cos": 0.9374326467514038
+  },
+  {
+    "number": "spa006",
+    "congress": 104,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8871222138404846
+  },
+  {
+    "number": "Swe001",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.8923109173774719
+  },
+  {
+    "number": "VIII_1443",
+    "congress": 106,
+    "area": "Armed Forces and National Security",
+    "cls": "4",
+    "cos": 0.9100485444068909
+  },
+  {
+    "number": "H.Con.Res.78",
+    "congress": "114",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.739",
+    "congress": "116",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1359",
+    "congress": "116",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1997",
+    "congress": "115",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2488",
+    "congress": "116",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.Res.643",
+    "congress": "113",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.Res.1512",
+    "congress": "111",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.602",
+    "congress": "116",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.1438",
+    "congress": "111",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.1469",
+    "congress": "112",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.2455",
+    "congress": "115",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.3193",
+    "congress": "111",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.3378",
+    "congress": "115",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.Res.140",
+    "congress": "116",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "S.Res.736",
+    "congress": "115",
+    "area": "International Affairs",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2588",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "0"
+  },
+  {
+    "number": "S.1339",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "0"
+  },
+  {
+    "number": "S.1469",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "0"
+  },
+  {
+    "number": "S.2356",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2429",
+    "congress": "108",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.2645",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "H.Res.641",
+    "congress": "109",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.187",
+    "congress": "110",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.188",
+    "congress": "108",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.1114",
+    "congress": "110",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.1448",
+    "congress": "107",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.1885",
+    "congress": "103",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.1946",
+    "congress": "108",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.2248",
+    "congress": "110",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.2441",
+    "congress": "110",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.2659",
+    "congress": "107",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.2956",
+    "congress": "107",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.3001",
+    "congress": "109",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.3876",
+    "congress": "109",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.3877",
+    "congress": "109",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "S.3931",
+    "congress": "109",
+    "area": "Armed Forces and National Security",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.1537",
+    "congress": "111",
+    "area": "Armed Forces and National Security",
+    "cls": "2"
+  },
+  {
+    "number": "S.1159",
+    "congress": "112",
+    "area": "Armed Forces and National Security",
+    "cls": "2"
+  },
+  {
+    "number": "S.1443",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "2"
+  },
+  {
+    "number": "S.1515",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "2"
+  },
+  {
+    "number": "S.Res.663",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.60",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.234",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.624",
+    "congress": "113",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.955",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.1017",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.1560",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.1609",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.1640",
+    "congress": "113",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.2048",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.8",
+    "congress": "112",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.592",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.624",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.838",
+    "congress": "116",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.853",
+    "congress": "116",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.1256",
+    "congress": "112",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.1348",
+    "congress": "116",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.2001",
+    "congress": "109",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.2840",
+    "congress": "108",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.3355",
+    "congress": "111",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "S.3786",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "3"
+  },
+  {
+    "number": "H.R.1030",
+    "congress": "115",
+    "area": "Armed Forces and National Security",
+    "cls": "4"
+  },
+  {
+    "number": "H.R.1942",
+    "congress": "116",
+    "area": "Armed Forces and National Security",
+    "cls": "4"
+  },
+  {
+    "number": "H.R.2286",
+    "congress": "116",
+    "area": "Armed Forces and National Security",
+    "cls": "4"
+  },
+  {
+    "number": "H.R.2708",
+    "congress": "114",
+    "area": "Armed Forces and National Security",
+    "cls": "4"
+  },
+  {
+    "number": "S.936",
+    "congress": "116",
+    "area": "Armed Forces and National Security",
+    "cls": "4"
+  },
+  {
+    "number": "S.1528",
+    "congress": "111",
+    "area": "Armed Forces and National Security",
+    "cls": "4"
+  },
+  {
+    "number": "H.R.76",
+    "congress": "112",
+    "area": "Education",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.86",
+    "congress": "113",
+    "area": "Education",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.263",
+    "congress": "110",
+    "area": "Education",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.266",
+    "congress": "111",
+    "area": "Education",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.85",
+    "congress": "114",
+    "area": "Emergency Management",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.174",
+    "congress": "112",
+    "area": "Emergency Management",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.935",
+    "congress": "115",
+    "area": "Emergency Management",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1981",
+    "congress": "115",
+    "area": "Emergency Management",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.285",
+    "congress": "109",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1998",
+    "congress": "114",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2281",
+    "congress": "113",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "S.1011",
+    "congress": "112",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "S.1111",
+    "congress": "113",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "S.1151",
+    "congress": "112",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "S.1158",
+    "congress": "114",
+    "area": "Crime and Law Enforcement",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.331",
+    "congress": "116",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2683",
+    "congress": "116",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "H.Res.769",
+    "congress": "113",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "S.771",
+    "congress": "116",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "S.772",
+    "congress": "116",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "S.1428",
+    "congress": "115",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "S.2020",
+    "congress": "115",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "S.3024",
+    "congress": "114",
+    "area": "Commerce",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.359",
+    "congress": "116",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.360",
+    "congress": "116",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2195",
+    "congress": "111",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "S.300",
+    "congress": "116",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "S.1241",
+    "congress": "114",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "S.1342",
+    "congress": "112",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "S.2444",
+    "congress": "115",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "S.3677",
+    "congress": "115",
+    "area": "Energy",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1136",
+    "congress": "112",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.21",
+    "congress": "112",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.413",
+    "congress": "112",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.754",
+    "congress": "114",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.1510",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.1638",
+    "congress": "113",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.2102",
+    "congress": "112",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.2105",
+    "congress": "112",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.2588",
+    "congress": "113",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.3414",
+    "congress": "112",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "S.3480",
+    "congress": "111",
+    "area": "Government Operations and Politics",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1907",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.2227",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.2481",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.2526",
+    "congress": "108",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.429",
+    "congress": "116",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.778",
+    "congress": "111",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.990",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.1157",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.1454",
+    "congress": "116",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.1569",
+    "congress": "116",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.1869",
+    "congress": "114",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.2007",
+    "congress": "114",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.2372",
+    "congress": "113",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.2519",
+    "congress": "113",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "S.3263",
+    "congress": "114",
+    "area": "Government Operations and Politics",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.404",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.451",
+    "congress": "114",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.455",
+    "congress": "116",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.923",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.1731",
+    "congress": "114",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.1910",
+    "congress": "111",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "S.412",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "S.734",
+    "congress": "116",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "S.3464",
+    "congress": "115",
+    "area": "Government Operations and Politics",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.584",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.612",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1975",
+    "congress": "116",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2556",
+    "congress": "113",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "H.Res.727",
+    "congress": "114",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "H.Res.898",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.315",
+    "congress": "116",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.333",
+    "congress": "116",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.456",
+    "congress": "114",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.594",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.719",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.1821",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.2991",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "S.3309",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.1335",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.2105",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "H.Res.1688",
+    "congress": "111",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.372",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.770",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.1475",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.2392",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.2666",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.2735",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.4021",
+    "congress": "111",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "S.Res.306",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "1"
+  },
+  {
+    "number": "H.R.756",
+    "congress": "113",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.2096",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.2130",
+    "congress": "116",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.2184",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.21",
+    "congress": "113",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.516",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.773",
+    "congress": "111",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.911",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.1065",
+    "congress": "116",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.1152",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.1353",
+    "congress": "113",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.2151",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.3342",
+    "congress": "112",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "S.3437",
+    "congress": "115",
+    "area": "Science, Technology, Communications",
+    "cls": "2"
+  },
+  {
+    "number": "H.R.1945",
+    "congress": "113",
+    "area": "Finance and Financial Sector",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2545",
+    "congress": "116",
+    "area": "Finance and Financial Sector",
+    "cls": "0"
+  },
+  {
+    "number": "S.536",
+    "congress": "115",
+    "area": "Finance and Financial Sector",
+    "cls": "0"
+  },
+  {
+    "number": "S.592",
+    "congress": "116",
+    "area": "Finance and Financial Sector",
+    "cls": "0"
+  },
+  {
+    "number": "S.1336",
+    "congress": "116",
+    "area": "Finance and Financial Sector",
+    "cls": "0"
+  },
+  {
+    "number": "S.2410",
+    "congress": "114",
+    "area": "Finance and Financial Sector",
+    "cls": "0"
+  },
+  {
+    "number": "H.R.2331",
+    "congress": "116",
+    "area": "Congress",
+    "cls": "0"
+  },
+  {
+    "number": "H.Res.1051",
+    "congress": "111",
+    "area": "Congress",
+    "cls": "0"
+  },
+  {
+    "number": "S.890",
+    "congress": "116",
+    "area": "Congress",
+    "cls": "0"
+  },
+  {
+    "number": "S.Res.23",
+    "congress": "115",
+    "area": "Congress",
+    "cls": "0"
+  },
+  {
+    "number": "S.1023",
+    "congress": "114",
+    "area": "Taxation",
+    "cls": "0"
+  },
+  {
+    "number": "S.1466",
+    "congress": "116",
+    "area": "Labor and Employment",
+    "cls": "0"
+  },
+  {
+    "number": "S.2521",
+    "congress": "116",
+    "area": "Labor and Employment",
+    "cls": "0"
+  },
+  {
+    "number": "S.2083",
+    "congress": "115",
+    "area": "Transportation and Public Works",
+    "cls": "0"
+  },
+  {
+    "number": "S.Res.285",
+    "congress": "116",
+    "area": "Transportation and Public Works",
+    "cls": "0"
+  }
 ]

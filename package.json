@@ -13,6 +13,13 @@
     "deploy": "pm2 deploy production update",
     "feature": "cross-env NODE_ENV=development ts-node ./src/script/bill-feature-excel-init.ts",
     "influ": "cross-env NODE_ENV=development ts-node ./src/script/bill-influence-excel-init.ts",
+    "action": "cross-env NODE_ENV=development ts-node ./src/script/bill-action-excel-init.ts",
+    "actionValue1": "cross-env NODE_ENV=development ts-node ./src/script/bill-action-value1-excel-init.ts",
+    "value": "cross-env NODE_ENV=development ts-node ./src/script/bill-action-value-excel-init.ts",
+    "policy": "cross-env NODE_ENV=development ts-node ./src/script/bill-policy-excel-init.ts",
+    "policyValue1": "cross-env NODE_ENV=development ts-node ./src/script/bill-policy-value1-excel-init.ts",
+    "categorize": "cross-env NODE_ENV=development ts-node ./src/script/bill-categorize-excel-init.ts",
+    "categorizeValue1": "cross-env NODE_ENV=development ts-node ./src/script/bill-categorize-value1-excel-init.ts",
     "neo4j": "ts-node ./src/neo4j/index.ts",
     "debug": "nodemon  --ext js,ts   --exec node -r ts-node/register --inspect src/www.ts"
   },
