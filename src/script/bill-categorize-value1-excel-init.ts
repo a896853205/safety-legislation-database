@@ -8,6 +8,8 @@ import Bill from '../models/bill';
 import Country from '../models/country';
 import Person from '../models/person';
 import Cosponsor from '../models/cosponsor';
+import Committee from '../models/committee';
+import Organization from '../models/organization';
 
 dbInit();
 
@@ -29,10 +31,10 @@ dbInit();
         model: Person,
       },
       {
-        model: Cosponsor,
+        model: Committee,
         include: [
           {
-            model: Person,
+            model: Organization,
           },
         ],
       },
@@ -48,8 +50,8 @@ dbInit();
           congress: bill.congress,
           country: '美国',
           sponsor: bill.sponsor?.name,
-          cosSponsor: bill.cosponsors
-            ?.map(cos => cos.cosponsor?.name)
+          committee: bill.committees
+            ?.map(committee => committee.organization?.name)
             .join(','),
           categorize: bill.categorize,
         });
@@ -71,7 +73,7 @@ dbInit();
       item.number,
       item.congress,
       item.sponsor,
-      item.cosSponsor,
+      item.committee,
     ]),
   ];
   let ws = XLSX.utils.aoa_to_sheet(ws_data);
