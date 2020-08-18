@@ -75,13 +75,14 @@ export default async () => {
     let personArr = await Person.findAll();
 
     let billArray: IBill[] = [];
+    const errorNumberArr = [];
 
     for (let item of dataArray) {
       let congress: number | undefined = undefined;
 
       // 处理国会届数
       if (item.congress) {
-        congress = Number(item.congress?.substring(0, 3));
+        congress = Number(`${item.congress}`?.substring(0, 3));
         congress = !isNaN(congress) ? congress : undefined;
       } else {
         if (item.dateSponsored) {
@@ -118,8 +119,8 @@ export default async () => {
       )?.uuid;
 
       if (!sponsor && item.sponsor) {
-        console.error(item.number);
-        throw new Error(`sponsor有非法字段为${item.number}`);
+        errorNumberArr.push({ number: item.number, congress: item.congress });
+        // throw new Error(`sponsor有非法字段为${item.number}`);
       }
 
       // text 读取
@@ -191,6 +192,11 @@ export default async () => {
           ? `${categorize.area}-${categorize.cls}`
           : undefined,
       });
+    }
+
+    if (errorNumberArr.length) {
+      console.table(errorNumberArr);
+      throw new Error(`sponsor有非法字段有${errorNumberArr.length}`);
     }
 
     await Bill.bulkCreate(billArray);

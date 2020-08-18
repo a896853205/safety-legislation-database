@@ -12,7 +12,7 @@
     "initDeploy": "pm2 deploy production setup",
     "deploy": "pm2 deploy production update",
     "feature": "cross-env NODE_ENV=development ts-node ./src/script/bill-feature-excel-init.ts",
-    "influ": "cross-env NODE_ENV=development ts-node ./src/script/bill-influence-excel-init.ts",
+    "influ": "cross-env NODE_ENV=development ts-node ./src/script/bill-influence-excel-init.ts ",
     "action": "cross-env NODE_ENV=development ts-node ./src/script/bill-action-excel-init.ts",
     "actionValue1": "cross-env NODE_ENV=development ts-node ./src/script/bill-action-value1-excel-init.ts",
     "value": "cross-env NODE_ENV=development ts-node ./src/script/bill-action-value-excel-init.ts",

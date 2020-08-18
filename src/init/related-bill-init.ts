@@ -51,7 +51,7 @@ export default async () => {
 
         // 处理国会届数
         let congress: number | undefined = Number(
-          item.congress?.substring(0, 3)
+          `${item.congress}`?.substring(0, 3)
         );
         congress = !isNaN(congress) ? congress : undefined;
 

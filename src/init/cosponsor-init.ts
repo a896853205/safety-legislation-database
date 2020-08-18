@@ -45,6 +45,7 @@ export default async () => {
 
     let _lastNumber: string = '';
     let lastNumberUuid: string | undefined = '';
+    const errorNumberArr = [];
 
     for (let item of dataArray) {
       if (item.number) {
@@ -53,7 +54,7 @@ export default async () => {
         if (item.congress) {
           // 处理国会届数
           let congress: number | undefined = Number(
-            item.congress?.substring(0, 3)
+            `${item.congress}`?.substring(0, 3)
           );
           congress = !isNaN(congress) ? congress : undefined;
 
@@ -74,8 +75,11 @@ export default async () => {
         )?.uuid;
 
         if (!cosponsorUuid) {
-          // console.error(item.cosponsor);
-          throw new Error(`cosponsor有非法内容为 ${item.cosponsor}`);
+          errorNumberArr.push({
+            number: item.number,
+            congress: item.congress,
+            cosponsor: item.cosponsor,
+          });
         }
       }
 
@@ -89,6 +93,11 @@ export default async () => {
             : undefined,
         });
       }
+    }
+
+    if (errorNumberArr.length) {
+      console.table(errorNumberArr);
+      throw new Error(`cosponsor有非法字段有${errorNumberArr.length}`);
     }
 
     await Cosponsor.bulkCreate(cosponsorArr);

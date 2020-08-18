@@ -46,7 +46,7 @@ export default async () => {
 
         if (item.congress) {
           let congress: number | undefined = Number(
-            item.congress?.substring(0, 3)
+            `${item.congress}`?.substring(0, 3)
           );
           congress = !isNaN(congress) ? congress : undefined;
 
@@ -62,7 +62,7 @@ export default async () => {
       subjectArr.push({
         uuid: uuidv1(),
         billUuid: lastNumberUuid,
-        subject: item.subject?.trim(),
+        subject: `${item.subject}`?.trim(),
       });
     }
 

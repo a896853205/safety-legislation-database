@@ -11,6 +11,7 @@ import Action from '../../models/action';
 import PersonIdentity from '../../models/person-identity';
 import Organization from '../../models/organization';
 import organizationInit from '../../init/organization-init';
+import { not } from '@hapi/joi';
 
 const Op = Sequelize.Op;
 
@@ -44,8 +45,20 @@ const _culSHLastYears = (PIs: PersonIdentity[]) => {
 };
 
 // 获取美国法案
-export const getUSBill = async () =>
-  Bill.findAll({
+export const getUSBill = async (congress?: number) => {
+  let where: any = null;
+
+  if (congress) {
+    where = {
+      congress,
+    };
+  }
+
+  return Bill.findAll({
+    attributes: {
+      exclude: ['summary', 'text'],
+    },
+    where,
     include: [
       {
         model: Country,
@@ -80,12 +93,24 @@ export const getUSBill = async () =>
       },
     ],
   });
+};
 
 // 获取美国所有人uuid
-export const getUSPerson = async () => {
+export const getUSPerson = async (congress?: number) => {
   const personSet = new Set<string>();
+  let where: any = null;
+
+  if (congress) {
+    where = {
+      congress,
+    };
+  }
 
   const USBill = await Bill.findAll({
+    attributes: {
+      exclude: ['summary', 'text'],
+    },
+    where,
     include: [
       {
         model: Country,
@@ -104,6 +129,12 @@ export const getUSPerson = async () => {
           {
             model: Person,
             attributes: ['uuid'],
+            include: [
+              {
+                model: PersonIdentity,
+                order: ['congressStart', 'ASC'],
+              },
+            ],
           },
         ],
       },
@@ -130,10 +161,19 @@ export const getUSPerson = async () => {
 };
 
 // 获取美国所有committee
-export const getUSCommittee = async () => {
+export const getUSCommittee = async (congress?: number) => {
   const committeeSet = new Set<string>();
 
+  let where: any = null;
+
+  if (congress) {
+    where = {
+      congress,
+    };
+  }
+
   const USBill = await Bill.findAll({
+    where,
     include: [
       {
         model: Country,
@@ -398,6 +438,110 @@ export const recognizedRate = (personUuid: string, USBill: Bill[]) => {
   }
 
   return +(recognized / total).toFixed(2);
+};
+
+// LP
+export const legislativeProcessScore = (personUuid: string, USBill: Bill[]) => {
+  let score = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      if (bill?.actions) {
+        bill.actions.forEach(action => {
+          if (action.value) {
+            score += Number(action.value);
+          }
+        });
+      }
+    }
+  }
+
+  return score;
+};
+
+// MPA
+export const mainPolicyArea = (personUuid: string, USBill: Bill[]) => {
+  let policyAreaMap = new Map();
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      if (bill?.policyArea) {
+        if (policyAreaMap.has(bill?.policyArea)) {
+          policyAreaMap.set(
+            bill?.policyArea,
+            policyAreaMap.get(bill?.policyArea) + 1
+          );
+        } else {
+          policyAreaMap.set(bill?.policyArea, 1);
+        }
+      }
+    }
+  }
+
+  let policyAreaArr: any[] = [];
+
+  policyAreaMap.forEach((value, key) => {
+    policyAreaArr.push({
+      policyArea: key,
+      times: value,
+    });
+  });
+
+  policyAreaArr = Array.from(policyAreaMap);
+
+  if (!policyAreaArr.length) {
+    return 'NULL';
+  }
+
+  if (policyAreaArr.length === 1) {
+    return policyAreaArr[0];
+  } else {
+    policyAreaArr.sort((a, b) => b.times - a.times);
+
+    let isEqual = true;
+
+    policyAreaArr.reduce((a, b) => {
+      if (a.times !== b.times) {
+        isEqual = false;
+      }
+    });
+
+    if (isEqual) {
+      return 'NULL';
+    } else {
+      return policyAreaArr[0];
+    }
+  }
 };
 
 // 计算T01
