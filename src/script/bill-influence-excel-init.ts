@@ -20,7 +20,7 @@ import {
   identityScore,
   relativeTime,
   legislativeProcessScore,
-  mainPolicyArea
+  mainPolicyArea,
 } from './util/influence';
 import { data2One } from './util/2one';
 
@@ -30,16 +30,15 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
 
 // 主函数
 (async () => {
-  const csvBuffer = fs.readFileSync(
-    path.resolve(__dirname, '../csv/提出者.csv')
-  );
-  const personSocialInfluArr = csv2Array(csvBuffer);
-
   let wb = XLSX.utils.book_new();
-  let oneRes: any = null;
 
   while (CONGRESS.length) {
     let congress = CONGRESS.pop();
+
+    const csvBuffer = fs.readFileSync(
+      path.resolve(__dirname, `../csv/${congress}.csv`)
+    );
+    const personSocialInfluArr = csv2Array(csvBuffer);
 
     const [USPerson, USBill] = await Promise.all([
       getUSPerson(congress),
@@ -83,7 +82,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
         'dataStart',
         'Party',
         'Legislative process score',
-        'Main Policy Area'
+        'Main Policy Area',
       ],
       ...oneRes.map(item => {
         let resObject: any = res.find(resItem => {
@@ -107,7 +106,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
             ? personObject?.personIdentities[0].party
             : '',
           resObject.LP,
-          resObject.MPA
+          resObject.MPA,
         ];
       }),
     ];

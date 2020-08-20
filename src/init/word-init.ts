@@ -75,20 +75,21 @@ export default async () => {
       }
     }
 
-    for (let key in programJson) {
-      let [number, congress] = key.split('-');
-
+    for (let bill of programJson) {
       let billUuid = billArr.find(
-        item => item.congress === Number(congress) && item.number === number
+        item =>
+          item.congress === Number(bill.congress) && item.number === bill.number
       )?.uuid;
 
-      if (billUuid) {
-        for (let programWord of programJson[key]) {
-          programWordArr.push({
-            uuid: uuidv1(),
-            billUuid,
-            word: programWord,
-          });
+      if (billUuid && bill.sortedKeywords) {
+        for (let programWord of bill.sortedKeywords) {
+          if (programWord[0]) {
+            programWordArr.push({
+              uuid: uuidv1(),
+              billUuid,
+              word: programWord[0],
+            });
+          }
         }
       }
     }

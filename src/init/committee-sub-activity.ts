@@ -28,7 +28,7 @@ interface IcommitteeSubActivity {
 }
 
 export default async () => {
-  const spinner = ora('CommitteeSub').start();
+  const spinner = ora('CommitteeSubActivity').start();
   try {
     const billArr = await Bill.findAll({
       attributes: ['uuid', 'number', 'congress'],

@@ -129,12 +129,6 @@ export const getUSPerson = async (congress?: number) => {
           {
             model: Person,
             attributes: ['uuid'],
-            include: [
-              {
-                model: PersonIdentity,
-                order: ['congressStart', 'ASC'],
-              },
-            ],
           },
         ],
       },
@@ -157,6 +151,12 @@ export const getUSPerson = async (congress?: number) => {
         [Op.in]: Array.from(personSet.values()),
       },
     },
+    include: [
+      {
+        model: PersonIdentity,
+        order: ['congressStart', 'ASC'],
+      },
+    ],
   });
 };
 
@@ -517,8 +517,6 @@ export const mainPolicyArea = (personUuid: string, USBill: Bill[]) => {
     });
   });
 
-  policyAreaArr = Array.from(policyAreaMap);
-
   if (!policyAreaArr.length) {
     return 'NULL';
   }
@@ -534,12 +532,14 @@ export const mainPolicyArea = (personUuid: string, USBill: Bill[]) => {
       if (a.times !== b.times) {
         isEqual = false;
       }
+
+      return b;
     });
 
     if (isEqual) {
       return 'NULL';
     } else {
-      return policyAreaArr[0];
+      return policyAreaArr[0].policyArea;
     }
   }
 };

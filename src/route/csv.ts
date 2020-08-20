@@ -15,6 +15,8 @@ router.get('/committee.csv', async ctx => {
 });
 
 router.get('/person.csv', async ctx => {
+  // const congress = ctx.params.congress;
+
   await service.personCsvInit();
 
   const path = `dist-csv/person.csv`;
@@ -38,6 +40,16 @@ router.get('/committee-relationship.csv/:billUuid', async ctx => {
   await service.committeeRelationshipCsvInit(billUuid);
 
   const path = `dist-csv/committee-relationship.csv`;
+  ctx.attachment(path);
+  await send(ctx, path);
+});
+
+router.get('/congress-person-relationship.csv/:congress', async ctx => {
+  const congress = ctx.params.congress;
+
+  await service.congressPersonRelationshipCsvInit(congress);
+
+  const path = `dist-csv/congress-person-relationship.csv`;
   ctx.attachment(path);
   await send(ctx, path);
 });

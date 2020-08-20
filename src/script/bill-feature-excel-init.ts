@@ -30,6 +30,9 @@ import {
 } from './util/feature';
 import { initNeo4j, driver } from '../neo4j';
 
+const PAGE = 1;
+const PAGE_SIZE = 100;
+
 const _needTotalBillInfluence = async (billUuid: string) => {
   const totalBill = await getBeforeTotalBill(billUuid);
 
@@ -63,6 +66,10 @@ dbInit();
   await initNeo4j();
   const allBill = await Bill.findAll({
     attributes: ['uuid', 'number', 'congress', 'status'],
+    where: {
+      limit: PAGE_SIZE,
+      offset: (PAGE - 1) * PAGE_SIZE,
+    }
   });
 
   const totalLen = allBill.length;

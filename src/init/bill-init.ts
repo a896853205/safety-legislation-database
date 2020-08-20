@@ -156,11 +156,10 @@ export default async () => {
             ?.replace(/\s/g, '')
             ?.trim()
         : undefined;
-      const categorize = categorizeArr.find(
-        (cate: ICategorize) =>
-          cate.number.replace(/\s/g, '') === number &&
-          cate.congress === congress
-      );
+      const categorize = categorizeArr.find((cate: ICategorize) => {
+        `${cate.number}`?.replace(/\s/g, '') === number &&
+          cate.congress === congress;
+      });
 
       billArray.push({
         uuid: uuidv1(),

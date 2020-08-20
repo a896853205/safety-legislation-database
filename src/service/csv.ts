@@ -69,7 +69,7 @@ export default {
 
     await writeFile(wb, filePath);
   },
-  personCsvInit: async () => {
+  personCsvInit: async (congress?: number) => {
     const ws_data: (string | undefined)[][] = [['personName']];
     const filePath = path.resolve(__dirname, `../../dist-csv/person.csv`);
 
@@ -80,7 +80,18 @@ export default {
       console.log('没有文件,不用删除');
     }
 
+    let where: any = null;
+
+    if (congress) {
+      where = {
+        congress: {
+          [Op.lt]: congress,
+        },
+      };
+    }
+
     const billArr = await Bill.findAll({
+      // where,
       attributes: ['uuid'],
       include: [
         {
@@ -191,6 +202,64 @@ export default {
     await writeFile(wb, filePath);
   },
 
+  congressPersonRelationshipCsvInit: async (congress: number) => {
+    const ws_PR_data: (string | undefined)[][] = [['sponsor', 'cosponsor']];
+
+    const filePath = path.resolve(
+      __dirname,
+      '../../dist-csv/congress-person-relationship.csv'
+    );
+
+    try {
+      // 先删除
+      fs.unlinkSync(filePath);
+    } catch (error) {
+      console.log('没有文件,不用删除');
+    }
+
+    const billArr = await Bill.findAll({
+      attributes: ['uuid'],
+      where: {
+        congress: {
+          [Op.lt]: congress,
+        },
+      },
+      include: [
+        {
+          model: Cosponsor,
+          attributes: ['uuid'],
+          include: [
+            {
+              model: Person,
+              attributes: ['uuid', 'name'],
+            },
+          ],
+        },
+        {
+          model: Person,
+          attributes: ['uuid', 'name'],
+        },
+      ],
+    });
+
+    billArr.forEach(bill => {
+      bill.cosponsors?.forEach(cos => {
+        ws_PR_data.push([bill.sponsor?.name, cos.cosponsor?.name]);
+      });
+    });
+
+    let wb;
+    try {
+      wb = readFile(filePath);
+    } catch (error) {
+      wb = utils.book_new();
+    }
+
+    const ws = utils.aoa_to_sheet(ws_PR_data);
+    utils.book_append_sheet(wb, ws, '1');
+
+    await writeFile(wb, filePath);
+  },
   committeeRelationshipCsvInit: async (billUuid: string) => {
     const ws_data: (string | undefined)[][] = [['committee1', 'committee2']];
 
