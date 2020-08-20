@@ -30,7 +30,7 @@ import {
 } from './util/feature';
 import { initNeo4j, driver } from '../neo4j';
 
-const PAGE = 1;
+const PAGE = 3;
 const PAGE_SIZE = 50;
 
 const _needTotalBillInfluence = async (billUuid: string) => {
