@@ -144,25 +144,25 @@ dbInit();
   spinner.text = '开始生成json文件';
 
   fs.writeFileSync(
-    path.resolve(__dirname, '../../dist-json/influence.json'),
+    path.resolve(__dirname, `../../dist-json/influence-${PAGE}.json`),
     JSON.stringify(res)
   );
 
-  const col: any[] = [];
+  // const col: any[] = [];
 
-  for (let key in res[0]) {
-    col.push({
-      id: key,
-      name: key,
-      type: 'string',
-      maxWidth: 20,
-    });
-  }
+  // for (let key in res[0]) {
+  //   col.push({
+  //     id: key,
+  //     name: key,
+  //     type: 'string',
+  //     maxWidth: 20,
+  //   });
+  // }
 
-  new consoleGrid().render({
-    columns: col,
-    rows: res,
-  });
+  // new consoleGrid().render({
+  //   columns: col,
+  //   rows: res,
+  // });
 
   spinner.succeed('influence.json文件生成成功');
   driver.close();
