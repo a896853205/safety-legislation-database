@@ -102,6 +102,9 @@ const getSponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
             attributes: ['uuid'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -165,6 +168,9 @@ const getCosponsorTimes = async (totalBill: Bill[], billUuid?: string) => {
             attributes: ['uuid'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -231,6 +237,9 @@ const getPolicyAreaTimes = async (totalBill: Bill[], billUuid?: string) => {
             attributes: ['uuid'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -334,6 +343,9 @@ const getCountryPoliticalOrganizationNums = async (billUuid?: string) => {
             ],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       return curBill?.country?.politicalOrganizations?.length
@@ -379,6 +391,9 @@ const getLegislativeSubjectTimes = async (
             attributes: ['uuid'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -491,6 +506,9 @@ const getSocialNums = async (totalBill: Bill[], billUuid?: string) => {
             attributes: ['uuid', 'name'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -761,6 +779,9 @@ const getBecameLawRate = async (totalBill: Bill[], billUuid?: string) => {
             attributes: ['uuid', 'name'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -851,6 +872,9 @@ const getRecognitionNums = async (totalBill: Bill[], billUuid?: string) => {
             attributes: ['uuid', 'name'],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       const SPONSOR_W = curBill?.cosponsors?.length ? 0.6 : 1;
@@ -951,6 +975,9 @@ const getStateRate = async (billUuid?: string) => {
             ],
           },
         ],
+        attributes: {
+          exclude: ['summary', 'text'],
+        },
       });
 
       let stateSet = new Set<string>();
