@@ -208,6 +208,21 @@ export const data2One = (data: any[]) => {
     T02TotalW
   );
 
+  console.log(
+    '细节',
+    b[0].M01,
+    b[0].M02,
+    b[0].R01,
+    b[0].R02,
+    b[0].R03,
+    b[0].D01,
+    b[0].D02,
+    b[0].D03,
+    b[0].D04,
+    b[0].T01,
+    b[0].T02
+  );
+
   let res = b.map(item => {
     return {
       name: item.name,

@@ -47,7 +47,7 @@ export default async () => {
         if (item.billCongress) {
           // 处理国会届数
           let billCongress: number | undefined = Number(
-            item.billCongress?.substring(0, 3)
+            `${item.billCongress}`?.substring(0, 3)
           );
           billCongress = !isNaN(billCongress) ? billCongress : undefined;
 
@@ -66,7 +66,7 @@ export default async () => {
         billUuid: lastNumberUuid,
         amendmentCode: item.amendmentNumber?.trim(),
         congress: item?.congress
-          ? parseInt(item?.congress?.slice(0, 3) || '')
+          ? parseInt(`${item?.congress}`?.slice(0, 3) || '')
           : undefined,
       });
     }

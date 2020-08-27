@@ -11,7 +11,6 @@ import Action from '../../models/action';
 import PersonIdentity from '../../models/person-identity';
 import Organization from '../../models/organization';
 import organizationInit from '../../init/organization-init';
-import { not } from '@hapi/joi';
 
 const Op = Sequelize.Op;
 
@@ -45,12 +44,14 @@ const _culSHLastYears = (PIs: PersonIdentity[]) => {
 };
 
 // 获取美国法案
-export const getUSBill = async (congress?: number) => {
+export const getUSBill = async (congress?: number) : Promise<Bill[]> => {
   let where: any = null;
 
   if (congress) {
     where = {
-      congress,
+      congress: {
+        [Op.lt]: congress,
+      },
     };
   }
 
@@ -102,7 +103,9 @@ export const getUSPerson = async (congress?: number) => {
 
   if (congress) {
     where = {
-      congress,
+      congress: {
+        [Op.lt]: congress,
+      },
     };
   }
 
@@ -168,11 +171,16 @@ export const getUSCommittee = async (congress?: number) => {
 
   if (congress) {
     where = {
-      congress,
+      congress: {
+        [Op.lt]: congress,
+      },
     };
   }
 
   const USBill = await Bill.findAll({
+    attributes: {
+      exclude: ['summary', 'text'],
+    },
     where,
     include: [
       {
@@ -620,7 +628,7 @@ export const relativeTime = (personUuid: string, USBill: Bill[]) => {
 };
 
 // 管理者计算M01
-export const committeeTotalNum = (organizationUuid: string, USBill: Bill[]) => {
+export const committeeTotalNum = (organizationUuid: string, USBill: any[]) => {
   let M01 = 0;
 
   for (let bill of USBill) {
@@ -640,7 +648,7 @@ export const committeeTotalNum = (organizationUuid: string, USBill: Bill[]) => {
 // 管理者计算R01
 export const committeePolicyAreaTotalNum = (
   organizationUuid: string,
-  USBill: Bill[]
+  USBill: any[]
 ) => {
   const policyAreaSet = new Set<string>();
 
@@ -667,7 +675,7 @@ export const committeePolicyAreaTotalNum = (
 // 管理者计算R03
 export const committeeLegislativeSubjectsTotalNum = (
   organizationUuid: string,
-  USBill: Bill[]
+  USBill: any[]
 ) => {
   const legislativeSubjectsSet = new Set<string>();
 
@@ -698,7 +706,7 @@ export const committeeLegislativeSubjectsTotalNum = (
 // 管理者计算D03
 export const committeeBecameLawRate = (
   organizationUuid: string,
-  USBill: Bill[]
+  USBill: any[]
 ) => {
   let total = 0;
   let bacameLaw = 0;
@@ -732,7 +740,7 @@ export const committeeBecameLawRate = (
 // 管理者计算D04
 export const committeeRecognizedRate = (
   organizationUuid: string,
-  USBill: Bill[]
+  USBill: any[]
 ) => {
   const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
   let total = 0;
@@ -765,7 +773,7 @@ export const committeeRecognizedRate = (
 // 管理者计算T01
 export const committeeInfluTime = (
   organizationUuid: string,
-  USBill: Bill[]
+  USBill: any[]
 ) => {
   const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
   let total = 0;
@@ -800,7 +808,7 @@ export const committeeInfluTime = (
 // 管理者计算T02
 export const committeeRelativeTime = (
   organizationUuid: string,
-  USBill: Bill[]
+  USBill: any[]
 ) => {
   const RECOGNIZED = ['BecomeLaw', 'AgreedToInSenate', 'AgreedInHouse'];
   let total = 0;

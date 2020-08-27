@@ -157,8 +157,10 @@ export default async () => {
             ?.trim()
         : undefined;
       const categorize = categorizeArr.find((cate: ICategorize) => {
-        `${cate.number}`?.replace(/\s/g, '') === number &&
-          cate.congress === congress;
+        return (
+          `${cate.number}`?.replace(/\s/g, '') === number &&
+          Number(cate.congress) === congress
+        );
       });
 
       billArray.push({

@@ -23,6 +23,7 @@ import {
   mainPolicyArea,
 } from './util/influence';
 import { data2One } from './util/2one';
+import Bill from '../models/bill';
 
 dbInit();
 
@@ -45,9 +46,12 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
       getUSBill(congress),
     ]);
 
+    USBill as Bill[];
+
     const res: any[] = [];
     for (let person of USPerson) {
       if (person?.uuid && person.name) {
+        let D02 = await identityScore(person.uuid, USBill);
         res.push({
           name: person.name,
           M01: sponsorTotalNum(person.uuid, USBill),
@@ -56,7 +60,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
           R02: 4,
           R03: legislativeSubjectsTotalNum(person.uuid, USBill),
           D01: socialInflu(person.name, personSocialInfluArr),
-          D02: await identityScore(person.uuid, USBill),
+          D02: isNaN(D02) ? 0 : D02,
           D03: becameLawRate(person.uuid, USBill),
           D04: recognizedRate(person.uuid, USBill),
           T01: influTime(person.uuid, USBill),
@@ -96,7 +100,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
         return [
           item.name,
           congress,
-          item.score,
+          isNaN(item.score) ? 0 : item.score,
           resObject.D03,
           resObject.M01 + resObject.M02,
           personObject?.personIdentities?.length

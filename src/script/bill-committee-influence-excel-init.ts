@@ -20,6 +20,7 @@ import {
   committeeRelativeTime,
 } from './util/influence';
 import { data2One } from './util/2one';
+import Bill from '../models/bill';
 
 dbInit();
 
