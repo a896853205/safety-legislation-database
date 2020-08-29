@@ -127,28 +127,28 @@ export default async () => {
       let textNumber = `${item.number}`?.replace('/', '_');
       let text: string | undefined;
       let summary: string | undefined;
-      try {
-        text = fs
-          .readFileSync(
-            path.resolve(
-              __dirname,
-              `../text/text-${textNumber}-${congress}.txt`
-            )
-          )
-          .toString();
-      } catch (error) {}
+      // try {
+      //   text = fs
+      //     .readFileSync(
+      //       path.resolve(
+      //         __dirname,
+      //         `../text/text-${textNumber}-${congress}.txt`
+      //       )
+      //     )
+      //     .toString();
+      // } catch (error) {}
 
-      try {
-        // summary 读取
-        summary = fs
-          .readFileSync(
-            path.resolve(
-              __dirname,
-              `../summary/summary-${textNumber}-${congress}.txt`
-            )
-          )
-          .toString();
-      } catch (error) {}
+      // try {
+      //   // summary 读取
+      //   summary = fs
+      //     .readFileSync(
+      //       path.resolve(
+      //         __dirname,
+      //         `../summary/summary-${textNumber}-${congress}.txt`
+      //       )
+      //     )
+      //     .toString();
+      // } catch (error) {}
 
       const number = item.number
         ? `${item.number}`

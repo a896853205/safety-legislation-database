@@ -22,8 +22,11 @@
     "categorize": "cross-env NODE_ENV=development ts-node ./src/script/bill-categorize-excel-init.ts",
     "categorizeValue1": "cross-env NODE_ENV=development ts-node ./src/script/bill-categorize-value1-excel-init.ts",
     "countryCount": "cross-env NODE_ENV=development ts-node ./src/script/bill-country-count-json-int.ts",
+    "billSearch": "cross-env NODE_ENV=development ts-node ./src/script/bill-search-excel-init.ts",
     "neo4j": "ts-node ./src/neo4j/index.ts",
-    "debug": "nodemon  --ext js,ts   --exec node -r ts-node/register --inspect src/www.ts"
+    "jsFeature": "cross-env NODE_ENV=development node --max_old_space_size=8000 ./dist/script/bill-feature-excel-init.js ",
+    "debug": "nodemon  --ext js,ts   --exec node -r ts-node/register --inspect src/www.ts",
+    "newSenator": "cross-env NODE_ENV=development ts-node ./src/script/new-senator-influence-excel-init.ts"
   },
   "author": "",
   "license": "ISC",
