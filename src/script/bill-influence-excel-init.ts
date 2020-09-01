@@ -21,6 +21,7 @@ import {
   relativeTime,
   legislativeProcessScore,
   mainPolicyArea,
+  becameLawNum
 } from './util/influence';
 import { data2One } from './util/2one';
 import Bill from '../models/bill';
@@ -67,6 +68,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
           T02: relativeTime(person.uuid, USBill),
           LP: legislativeProcessScore(person.uuid, USBill),
           MPA: mainPolicyArea(person.uuid, USBill),
+          BLN: becameLawNum(person.uuid, USBill),
         });
       }
     }
@@ -81,7 +83,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
         'name',
         'congress',
         'Infulence Score',
-        'Legislative success rate',
+        'Legislative success count',
         'Number of bills proposed',
         'dataStart',
         'Party',
@@ -101,7 +103,7 @@ const CONGRESS = [116, 115, 114, 113, 112, 111, 110];
           item.name,
           congress,
           isNaN(item.score) ? 0 : item.score,
-          resObject.D03,
+          resObject.BLN,
           resObject.M01 + resObject.M02,
           personObject?.personIdentities?.length
             ? personObject?.personIdentities[0].congressStart

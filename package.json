@@ -26,7 +26,11 @@
     "neo4j": "ts-node ./src/neo4j/index.ts",
     "jsFeature": "cross-env NODE_ENV=development node --max_old_space_size=8000 ./dist/script/bill-feature-excel-init.js ",
     "debug": "nodemon  --ext js,ts   --exec node -r ts-node/register --inspect src/www.ts",
-    "newSenator": "cross-env NODE_ENV=development ts-node ./src/script/new-senator-influence-excel-init.ts"
+    "newSenator": "cross-env NODE_ENV=development ts-node ./src/script/new-senator-influence-excel-init.ts",
+    "searchLP": "cross-env NODE_ENV=development ts-node ./src/script/bill-search-LP-excel-init.ts",
+    "searchCL": "cross-env NODE_ENV=development ts-node ./src/script/search-CL-excel-init.ts",
+    "searchCA": "cross-env NODE_ENV=development ts-node ./src/script/search-CA-excel-init.ts",
+    "searchAction": "cross-env NODE_ENV=development ts-node ./src/script/search-action-count.ts"
   },
   "author": "",
   "license": "ISC",

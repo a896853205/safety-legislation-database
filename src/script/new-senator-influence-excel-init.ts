@@ -50,15 +50,7 @@ class SenatorBill extends Bill {
     }
   }
   isHasSenator({ name }: { name: string }): boolean {
-    if (this.sponsor?.name === name) {
-      return true;
-    } else {
-      return (
-        this.cosponsors?.findIndex((cos: Cosponsor) => {
-          return cos?.cosponsor?.name === name;
-        }) !== -1
-      );
-    }
+    return this.senator.findIndex(item => item.name === name) !== -1;
   }
 
   getBillInfluence(socialInfluence?: SocialInfluence) {
@@ -84,18 +76,18 @@ class RelativeBillInfluence {
   number?: string;
   congress?: number;
   influence?: number;
-  categorize?: string;
+  status?: string;
 
   constructor(
     number?: string,
     congress?: number,
     influence?: number,
-    categorize?: string
+    status?: string
   ) {
     this.number = number;
     this.congress = congress;
     this.influence = influence;
-    this.categorize = categorize;
+    this.status = status;
   }
 }
 
@@ -112,11 +104,11 @@ class SenatorInfluence {
     number?: string,
     congress?: number,
     influence?: number,
-    categorize?: string
+    status?: string
   ) {
     // TODO: 这里其实应该先判断是否拥有再push
     this.relativeBillInfluence.push(
-      new RelativeBillInfluence(number, congress, influence, categorize)
+      new RelativeBillInfluence(number, congress, influence, status)
     );
 
     let total = 0;
@@ -149,14 +141,14 @@ class Res {
           this.resData.push([
             senatorInfluence.name,
             relativeBillInfluence.influence,
-            relativeBillInfluence.categorize,
+            relativeBillInfluence.status,
             senatorInfluence.averageInfluence,
           ]);
         else
           this.resData.push([
             '',
             relativeBillInfluence.influence,
-            relativeBillInfluence.categorize,
+            relativeBillInfluence.status,
             '',
           ]);
       }
@@ -214,7 +206,7 @@ const readData = () => {
  */
 const readSenatorBill = async (congress: number): Promise<SenatorBill[]> => {
   let foundBill = await Bill.findAll({
-    attributes: ['number', 'congress', 'categorize'],
+    attributes: ['number', 'congress', 'status'],
     include: [
       {
         model: Person,
@@ -271,7 +263,7 @@ dbInit();
                 bill?.number,
                 bill.congress,
                 influence,
-                bill.categorize
+                bill.status
               );
             }
           }

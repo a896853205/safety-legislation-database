@@ -404,7 +404,7 @@ export const becameLawRate = (personUuid: string, USBill: Bill[]) => {
       total++;
 
       if (bill?.status) {
-        if (bill.status === 'BecameLaw') {
+        if (bill.status === 'BecomeLaw') {
           bacameLaw++;
         }
       }
@@ -413,6 +413,37 @@ export const becameLawRate = (personUuid: string, USBill: Bill[]) => {
 
   return +(bacameLaw / total).toFixed(2);
 };
+
+export const becameLawNum = (personUuid: string, USBill: Bill[]) => {
+  let bacameLaw = 0;
+
+  for (let bill of USBill) {
+    let isHave = false;
+
+    if (bill.sponsor?.uuid === personUuid) {
+      isHave = true;
+    }
+
+    if (bill?.cosponsors) {
+      for (let cos of bill?.cosponsors) {
+        if (cos.cosponsor?.uuid === personUuid) {
+          isHave = true;
+          break;
+        }
+      }
+    }
+
+    if (isHave) {
+      if (bill?.status) {
+        if (bill.status === 'BecomeLaw') {
+          bacameLaw++;
+        }
+      }
+    }
+  }
+
+  return bacameLaw;
+}
 
 // 计算D04
 export const recognizedRate = (personUuid: string, USBill: Bill[]) => {
