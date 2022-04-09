@@ -62,7 +62,7 @@
     "koa-router": "^8.0.8",
     "koa-send": "^5.0.0",
     "koa2-cors": "^2.0.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mysql2": "^2.1.0",
     "neo4j-driver": "^4.0.2",
     "reflect-metadata": "^0.1.13",
